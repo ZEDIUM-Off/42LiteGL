@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 09:58:25 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 10:15:18 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/10 14:17:05 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,5 @@ void	set_texparami(
 		}
 		tex->mag_filter = param;
 	}
-	warp_param(c, tex, pname, param)
+	warp_param(c, tex, pname, param);
 }

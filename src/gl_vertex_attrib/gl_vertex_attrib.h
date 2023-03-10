@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gl_vertex.h                                        :+:      :+:    :+:   */
+/*   gl_vertex_attrib.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:06:25 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/07 12:07:37 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/10 15:48:07 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GL_VERTEX_H
-# define GL_VERTEX_H
+#ifndef GL_VERTEX_ATTRIB_H
+# define GL_VERTEX_ATTRIB_H
 
 # include <lite_gl.h>
 

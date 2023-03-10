@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:40:33 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 12:10:36 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/10 14:22:34 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 typedef struct tex_im_2d_vars
 {
-	int	cur_tex;
-	int	byte_width;
-	int	padding_needed;
-	int	padded_row_len;
-	int	mem_size;
-	int	components;
-	int	p;
-	t_gl_enum target;
-	t_u8	*texdata;
+	int			cur_tex;
+	int			byte_width;
+	int			padding_needed;
+	int			padded_row_len;
+	int			mem_size;
+	int			components;
+	int			p;
+	t_gl_enum	target;
+	t_u8		*texdata;
 }	t_tex_im_2d_vars;
 
 int	test_target_border_type(
@@ -61,13 +61,14 @@ void	copy_img_data_rec(
 {
 	int	i;
 
+	vars->cur_tex = c->bound_textures[vars->target - GL_TEXTURE_UNBOUND - 1];
 	c->textures.a[vars->cur_tex].w = params->width;
 	c->textures.a[vars->cur_tex].h = params->height;
 	free(c->textures.a[vars->cur_tex].data);
 	c->textures.a[vars->cur_tex].data = (t_u8 *)malloc(
 			params->height * vars->byte_width);
 	if (!c->textures.a[vars->cur_tex].data)
-		return (if (!c->error) c->error = GL_OUT_OF_MEMORY;);
+		return (if (!c->error) c->error = GL_OUT_OF_MEMORY);
 	i = 0;
 	if (data)
 	{
@@ -78,7 +79,8 @@ void	copy_img_data_rec(
 			while (i++ < params->height)
 				ft_memcpy(
 					&c->textures.a[vars->cur_tex].data[i * vars->byte_width],
-					&((t_u8 *)data)[i * vars->padded_row_len], vars->byte_width);
+					&((t_u8 *)data)[i * vars->padded_row_len],
+					vars->byte_width);
 	}
 	c->textures.a[vars->cur_tex].user_owned = GL_FALSE;
 }
@@ -106,17 +108,18 @@ void	copy_img_data_cube(
 	if (!c->textures.a[vars->cur_tex].w)
 		free(c->textures.a[vars->cur_tex].data);
 	if (params->width != params->height)
-		return (if (!c->error) c->error = GL_INVALID_VALUE;);
+		return (if (!c->error) c->error = GL_INVALID_VALUE);
 	vars->mem_size = params->width * params->height * 6 * vars->components;
-	if (c->textures.a[vars->cur_tex].w == 0) {
+	if (c->textures.a[vars->cur_tex].w == 0)
+	{
 		c->textures.a[vars->cur_tex].w = params->width;
 		c->textures.a[vars->cur_tex].h = params->width;
-		c->textures.a[vars->cur_tex].data = (t_u8 *) malloc(vars->mem_size)
+		c->textures.a[vars->cur_tex].data = (t_u8 *)malloc(vars->mem_size);
 		if (!c->textures.a[vars->cur_tex].data)
-			return (if (!c->error) c->error = GL_OUT_OF_MEMORY;);
+			return (if (!c->error) c->error = GL_OUT_OF_MEMORY);
 	}
 	else if (c->textures.a[vars->cur_tex].w != params->width)
-		return (if (!c->error) c->error = GL_INVALID_VALUE;);
+		return (if (!c->error) c->error = GL_INVALID_VALUE);
 	if (data)
 	{
 		if (!vars->padding_needed)
@@ -141,16 +144,15 @@ void	gl_tex_image_2d(
 	vars.padding_needed = vars.byte_width % c->unpack_alignment;
 	vars.padded_row_len = vars.byte_width
 		+ c->unpack_alignment - vars.padding_needed;
+	vars.target = target;
 	if (!vars.padding_needed)
 		vars.padded_row_len = vars.byte_width;
 	if (target == GL_TEXTURE_2D || target == GL_TEXTURE_RECTANGLE)
-	{
-		vars.cur_tex = c->bound_textures[target - GL_TEXTURE_UNBOUND - 1];
 		copy_img_data_rec(c, params, &vars, data);
-	}
 	else
 	{
-		vars.cur_tex = c->bound_textures[GL_TEXTURE_CUBE_MAP - GL_TEXTURE_UNBOUND - 1];
+		vars.cur_tex = c->bound_textures[
+			GL_TEXTURE_CUBE_MAP - GL_TEXTURE_UNBOUND - 1];
 		vars.target = target - GL_TEXTURE_CUBE_MAP_POSITIVE_X;
 		vars.p = params->height * vars.byte_width;
 		vars.texdata = c->textures.a[vars.cur_tex].data;

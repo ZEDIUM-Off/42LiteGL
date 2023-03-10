@@ -1,28 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gl_vertex.c                                        :+:      :+:    :+:   */
+/*   gl_vertex_attrib_pointer.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 16:24:07 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/07 12:07:31 by  mchenava        ###   ########.fr       */
+/*   Created: 2023/03/10 15:44:58 by  mchenava         #+#    #+#             */
+/*   Updated: 2023/03/10 15:45:11 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
-
-void	gl_enable_vertex_attrib_array(t_GLContext *c, t_gl_uint index)
-{
-	c->vertex_arrays.a[c->cur_vertex_array].vertex_attribs[index].enabled = \
-	GL_TRUE;
-}
-
-void	gl_disable_vertex_attrib_array(t_GLContext *c, t_gl_uint index)
-{
-	c->vertex_arrays.a[c->cur_vertex_array].vertex_attribs[index].enabled = \
-	GL_FALSE;
-}
 
 void	gl_vertex_attrib_pointer(t_GLContext *c, t_gl_uint index,
 	t_glVertex_Attrib attr, const t_gl_void *pointer)

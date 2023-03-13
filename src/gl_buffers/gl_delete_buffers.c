@@ -6,14 +6,14 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:02:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 15:04:25 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	gl_delete_buffers(
-	t_GLContext *c, t_gl_sizei n, const t_gl_uint *buffers)
+	t_gl_context *c, t_gl_sizei n, const t_gl_uint *buffers)
 {
 	t_gl_enum	type;
 	int			i;

@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:31:03 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/09 14:43:39 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	clear_loop(t_GLContext *c, t_color col)
+void	clear_loop(t_gl_context *c, t_color col)
 {
 	int		i;
 	int		x;
@@ -41,7 +41,7 @@ void	clear_loop(t_GLContext *c, t_color col)
 	}
 }
 
-void	gl_clear(t_GLContext *c, t_gl_bitfield mask)
+void	gl_clear(t_gl_context *c, t_gl_bitfield mask)
 {
 	if (!(mask & (GL_COLOR_BUFFER_BIT
 				| GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT)))

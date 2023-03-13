@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:45:45 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/09 15:03:28 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	gl_enable(t_GLContext *c, t_gl_enum cap)
+void	gl_enable(t_gl_context *c, t_gl_enum cap)
 {
 	if (cap == GL_CULL_FACE)
 		c->cull_face = GL_TRUE;
@@ -36,7 +36,7 @@ void	gl_enable(t_GLContext *c, t_gl_enum cap)
 		c->error = GL_INVALID_ENUM;
 }
 
-void	gl_disable(t_GLContext *c, t_gl_enum cap)
+void	gl_disable(t_gl_context *c, t_gl_enum cap)
 {
 	if (cap == GL_CULL_FACE)
 		c->cull_face = GL_FALSE;

@@ -6,14 +6,14 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:50:02 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 15:56:38 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	gl_multi_draw_arrays(
-	t_GLContext *c, t_gl_enum mode, t_multi_draw_arrays_settings *sett)
+	t_gl_context *c, t_gl_enum mode, t_multi_draw_arrays_settings *sett)
 {
 	t_gl_sizei			i;
 	t_pipeline_settings	settings;

@@ -15,6 +15,17 @@ DRAW_TRIANGLE_SRC =	draw_triangle/draw_triangle_clip.c \
 										raw_triangle/draw_tri_vars.c
 
 DRAW_SRC = $(DRAW_LINE_SRC) $(DRAW_MODES_SRC) $(DRAW_POINT_SRC) $(DRAW_TRIANGLE_SRC)
-DRAW_SRC += draw_pixel.c gl_draw.c mlx_draw.c
+DRAW_SRC += draw_pixel.c \
+						mlx_draw.c \
+						gl_draw_arrays.c \
+						gl_multi_draw_arrays.c \
+						gl_draw_arrays_instanced.c \
+						gl_draw_arrays_instanced_base_instance.c \
+						gl_draw_elements.c \
+						gl_multi_draw_elements.c \
+						gl_draw_elements_instanced.c \
+						gl_draw_elements_instanced_base_instance.c \
+						run_pipeline.c
 
+DRAW_PATH = src/gl_draw/
 DRAW_INCLUDE = -Igl_draw.h

@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 11:40:11 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/09 12:11:49 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 16:03:49 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-int	get_integerv_part1(t_GLContext *c, t_gl_enum pname, t_gl_int *params)
+int	get_integerv_part1(t_gl_context *c, t_gl_enum pname, t_gl_int *params)
 {
 	if (pname == GL_STENCIL_WRITE_MASK)
 		return (params[0] = c->stencil_writemask, 1);
@@ -41,7 +41,7 @@ int	get_integerv_part1(t_GLContext *c, t_gl_enum pname, t_gl_int *params)
 	return (0);
 }
 
-int	get_integerv_part2(t_GLContext *c, t_gl_enum pname, t_gl_int *params)
+int	get_integerv_part2(t_gl_context *c, t_gl_enum pname, t_gl_int *params)
 {
 	if (pname == GL_STENCIL_BACK_PASS_DEPTH_FAIL)
 		return (params[0] = c->stencil_dpfail_back, 1);
@@ -70,12 +70,12 @@ int	get_integerv_part2(t_GLContext *c, t_gl_enum pname, t_gl_int *params)
 	return (0);
 }
 
-int	get_integerv_part3(t_GLContext *c, t_gl_enum pname, t_gl_int *params)
+int	get_integerv_part3(t_gl_context *c, t_gl_enum pname, t_gl_int *params)
 {
 	if (pname == GL_POINT_SPRITE_COORD_ORIGIN)
 		return (params[0] = c->point_spr_origin, 1);
 	else if (pname == GL_PROVOKING_VERTEX)
-		return (params[0] = c->provoking_vertex, 1);
+		return (params[0] = c->provoking_vert, 1);
 	else if (pname == GL_POLYGON_MODE)
 		return (params[0] = c->poly_mode_front,
 			params[1] = c->poly_mode_back, 1);
@@ -98,11 +98,11 @@ int	get_integerv_part3(t_GLContext *c, t_gl_enum pname, t_gl_int *params)
 	return (0);
 }
 
-int	get_integerv_part4(t_GLContext *c, t_gl_enum pname, t_gl_int *params)
+int	get_integerv_part4(t_gl_context *c, t_gl_enum pname, t_gl_int *params)
 {
 	if (pname == GL_TEXTURE_BINDING_2D_ARRAY)
 		return (params[0] = c->bound_textures[
-				GL_TEXTURE_2D_ARRAY - GL_TEXTURE_UNBOUND - ], 1);
+				GL_TEXTURE_2D_ARRAY - GL_TEXTURE_UNBOUND - 1], 1);
 	else if (pname == GL_TEXTURE_BINDING_RECTANGLE)
 		return (params[0] = c->bound_textures[
 				GL_TEXTURE_RECTANGLE - GL_TEXTURE_UNBOUND - 1], 1);
@@ -112,7 +112,7 @@ int	get_integerv_part4(t_GLContext *c, t_gl_enum pname, t_gl_int *params)
 	return (0);
 }
 
-void	gl_get_integerv(t_GLContext *c, t_gl_enum pname, t_gl_int *params)
+void	gl_get_integerv(t_gl_context *c, t_gl_enum pname, t_gl_int *params)
 {
 	if (!get_integerv_part1(c, pname, params))
 		if (!get_integerv_part2(c, pname, params))

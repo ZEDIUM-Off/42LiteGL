@@ -6,23 +6,23 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:15:47 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/09 11:13:55 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 16:02:53 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-t_gl_ubyte	*gt_get_string(t_gl_enum name)
+char	*gl_get_string(t_gl_context *c, t_gl_enum name)
 {
-	static t_gl_ubyte	vendor[];
-	static t_gl_ubyte	renderer[];
-	static t_gl_ubyte	version[];
-	static t_gl_ubyte	shading_language[];
+	static char	*vendor;
+	static char	*renderer;
+	static char	*version;
+	static char	*shading_language;
 
-	vendor = "Matisse Chenavas";
-	renderer = "LiteGL 42 friendly (using mlx)";
-	version = "LiteGL v0.42 - close to OpenGL 3.x";
-	shading_language = "full C99 bébé ! 😎";
+	vendor = new_str("Matisse Chenavas");
+	renderer = new_str("LiteGL 42 friendly (using mlx)");
+	version = new_str("LiteGL v0.42 - close to OpenGL 3.x");
+	shading_language = new_str("full C99 bébé ! 😎");
 	if (name == GL_VENDOR)
 		return (vendor);
 	if (name == GL_RENDERER)

@@ -6,14 +6,14 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:57:53 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 16:02:54 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	gl_draw_elements(
-	t_GLContext *c, t_gl_enum mode, t_draw_elements_settings *sett)
+	t_gl_context *c, t_gl_enum mode, t_draw_elements_settings *sett)
 {
 	t_pipeline_settings	settings;
 

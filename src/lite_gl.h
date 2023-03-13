@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:31:11 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 15:00:35 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 14:43:00 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,29 @@
 
 # define EPSILON 0.000001
 
-# include "types/types.h"
-# include "types/gl_enum.h"
-# include "types/gl_struct.h"
+# include <math.h>
+# include <string.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdint.h>
+# include <libft.h>
 
-# include "gl_math/gl_math.h"
-# include "gl_color/color.h"
-# include "gl_line/gl_line.h"
+# include "types/types.h"
+# include "types/gl_struct.h"
+# include "types/gl_enum.h"
+
+# include "cvec/cvec.h"
 # include "gl_buffers/gl_buffer.h"
-# include "gl_vertex/gl_vertex.h"
-# include "gl_shader/gl_shader.h"
+# include "gl_color/color.h"
+# include "gl_context/gl_context.h"
 # include "gl_draw/gl_draw.h"
+# include "gl_getters/gl_getters.h"
 # include "gl_line/gl_line.h"
+# include "gl_math/gl_math.h"
+# include "gl_shader/gl_shader.h"
+# include "gl_texture/gl_texture.h"
+# include "gl_utils/gl_utils.h"
+# include "gl_vertex_arrays/gl_vertex_arrays.h"
+# include "gl_vertex_attrib/gl_vertex_attrib.h"
 
 #endif

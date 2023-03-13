@@ -6,14 +6,14 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:28:07 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 15:39:37 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	second_loop(
-	t_GLContext *c, t_gl_enum target, t_gl_sizei *nj, t_gl_uint *textures)
+	t_gl_context *c, t_gl_enum target, t_gl_sizei *nj, t_gl_uint *textures)
 {
 	int	j;
 	int	i;
@@ -31,7 +31,7 @@ void	second_loop(
 }
 
 void	gl_create_textures(
-	t_GLContext *c, t_gl_enum target, t_gl_sizei n, t_gl_uint *textures)
+	t_gl_context *c, t_gl_enum target, t_gl_sizei n, t_gl_uint *textures)
 {
 	t_gl_sizei	j;
 	int			i;

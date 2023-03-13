@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 09:34:18 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 09:37:39 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	gl_bind_texture(t_GLContext *c, t_gl_enum target, t_gl_uint texture)
+void	gl_bind_texture(t_gl_context *c, t_gl_enum target, t_gl_uint texture)
 {
 	if (target < GL_TEXTURE_1D || target >= GL_NUM_TEXTURE_TYPES)
 	{

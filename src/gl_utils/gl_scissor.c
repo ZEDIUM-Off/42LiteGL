@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:19:42 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/09 15:21:40 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:15 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	gl_scissor(t_GLContext *c, t_gl_int *xy, t_gl_sizei *wh)
+void	gl_scissor(t_gl_context *c, t_gl_int *xy, t_gl_sizei *wh)
 {
 	if (width < 0 || height < 0)
 	{

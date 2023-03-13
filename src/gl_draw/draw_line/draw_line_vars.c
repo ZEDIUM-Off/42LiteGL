@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:16:10 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/02/28 17:02:36 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 14:11:35 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-typedef struct draw_line_shader_vars
+struct s_draw_line_shader_vars
 {
 	float	x[2];
 	float	y[2];
@@ -37,7 +37,7 @@ typedef struct draw_line_shader_vars
 	float	line_len_sq;
 	int		diag;
 	int		first_is_diag;
-}	t_draw_line_shader_vars;
+};
 
 void	left_right(t_draw_line_shader_vars *vars, float ***v_out)
 {
@@ -78,7 +78,7 @@ void	mima_left_right(t_draw_line_shader_vars *vars)
 	}
 }
 
-void	set_line_shader_vars(t_GLContext *c, t_draw_line_shader_vars *vars,
+void	set_line_shader_vars(t_gl_context *c, t_draw_line_shader_vars *vars,
 	t_vec4 *vertexes, float ***v_out)
 {
 	vars->x = {vertexes[0].x, vertexes[1].x};
@@ -109,7 +109,7 @@ void	set_line_shader_vars(t_GLContext *c, t_draw_line_shader_vars *vars,
 }
 
 void	set_perp_line_vars(
-	t_GLContext *c, t_draw_line_shader_vars *vars, float *vx, float *vy)
+	t_gl_context *c, t_draw_line_shader_vars *vars, float *vx, float *vy)
 {
 	vars->line = make_line(vars->x[0], vars->y[0], vars->x[1], vars->y[1]);
 	vars->i_x[0] = floor(vars->x[0]) + 0.5;

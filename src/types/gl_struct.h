@@ -6,14 +6,81 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:13:25 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/03 14:56:06 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 15:07:39 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GL_STRUCT_H
 # define GL_STRUCT_H
 
-typedef struct glTexture
+# include <lite_gl.h>
+# include "gl_enum.h"
+# include "../cvec/cvec.h"
+# include "../gl_math/gl_math.h"
+
+struct s_mlx_env
+{
+	void		*mlx;
+	void		*win;
+	void		*img;
+	char		*img_addr;
+	int			bpp;
+	int			line_len;
+	int			endian;
+};
+
+struct s_multi_draw_arrays_settings
+{
+	const t_gl_sizei	*first;
+	const t_gl_sizei	*count;
+	t_gl_sizei			drawcount;
+};
+
+struct s_draw_arrays_instanced_settings
+{
+	t_gl_int	first;
+	t_gl_sizei	count;
+	t_gl_sizei	instancecount;
+	t_gl_uint	baseinstance;
+};
+
+struct s_draw_elements_settings
+{
+	t_gl_sizei	count;
+	t_gl_enum	type;
+	t_gl_sizei	offset;
+};
+
+struct s_multi_draw_elements_settings
+{
+	const t_gl_sizei	*count;
+	t_gl_enum			type;
+	t_gl_sizei			*indices;
+	t_gl_sizei			drawcount;
+};
+
+struct s_draw_elements_instanced_settings
+{
+	t_gl_int	first;
+	t_gl_sizei	count;
+	t_gl_sizei	instancecount;
+	t_gl_uint	baseinstance;
+};
+
+struct s_tex_image_params
+{
+	t_gl_int	level;
+	t_gl_int	xoffset;
+	t_gl_int	yoffset;
+	t_gl_int	zoffset;
+	t_gl_sizei	width;
+	t_gl_sizei	height;
+	t_gl_sizei	depth;
+	t_gl_enum	format;
+	t_gl_enum	type;
+};
+
+struct s_glTexture
 {
 	unsigned int		w;
 	unsigned int		h;
@@ -29,9 +96,9 @@ typedef struct glTexture
 	t_gl_boolean		deleted;
 	t_gl_boolean		user_owned;
 	t_u8				*data;
-}	t_glTexture;
+};
 
-typedef struct pipeline_settings
+struct s_pipeline_settings
 {
 	t_gl_enum		mode;
 	t_gl_uint		first;
@@ -39,33 +106,33 @@ typedef struct pipeline_settings
 	t_gl_sizei		instance;
 	t_gl_uint		base_instance;
 	t_gl_boolean	use_elements;
-}	t_pipeline_settings;
+};
 
-typedef struct glVertex
+struct s_glVertex
 {
 	t_vec4		clip_space;
 	t_vec4		screen_space;
 	int			clip_code;
 	int			edge_flag;
 	float		*vs_out;
-}	t_glVertex;
+};
 
-typedef struct glFramebuffer // surement remplacer par qq chose lie a la mlx
+struct s_glFramebuffer // surement remplacer par qq chose lie a la mlx
 {
 	t_u8		*buf;
 	t_u8		*lastrow;
 	size_t		w;
 	size_t		h;
-}	t_glFramebuffer;
+};
 
-typedef struct Vertex_Shader_output
+struct s_Vertex_Shader_output
 {
 	int				size;
 	t_gl_enum		*interpolation;
-	cvector_float	output_buf;
-}	t_Vertex_Shader_output;
+	t_cvector_float	output_buf;
+};
 
-typedef struct glVertex_Attrib
+struct s_glVertex_Attrib
 {
 	t_gl_int			size;
 	t_gl_enum			type;
@@ -75,90 +142,97 @@ typedef struct glVertex_Attrib
 	unsigned int		buf;
 	t_gl_boolean		enabled;
 	t_gl_uint			divisor;
-}	t_glVertex_Attrib;
+};
 
-typedef struct glVertex_Array
+struct s_glVertex_Array
 {
-	glVertex_Attrib	vertex_attribs[GL_MAX_VERTEX_ATTRIBS];
-	t_gl_uint		element_buffer;
-	t_gl_boolean	deleted;
+	t_gl_vertex_attrib	vertex_attribs[GL_MAX_VERTEX_ATTRIBS];
+	t_gl_uint			element_buffer;
+	t_gl_boolean		deleted;
 
-}	t_glVertex_Array;
+};
 
-typedef struct glBuffer
+struct s_glBuffer
 {
 	t_gl_sizei		size;
 	t_gl_enum		type;
 	t_u8			*data;
 	t_gl_boolean	deleted;
 	t_gl_boolean	user_owned;
-}	t_glBuffer;
+};
 
-typedef struct cvector_glBuffer
-{
-	t_glBuffer	*a;
-	size_t		size;
-	size_t		capacity;
-}	t_cvector_glBuffer;
-
-typedef struct Color // rendre compatible avec mlx
+struct s_Color // rendre compatible avec mlx
 {
 	t_u8	r;
 	t_u8	g;
 	t_u8	b;
 	t_u8	a;
-}	t_color;
+};
 
-typedef struct Line
+struct s_Line
 {
 	float	a;
 	float	b;
 	float	c;
-}	t_line;
+};
 
-typedef struct Plane
+struct s_Plane
 {
 	t_vec3	n;
 	float	d;
-}	t_plane;
+};
 
-typedef struct cvector_float
-{
-	float		*a;
-	size_t		size;
-	size_t		capacity;
-}	t_cvector_float;
-
-typedef struct Shader_Builtins
+struct s_Shader_Builtins
 {
 	t_vec4			gl_position;
-	t_t_gl_int		gl_instance_id;
+	t_gl_int		gl_instance_id;
 	t_vec2			gl_point_coord;
 	t_gl_boolean	gl_front_facing;
 	t_vec4			gl_frag_coord;
 	t_vec4			gl_frag_color;
 	float			gl_frag_depth;
 	t_gl_boolean	discard;
-}	t_Shader_Builtins;
+};
 
-typedef struct glProgram
+typedef void (*		t_vert_func) (float *vs_output, void *vertex_attribs,
+	t_shader_builtins *builtins, void *uniforms);
+typedef void (*		t_frag_func)(float *fs_input,
+	t_shader_builtins *builtins, void* uniforms);
+typedef void (*		t_draw_triangle_func)(t_gl_context *c,
+	t_gl_vertex **v, unsigned int provoke);
+
+struct s_glProgram
 {
-	vert_func		vertex_shader;
-	frag_func		fragment_shader;
+	t_vert_func		vertex_shader;
+	t_frag_func		fragment_shader;
 	void			*uniform;
 	int				vs_output_size;
 	t_gl_enum		interpolation[GL_MAX_VERTEX_OUTPUT_COMPONENTS];
 	t_gl_boolean	fragdepth_or_discard;
 	t_gl_boolean	deleted;
-}	t_glProgram;
+};
 
-typedef struct glContext
+struct s_context_settings
 {
+	t_u32	**back;
+	int		w;
+	int		h;
+	int		bitdepth;
+	t_u32	r_mask;
+	t_u32	g_mask;
+	t_u32	b_mask;
+	t_u32	a_mask;
+};
+
+struct s_glContext
+{
+	t_draw_triangle_func		draw_triangle_front;
+	t_draw_triangle_func		draw_triangle_back;
 	t_mat4						vp_mat;
-	t_cvector_glVertex_Array	vertex_arrays;
-	t_cvector_glBuffer			buffers;
-	t_cvector_glTexture			textures;
-	t_cvector_glProgram			programs;
+	t_cvector_gl_vertex_array	vertex_arrays;
+	t_cvector_gl_buffer			buffers;
+	t_cvector_gl_texture		textures;
+	t_cvector_gl_program		programs;
 	int							x_min;
 	int							y_min;
 	size_t						x_max;
@@ -173,8 +247,8 @@ typedef struct glContext
 	t_gl_enum					error;
 	void						*uniform;
 	t_vec4						vertex_attribs_vs[GL_MAX_VERTEX_ATTRIBS];
-	Shader_Builtins				builtins;
-	Vertex_Shader_output		vs_output;
+	t_shader_builtins			builtins;
+	t_vertex_shader_output		vs_output;
 	float						fs_input[GL_MAX_VERTEX_OUTPUT_COMPONENTS];
 	t_gl_boolean				depth_test;
 	t_gl_boolean				line_smooth;
@@ -221,16 +295,16 @@ typedef struct glContext
 	t_gl_int					unpack_alignment;
 	t_gl_int					pack_alignment;
 	t_gl_int					clear_stencil;
-	t_Color						clear_color;
+	t_color						clear_color;
 	t_vec4						blend_color;
 	t_gl_float					point_size;
 	t_gl_float					line_width;
 	t_gl_float					clear_depth;
 	t_gl_float					depth_range_near;
 	t_gl_float					depth_range_far;
-	glFramebuffer				zbuf;
-	glFramebuffer				back_buffer;
-	glFramebuffer				stencil_buf;
+	t_gl_framebuffer			zbuf;
+	t_gl_framebuffer			back_buffer;
+	t_gl_framebuffer			stencil_buf;
 	int							user_alloced_backbuf;
 	int							bitdepth;
 	t_u32						r_mask;
@@ -241,7 +315,7 @@ typedef struct glContext
 	int							g_shift;
 	int							b_shift;
 	int							a_shift;
-	cvector_glVertex			glverts;
-}	t_GLcontext;
+	t_cvector_gl_vertex			glverts;
+};
 
 #endif

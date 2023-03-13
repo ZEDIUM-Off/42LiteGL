@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:40:33 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 14:22:34 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct tex_im_2d_vars
 }	t_tex_im_2d_vars;
 
 int	test_target_border_type(
-	t_GLContext *c, t_gl_enum target, t_gl_enum border, t_gl_enum type)
+	t_gl_context *c, t_gl_enum target, t_gl_enum border, t_gl_enum type)
 {
 	if (target != GL_TEXTURE_2D && target != GL_TEXTURE_RECTANGLE
 		&& target != GL_TEXTURE_CUBE_MAP_POSITIVE_X
@@ -56,7 +56,7 @@ int	test_target_border_type(
 }
 
 void	copy_img_data_rec(
-	t_GLContext *c, t_tex_image_params *params,
+	t_gl_context *c, t_tex_image_params *params,
 	t_tex_im_2d_vars *vars, t_gl_void *data)
 {
 	int	i;
@@ -86,7 +86,7 @@ void	copy_img_data_rec(
 }
 
 void	copy_loop(
-	t_GLContext *c, t_tex_image_params *params,
+	t_gl_context *c, t_tex_image_params *params,
 	t_tex_im_2d_vars *vars, t_gl_void *data)
 {
 	int	i;
@@ -102,7 +102,7 @@ void	copy_loop(
 }
 
 void	copy_img_data_cube(
-	t_GLContext *c, t_tex_image_params *params,
+	t_gl_context *c, t_tex_image_params *params,
 	t_tex_im_2d_vars *vars, t_gl_void *data)
 {
 	if (!c->textures.a[vars->cur_tex].w)
@@ -131,7 +131,7 @@ void	copy_img_data_cube(
 }
 
 void	gl_tex_image_2d(
-	t_GLContext *c, t_gl_enum target,
+	t_gl_context *c, t_gl_enum target,
 	t_tex_image_params *params, t_gl_void *data)
 {
 	t_tex_im_2d_vars	vars;

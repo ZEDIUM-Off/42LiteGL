@@ -6,14 +6,14 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:36:00 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/09 15:44:32 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:15 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	front_or_back(
-	t_GLContext *c, t_gl_enum face, t_gl_enum sfail_dpfail, t_gl_enum dppass)
+	t_gl_context *c, t_gl_enum face, t_gl_enum sfail_dpfail, t_gl_enum dppass)
 {
 	if (face == GL_FRONT)
 	{
@@ -30,7 +30,7 @@ void	front_or_back(
 }
 
 void	gl_stencil_op_separate(
-	t_GLContext *c, t_gl_enum face, t_gl_enum sfail_dpfail, t_gl_enum dppass)
+	t_gl_context *c, t_gl_enum face, t_gl_enum sfail_dpfail, t_gl_enum dppass)
 {
 	if (face < GL_FRONT || face > GL_FRONT_AND_BACK)
 	{

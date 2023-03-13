@@ -6,14 +6,15 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:45:25 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/01 14:05:27 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 13:34:37 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	draw_tri_action_finish(
-	t_GLContext *c, t_draw_tri_vars *vars, t_glVertex **v, unsigned int provoke)
+	t_gl_context *c, t_draw_tri_vars *vars, t_gl_vertex **v,
+	unsigned int provoke)
 {
 	set_vec4(vars->builtins.gl_FragCoord, vars->x, vars->y, vars->z, tmp2);
 	vars->builtins.discard = GL_FALSE;
@@ -27,7 +28,8 @@ void	draw_tri_action_finish(
 }
 
 void	draw_tri_action_next(
-	t_GLContext *c, t_draw_tri_vars *vars, t_glVertex **v, unsigned int provoke)
+	t_gl_context *c, t_draw_tri_vars *vars, t_gl_vertex **v,
+	unsigned int provoke)
 {
 	int	i;
 
@@ -55,7 +57,8 @@ void	draw_tri_action_next(
 }
 
 void	draw_tri_action(
-	t_GLContext *c, t_draw_tri_vars *vars, t_glVertex **v, unsigned int provoke)
+	t_gl_context *c, t_draw_tri_vars *vars, t_gl_vertex **v,
+	unsigned int provoke)
 {
 	if ((vars->alpha > 0
 			|| line_func(&vars->lines[1], vars->h[0].x, vars->h[0].y)
@@ -80,7 +83,8 @@ void	draw_tri_action(
 	}
 }
 
-void	draw_triangle_fill(t_GLContext *c, t_glVertex **v, unsigned int provoke)
+void	draw_triangle_fill(t_gl_context *c, t_gl_vertex **v,
+unsigned int provoke)
 {
 	t_draw_tri_vars	vars;
 

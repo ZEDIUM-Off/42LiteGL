@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:03:42 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 14:30:47 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 16:45:26 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ typedef struct tex_im_3d_vars
 }	t_tex_im_3d_vars;
 
 void	copy_img_data_3d(
-	t_GLContext *c, t_tex_image_params *params,
+	t_gl_context *c, t_tex_image_params *params,
 	t_tex_im_3d_vars *vars, t_gl_void *data)
 {
-	c->textures.a[cur_tex].data = (t_u8 *)malloc(
+	c->textures.a[vars->cur_tex].data = (t_u8 *)malloc(
 			params->width * params->height * params->depth * vars->components);
-	if (!c->textures.a[cur_tex].data)
+	if (!c->textures.a[vars->cur_tex].data)
 		return (if (!c->error) c->error = GL_OUT_OF_MEMORY);
-	vars->texdata = (t_u32 *)c->textures.a[cur_tex].data;
+	vars->texdata = (t_u8 *)c->textures.a[vars->cur_tex].data;
 	if (data)
 	{
 		if (!vars->padding_needed)
@@ -44,8 +44,8 @@ void	copy_img_data_3d(
 			vars->p = 0;
 			while (vars->p < params->height * params->depth)
 			{
-				ft_memcpy(&vars->texdata[p * vars->byte_width],
-					&((t_u8 *)data)[p * vars->padded_row_len],
+				ft_memcpy(&vars->texdata[vars->p * vars->byte_width],
+					&((t_u8 *)data)[vars->p * vars->padded_row_len],
 					vars->byte_width);
 				vars->p++;
 			}
@@ -55,7 +55,7 @@ void	copy_img_data_3d(
 }
 
 void	gl_tex_image_3d(
-	t_GLContext *c, t_gl_enum target,
+	t_gl_context *c, t_gl_enum target,
 	t_tex_image_params *params, t_gl_void *data)
 {
 	t_tex_im_3d_vars	vars;

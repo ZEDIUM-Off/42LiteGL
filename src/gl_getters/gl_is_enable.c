@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 12:13:50 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/09 12:16:46 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-t_gl_boolean	gl_is_enable(t_GLContext *c, t_gl_enum cap)
+t_gl_boolean	gl_is_enable(t_gl_context *c, t_gl_enum cap)
 {
 	if (cap == GL_DEPTH_TEST)
 		return (c->depth_test);

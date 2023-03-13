@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:42:12 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/07 09:43:40 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 14:55:22 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CVEC_INSERT_H
 
 # include <lite_gl.h>
+# include "../cvec.h"
 
 int	cvec_insert_float(t_cvector_float *vec, size_t i, float a);
 int	cvec_insert_array_float(t_cvector_float *vec, size_t i, float *a, size_t n);
@@ -36,8 +37,8 @@ int	cvec_insert_array_gl_vertex_array(
 		t_cvector_gl_vertex_array *vec, size_t i,
 		t_gl_vertex_array *a, size_t n);
 
-int	cvec_insert_gl_vertex(t_cvector_t_gl_vertex *vec, size_t i, t_gl_vertex a);
+int	cvec_insert_gl_vertex(t_cvector_gl_vertex *vec, size_t i, t_gl_vertex a);
 int	cvec_insert_array_gl_vertex(
-		t_cvector_t_gl_vertex *vec, size_t i, t_gl_vertex *a, size_t n);
+		t_cvector_gl_vertex *vec, size_t i, t_gl_vertex *a, size_t n);
 
 #endif

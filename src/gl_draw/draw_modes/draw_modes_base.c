@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:44:11 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/01 10:33:02 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	point_mode(t_GLContext *c, t_gl_uint first, t_gl_sizei count)
+void	point_mode(t_gl_context *c, t_gl_uint first, t_gl_sizei count)
 {
 	int	i;
 	int	vert;
@@ -29,7 +29,7 @@ void	point_mode(t_GLContext *c, t_gl_uint first, t_gl_sizei count)
 	}
 }
 
-void	line_mode(t_GLContext *c, t_gl_int first, t_gl_sizei count)
+void	line_mode(t_gl_context *c, t_gl_int first, t_gl_sizei count)
 {
 	int	i;
 	int	vert;
@@ -44,7 +44,7 @@ void	line_mode(t_GLContext *c, t_gl_int first, t_gl_sizei count)
 	}
 }
 
-void	triangle_mode(t_GLContext *c, t_gl_int first, t_gl_sizei count)
+void	triangle_mode(t_gl_context *c, t_gl_int first, t_gl_sizei count)
 {
 	int	i;
 	int	vert;

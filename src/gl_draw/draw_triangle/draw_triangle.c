@@ -6,14 +6,14 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 11:01:34 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/07 10:25:47 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 13:29:20 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	draw_triangle_final(
-	t_GLContext *c, t_glVertex **v, unsigned int provoke)
+	t_gl_context *c, t_gl_vertex **v, unsigned int provoke)
 {
 	int	front_facing;
 
@@ -37,7 +37,7 @@ void	draw_triangle_final(
 		c->draw_triangle_back(c, v, provoke);
 }
 
-void	draw_triangle(t_GLContext *c, t_glVertex **v, unsigned int provoke)
+void	draw_triangle(t_gl_context *c, t_gl_vertex **v, unsigned int provoke)
 {
 	int	c_or;
 	int	c_and;

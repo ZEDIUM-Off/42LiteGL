@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:17:27 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 15:49:13 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	gl_draw_arrays(t_GLContext *c,
+void	gl_draw_arrays(t_gl_context *c,
 	t_gl_enum mode, t_gl_int first, t_gl_sizei count)
 {
 	t_pipeline_settings	settings;

@@ -6,16 +6,16 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:44:58 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 15:45:11 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 13:32:48 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	gl_vertex_attrib_pointer(t_GLContext *c, t_gl_uint index,
-	t_glVertex_Attrib attr, const t_gl_void *pointer)
+void	gl_vertex_attrib_pointer(t_gl_context *c, t_gl_uint index,
+	t_gl_vertex_attrib attr, const t_gl_void *pointer)
 {
-	t_glVertex_Attrib	*v;
+	t_gl_vertex_attrib	*v;
 
 	if (index >= GL_MAX_VERTEX_ATTRIBS || attr.size < 1 || attr.size > 4
 		|| (!c->bound_buffers[GL_ARRAY_BUFFER - GL_ARRAY_BUFFER] && pointer))

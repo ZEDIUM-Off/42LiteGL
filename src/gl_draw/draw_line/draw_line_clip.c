@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:02:37 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/02/28 12:49:09 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 13:29:49 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-static void	thikness_choice(t_GLContext *c, t_vec4 *traces, float **v_out,
+static void	thikness_choice(t_gl_context *c, t_vec4 *traces, float **v_out,
 	unsigned int provoke)
 {
 	if (c->line_width < 1.5f)
@@ -37,7 +37,7 @@ static void	interpolate_clipped_line(glVertex	**vertexes,
 	}
 }
 
-void	clip_and_draw_line(t_GLContext *c, t_glVertex **vertexes,
+void	clip_and_draw_line(t_gl_context *c, t_gl_vertex **vertexes,
 	t_vec4 *traces, unsigned int provoke)
 {
 	float	v_out[2][GL_MAX_VERTEX_OUTPUT_COMPONENTS];
@@ -67,14 +67,14 @@ void	clip_and_draw_line(t_GLContext *c, t_glVertex **vertexes,
 	}
 }
 
-void	draw_line_clip(t_GLContext *c, t_glVertex *v1, t_glVextex *v2)
+void	draw_line_clip(t_gl_context *c, t_gl_vertex *v1, t_gl_vertex *v2)
 {
 	t_vec4			traces[2];
 	unsigned int	provoke;
 
-	provoke = (v1 - c->glverts.a) / sizeof(t_glVertex);
+	provoke = (v1 - c->glverts.a) / sizeof(t_gl_vertex);
 	if (c->provoking_vert == GL_LAST_VERTEX_CONVENTION)
-		provoke = (v2 - c->glverts.a) / sizeof(t_glVertex);
+		provoke = (v2 - c->glverts.a) / sizeof(t_gl_vertex);
 	if (v1->clip_code & v2->clip_code)
 		return ;
 	else if ((v1->clip_code | v2->clip_code) == 0)

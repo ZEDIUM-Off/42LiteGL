@@ -6,14 +6,14 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:04:31 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/02/28 16:51:22 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	draw_thick_line_shader_slope_less_minus_one(
-	t_GLContext *c, t_draw_line_shader_vars *vars, float **v_out,
+	t_gl_context *c, t_draw_line_shader_vars *vars, float **v_out,
 	unsigned int provoke)
 {
 	vars->lx = vars->x_mima[0];
@@ -43,7 +43,7 @@ void	draw_thick_line_shader_slope_less_minus_one(
 }
 
 void	draw_thick_line_shader_slope_less_zero(
-	t_GLContext *c, t_draw_line_shader_vars *vars, float **v_out,
+	t_gl_context *c, t_draw_line_shader_vars *vars, float **v_out,
 	unsigned int provoke)
 {
 	vars->lx = vars->x_mima[0];
@@ -73,7 +73,7 @@ void	draw_thick_line_shader_slope_less_zero(
 }
 
 void	draw_thick_line_shader_slope_less_one(
-	t_GLContext *c, t_draw_line_shader_vars *vars, float **v_out,
+	t_gl_context *c, t_draw_line_shader_vars *vars, float **v_out,
 	unsigned int provoke)
 {
 	vars->lx = vars->x_mima[0];
@@ -103,7 +103,7 @@ void	draw_thick_line_shader_slope_less_one(
 }
 
 void	draw_thick_line_shader_slope_more_one(
-	t_GLContext *c, t_draw_line_shader_vars *vars, float **v_out,
+	t_gl_context *c, t_draw_line_shader_vars *vars, float **v_out,
 	unsigned int provoke)
 {
 	vars->lx = vars->x_mima[0];
@@ -132,7 +132,7 @@ void	draw_thick_line_shader_slope_more_one(
 	}
 }
 
-void	draw_thick_line_shader(t_GLContext *c, t_vec4 *vertexes, float **v_out,
+void	draw_thick_line_shader(t_gl_context *c, t_vec4 *vertexes, float **v_out,
 	unsigned int provoke)
 {
 	t_draw_line_shader_vars	vars;

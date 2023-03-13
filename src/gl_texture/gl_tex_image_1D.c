@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:24:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 11:55:59 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-int	set_components(t_GLContext *c, int *components, t_gl_enum format)
+int	set_components(t_gl_context *c, int *components, t_gl_enum format)
 {
 	if (format == GL_RED)
 		*components = 1;
@@ -32,7 +32,7 @@ int	set_components(t_GLContext *c, int *components, t_gl_enum format)
 }
 
 void	copy_img_data(
-	t_GLContext *c, int cur_tex,
+	t_gl_context *c, int cur_tex,
 	t_gl_void *data, int components)
 {
 	t_u32	*texdata;
@@ -53,7 +53,7 @@ void	copy_img_data(
 }
 
 void	gl_tex_image_1d(
-	t_GLContext *c, t_gl_enum target,
+	t_gl_context *c, t_gl_enum target,
 	t_tex_image_params *params, t_gl_void *data)
 {
 	int	cur_tex;

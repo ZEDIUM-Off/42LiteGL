@@ -56,4 +56,4 @@ MATH_SRC +=	op.c \
 
 MATH_INCLUDE = -Igl_math.h
 
-MATH_PATH = src/gl_math
+MATH_PATH = src/gl_math/

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:52:17 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/07 10:23:43 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 14:10:54 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #define SMALL_INCR 0.000001;
 
-typedef struct s_draw_tri_vars
+struct s_draw_tri_vars
 {
 	t_Shader_Builtins	builtins;
 	t_vec3				h[3];
@@ -38,18 +38,18 @@ typedef struct s_draw_tri_vars
 	float				tmp2;
 	float				ix;
 	float				iy;
-}				t_draw_tri_vars;
+};
 
-typedef struct s_draw_tri_clip_vars
+struct s_draw_tri_clip_vars
 {
-	t_glVertex	tmp1;
-	t_glVertex	tmp2;
-	t_glVertex	*new_v[3];
+	t_gl_vertex	tmp1;
+	t_gl_vertex	tmp2;
+	t_gl_vertex	*new_v[3];
 	float		tt;
 	float		tmp1_out[GL_MAX_VERTEX_OUTPUT_COMPONENTS];
 	float		tmp2_out[GL_MAX_VERTEX_OUTPUT_COMPONENTS];
 	int			edge_flag_tmp;
-}	t_draw_tri_clip_vars;
+};
 
 void	set_draw_tri_clip_vars(t_draw_tri_clip_vars *vars)
 {
@@ -57,7 +57,7 @@ void	set_draw_tri_clip_vars(t_draw_tri_clip_vars *vars)
 	vars->tmp2.vs_out = vars->tmp2_out;
 }
 
-void	set_dzxy_max_slope(t_GLContext *c, t_draw_tri_vars *vars)
+void	set_dzxy_max_slope(t_gl_context *c, t_draw_tri_vars *vars)
 {
 	int	i;
 
@@ -86,7 +86,7 @@ void	set_dzxy_max_slope(t_GLContext *c, t_draw_tri_vars *vars)
 	}
 }
 
-void	set_perspective(t_GLContext *c, t_draw_tri_vars *vars, t_glVertex **v)
+void	set_perspective(t_gl_context *c, t_draw_tri_vars *vars, t_gl_vertex **v)
 {
 	int	i;
 
@@ -102,7 +102,8 @@ void	set_perspective(t_GLContext *c, t_draw_tri_vars *vars, t_glVertex **v)
 	}
 }
 
-void	set_draw_tri_vars(t_GLContext *c, t_draw_tri_vars *vars, t_glVertex **v)
+void	set_draw_tri_vars(
+	t_gl_context *c, t_draw_tri_vars *vars, t_gl_vertex **v)
 {
 	vars->h[0] = vec4_to_vec3h(v[0]->screen_space);
 	vars->h[1] = vec4_to_vec3h(v[1]->screen_space);

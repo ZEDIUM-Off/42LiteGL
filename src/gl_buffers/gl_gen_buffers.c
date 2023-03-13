@@ -6,16 +6,16 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:01:17 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 15:15:56 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 14:13:05 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	gl_gen_buffers(t_GLContext *c, t_gl_sizei n, t_gl_uint *buffers)
+void	gl_gen_buffers(t_gl_context *c, t_gl_sizei n, t_gl_uint *buffers)
 {
-	int	j;
-	int	i;
+	int			j;
+	size_t		i;
 
 	j = 0;
 	i = 1;
@@ -41,7 +41,7 @@ void	gl_gen_buffers(t_GLContext *c, t_gl_sizei n, t_gl_uint *buffers)
 	}
 }
 
-void	gl_create_buffers(t_GLContext *c, t_gl_sizei n, t_gl_uint *buffers)
+void	gl_create_buffers(t_gl_context *c, t_gl_sizei n, t_gl_uint *buffers)
 {
 	gl_gen_buffers(c, n, buffers);
 }

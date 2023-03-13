@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:16:40 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/09 15:17:21 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	gl_logic_op(t_GLContext *c, t_gl_enum opcode)
+void	gl_logic_op(t_gl_context *c, t_gl_enum opcode)
 {
 	if (opcode < GL_CLEAR || opcode > GL_INVERT)
 	{

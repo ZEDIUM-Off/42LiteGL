@@ -6,16 +6,16 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 09:21:52 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 15:37:51 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 16:41:40 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	gl_gen_textures(t_GLContext *c, t_gl_size n, t_gl_uint *textures)
+void	gl_gen_textures(t_gl_context *c, t_gl_sizei n, t_gl_uint *textures)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	int		j;
 
 	i = 0;
 	j = 0;

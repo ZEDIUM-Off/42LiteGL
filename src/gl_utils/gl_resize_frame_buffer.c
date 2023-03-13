@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:03:49 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/08 14:08:35 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:15 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	*gl_resize_frame_buffer(t_GLContext *c, size_t w, size_t h)
+void	*gl_resize_frame_buffer(t_gl_context *c, size_t w, size_t h)
 {
 	u8	*tmp;
 

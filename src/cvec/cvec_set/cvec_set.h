@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:48:48 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/07 09:50:34 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 14:57:12 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	cvec_set_val_sz_gl_vertex_array(
 void	cvec_set_val_cap_gl_vertex_array(
 			t_cvector_gl_vertex_array *vec, t_gl_vertex_array val);
 
-int		cvec_set_cap_gl_vertex(t_cvector_t_gl_vertex *vec, size_t size);
-void	cvec_set_val_sz_gl_vertex(t_cvector_t_gl_vertex *vec, t_gl_vertex val);
-void	cvec_set_val_cap_gl_vertex(t_cvector_t_gl_vertex *vec, t_gl_vertex val);
+int		cvec_set_cap_gl_vertex(t_cvector_gl_vertex *vec, size_t size);
+void	cvec_set_val_sz_gl_vertex(t_cvector_gl_vertex *vec, t_gl_vertex val);
+void	cvec_set_val_cap_gl_vertex(t_cvector_gl_vertex *vec, t_gl_vertex val);
 
 #endif

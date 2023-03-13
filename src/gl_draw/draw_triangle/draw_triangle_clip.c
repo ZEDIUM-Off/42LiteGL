@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:11:13 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/01 14:53:15 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 13:29:20 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	up_clip(t_draw_tri_clip_vars	*vars)
 }
 
 void	draw_tri_clip_one_pt_out(
-	t_GLContext *c, t_glVertex **v, unsigned int provoke, int clip_bit)
+	t_gl_context *c, t_gl_vertex **v, unsigned int provoke, int clip_bit)
 {
 	t_draw_tri_clip_vars	vars;
 
@@ -50,7 +50,7 @@ void	draw_tri_clip_one_pt_out(
 }
 
 void	draw_tri_clip_two_pts_out(
-	t_GLContext *c, t_glVertex **v, unsigned int provoke, int clip_bit)
+	t_gl_context *c, t_gl_vertex **v, unsigned int provoke, int clip_bit)
 {
 	t_draw_tri_clip_vars	vars;
 
@@ -69,7 +69,7 @@ void	draw_tri_clip_two_pts_out(
 }
 
 void	draw_triangle_clip(
-	t_GLContext *c, t_glVertex **v, unsigned int provoke, int clip_bit)
+	t_gl_context *c, t_gl_vertex **v, unsigned int provoke, int clip_bit)
 {
 	if (v[0]->clip_code | v[1]->clip_code | v[2]->clip_code == 0)
 		draw_triangle_final(c, v, provoke);

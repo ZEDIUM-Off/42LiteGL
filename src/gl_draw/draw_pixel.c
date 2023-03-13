@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:27:36 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/02/28 10:50:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 13:28:47 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-int	do_depth_test(t_GLContext *c, t_vec2 pos, float z, u8 *stencil_dest)
+int	do_depth_test(t_gl_context *c, t_vec2 pos, float z, u8 *stencil_dest)
 {
 	float	dest_depth;
 	float	src_depth;
@@ -30,7 +30,7 @@ int	do_depth_test(t_GLContext *c, t_vec2 pos, float z, u8 *stencil_dest)
 	return (1);
 }
 
-int	do_test(t_GLContext *c, t_vec2 pos, float z)
+int	do_test(t_gl_context *c, t_vec2 pos, float z)
 {
 	u8		*stencil_dest;
 
@@ -58,7 +58,7 @@ int	do_test(t_GLContext *c, t_vec2 pos, float z)
 	return (1);
 }
 
-t_Color	blending(t_GLContext *c, t_vec4 cf, t_vec2 pos)
+t_Color	blending(t_gl_context *c, t_vec4 cf, t_vec2 pos)
 {
 	t_Color		dest_color;
 	t_Color		src_color;
@@ -85,7 +85,7 @@ t_Color	blending(t_GLContext *c, t_vec4 cf, t_vec2 pos)
 	return (src_color);
 }
 
-void	draw_pixel(t_GLConext *c, t_vec4 cf, t_vec2 pos, float z)
+void	draw_pixel(t_gl_context *c, t_vec4 cf, t_vec2 pos, float z)
 {
 	t_Color	color;
 

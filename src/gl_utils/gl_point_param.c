@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:11:56 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/09 15:14:16 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	gl_point_size(t_GLContext *c, t_gl_float size)
+void	gl_point_size(t_gl_context *c, t_gl_float size)
 {
 	if (size <= 0.0f)
 	{
@@ -23,7 +23,7 @@ void	gl_point_size(t_GLContext *c, t_gl_float size)
 	c->point_size = size;
 }
 
-void	gl_point_parameteri(t_GLContext *c, t_gl_enum pname, t_gl_int param)
+void	gl_point_parameteri(t_gl_context *c, t_gl_enum pname, t_gl_int param)
 {
 	if (pname != GL_POINT_SPRITE_COORD_ORIGIN
 		|| (param != GL_LOWER_LEFT && param != GL_UPPER_LEFT))

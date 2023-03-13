@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:54:48 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/08 14:00:58 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 14:58:58 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	free_cvec(t_GLContext *c)
+void	free_cvec(t_gl_context *c)
 {
 	cvec_free_gl_vertex_array(&c->vertex_arrays);
 	cvec_free_gl_buffer(&c->buffers);
@@ -22,14 +22,14 @@ void	free_cvec(t_GLContext *c)
 	cvec_free_float(&c->vs_output.output_buf);
 }
 
-void	free_gl_context(t_GLContext *c)
+void	free_gl_context(t_gl_context *c)
 {
-	int	i;
+	size_t	i;
 
 	free(c->zbuf.buf);
 	free(c->stencil_buf.buf);
 	if (!c->user_alloced_backbuf)
-		free(c->user_alloced_backbuf);
+		free(c->back_buffer.buf);
 	i = 0;
 	while (i < c->buffers.size)
 	{

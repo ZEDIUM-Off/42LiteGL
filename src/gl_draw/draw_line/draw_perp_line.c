@@ -6,14 +6,14 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:39:20 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/02/28 17:25:21 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	draw_perp_line_slope_less_minus_one(
-	t_GLContext *c, t_draw_line_shader_vars *vars)
+	t_gl_context *c, t_draw_line_shader_vars *vars)
 {
 	if (line_func(&vars->line, vars->x_mima[0] + 0.5f, vars->y_mima[1] - 1) < 0)
 		vars->first_is_diag = GL_TRUE;
@@ -41,7 +41,7 @@ void	draw_perp_line_slope_less_minus_one(
 }
 
 void	draw_perp_line_slop_less_zero(
-	t_GLContext *c, t_draw_line_shader_vars *vars)
+	t_gl_context *c, t_draw_line_shader_vars *vars)
 {
 	if (line_func(&vars->line, vars->x_mima[0] + 1, vars->y_mima[1] - 0.5f) > 0)
 		vars->first_is_diag = GL_TRUE;
@@ -69,7 +69,7 @@ void	draw_perp_line_slop_less_zero(
 }
 
 void	draw_perp_line_slope_less_one(
-	t_GLContext *c, t_draw_line_shader_vars *vars)
+	t_gl_context *c, t_draw_line_shader_vars *vars)
 {
 	if (line_func(&vars->line, vars->x_mima[0] + 1, vars->y_mima[1] + 0.5f) < 0)
 		vars->first_is_diag = GL_TRUE;
@@ -97,7 +97,7 @@ void	draw_perp_line_slope_less_one(
 }
 
 void	draw_perp_line_slope_more_one(
-	t_GLContext *c, t_draw_line_shader_vars *vars)
+	t_gl_context *c, t_draw_line_shader_vars *vars)
 {
 	if (line_func(&vars->line, vars->x_mima[0] + 0.5f, vars->y_mima[0] + 1) > 0)
 		vars->first_is_diag = GL_TRUE;
@@ -124,7 +124,7 @@ void	draw_perp_line_slope_more_one(
 	}
 }
 
-int	draw_perp_line(t_GLContext *c, float slope, float *vx, float *vy)
+int	draw_perp_line(t_gl_context *c, float slope, float *vx, float *vy)
 {
 	t_draw_line_shader_vars	vars;
 

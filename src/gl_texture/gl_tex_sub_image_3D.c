@@ -6,14 +6,14 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:46:57 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 14:51:17 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 16:43:24 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	gl_tex_sub_image_3d(
-	t_GLContext *c, t_gl_enum target,
+	t_gl_context *c, t_gl_enum target,
 	t_tex_image_params *params, t_gl_void *data)
 {
 	int		cur_tex;
@@ -21,7 +21,7 @@ void	gl_tex_sub_image_3d(
 	int		i;
 	int		j;
 
-	texdata = (u32 *)c->textures.a[cur_tex].data;
+	texdata = (t_u32 *)c->textures.a[cur_tex].data;
 	cur_tex = c->bound_textures[target - GL_TEXTURE_UNBOUND - 1];
 	j = 0;
 	while (j < parmas->depth)

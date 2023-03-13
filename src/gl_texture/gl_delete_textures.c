@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 09:29:10 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 09:33:36 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 13:31:42 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	gl_delete_textures(t_GLContext *c, t_gl_size n, t_gl_uint *textures)
+void	gl_delete_textures(t_gl_context *c, t_gl_sizei n, t_gl_uint *textures)
 {
 	t_gl_enum	type;
 	int			i;

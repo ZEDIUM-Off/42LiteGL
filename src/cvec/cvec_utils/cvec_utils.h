@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:50:46 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/07 09:55:54 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 14:57:00 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ int					cvec_reserve_gl_vertex_array(
 t_gl_vertex_array	*cvec_back_gl_vertex_array(t_cvector_gl_vertex_array *vec);
 
 t_gl_vertex			cvec_replace_gl_vertex(
-						t_cvector_t_gl_vertex *vec, size_t i, t_gl_vertex a);
+						t_cvector_gl_vertex *vec, size_t i, t_gl_vertex a);
 void				cvec_erase_gl_vertex(
-						t_cvector_t_gl_vertex *vec, size_t start, size_t end);
+						t_cvector_gl_vertex *vec, size_t start, size_t end);
 int					cvec_reserve_gl_vertex(
-						t_cvector_t_gl_vertex *vec, size_t size);
-t_gl_vertex			*cvec_back_gl_vertex(t_cvector_t_gl_vertex *vec);
+						t_cvector_gl_vertex *vec, size_t size);
+t_gl_vertex			*cvec_back_gl_vertex(t_cvector_gl_vertex *vec);
 
 #endif

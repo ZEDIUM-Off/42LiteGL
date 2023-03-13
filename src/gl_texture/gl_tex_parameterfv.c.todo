@@ -1,19 +1,19 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   gl_tex_parameterfv.c                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 10:16:30 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 10:17:08 by  mchenava        ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    gl_tex_parameterfv.c.todo                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/03/10 10:16:30 by  mchenava         #+#    #+#              #
+#    Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 #include <lite_gl.h>
 
 void	gl_tex_parameterfv(
-	t_GLContext *c, t_gl_enum target, t_gl_enum pname, t_gl_float *params)
+	t_gl_context *c, t_gl_enum target, t_gl_enum pname, t_gl_float *params)
 {
 
 }

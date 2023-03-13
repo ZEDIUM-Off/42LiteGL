@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:05:04 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 15:05:10 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	gl_bind_buffer(t_GLContext *c, t_gl_enum target, t_gl_uint buffer)
+void	gl_bind_buffer(t_gl_context *c, t_gl_enum target, t_gl_uint buffer)
 {
 	if (target != GL_ARRAY_BUFFER && target != GL_ELEMENT_ARRAY_BUFFER)
 	{

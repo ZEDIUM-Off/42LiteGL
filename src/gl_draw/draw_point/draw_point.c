@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:11:41 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/01 10:58:30 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 13:29:20 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	draw_point_part(t_GLContext *c, int *ij, t_vec4 point, float *fs_input)
+void	draw_point_part(t_gl_context *c, int *ij, t_vec4 point, float *fs_input)
 {
 	float	origin;
 	t_vec2	pos;
@@ -36,7 +36,7 @@ void	draw_point_part(t_GLContext *c, int *ij, t_vec4 point, float *fs_input)
 	}
 }
 
-void	point_draw_loop(t_GLContext *c, float *xy,
+void	point_draw_loop(t_gl_context *c, float *xy,
 		t_vec4 point, float *fs_input)
 {
 	int		i;
@@ -59,7 +59,7 @@ void	point_draw_loop(t_GLContext *c, float *xy,
 	}
 }
 
-void	draw_point(t_GLContext *c, t_glVertex *vert)
+void	draw_point(t_gl_context *c, t_gl_vertex *vert)
 {
 	float	fs_input[GL_MAX_VERTEX_OUTPUT_COMPONENTS];
 	t_vec4	point;

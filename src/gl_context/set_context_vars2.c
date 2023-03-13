@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:40:59 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/08 13:48:31 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	set_last_vars(t_GLContext *c, t_context_settings *s)
+void	set_last_vars(t_gl_context *c, t_context_settings *s)
 {
 	c->poly_units = 0.0f;
 	c->scissor_lx = 0;
@@ -26,7 +26,7 @@ void	set_last_vars(t_GLContext *c, t_context_settings *s)
 	c->error = GL_NO_ERROR;
 }
 
-void	set_next_vars(t_GLContext *c, t_context_settings *s)
+void	set_next_vars(t_gl_context *c, t_context_settings *s)
 {
 	c->stencil_writemask = -1;
 	c->stencil_writemask_back = -1;

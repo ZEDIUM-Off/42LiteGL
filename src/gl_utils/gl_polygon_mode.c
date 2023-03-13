@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:03:49 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/09 15:09:34 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:15 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	poly_point_mode(t_GLContext *c, t_gl_enum face, t_gl_enum mode)
+void	poly_point_mode(t_gl_context *c, t_gl_enum face, t_gl_enum mode)
 {
 	if (face == GL_FRONT)
 	{
@@ -33,7 +33,7 @@ void	poly_point_mode(t_GLContext *c, t_gl_enum face, t_gl_enum mode)
 	}
 }
 
-void	poly_line_mode(t_GLContext *c, t_gl_enum face, t_gl_enum mode)
+void	poly_line_mode(t_gl_context *c, t_gl_enum face, t_gl_enum mode)
 {
 	if (face == GL_FRONT)
 	{
@@ -54,7 +54,7 @@ void	poly_line_mode(t_GLContext *c, t_gl_enum face, t_gl_enum mode)
 	}
 }
 
-void	poly_fill_mode(t_GLContext *c, t_gl_enum face, t_gl_enum mode)
+void	poly_fill_mode(t_gl_context *c, t_gl_enum face, t_gl_enum mode)
 {
 	if (face == GL_FRONT)
 	{
@@ -75,7 +75,7 @@ void	poly_fill_mode(t_GLContext *c, t_gl_enum face, t_gl_enum mode)
 	}
 }
 
-void	gl_polygon_mode(t_GLContext *c, t_gl_enum face, t_gl_enum mode)
+void	gl_polygon_mode(t_gl_context *c, t_gl_enum face, t_gl_enum mode)
 {
 	if ((face != GL_FRONT && face != GL_BACK && face != GL_FRONT_AND_BACK)
 		|| (mode != GL_POINT && mode != GL_LINE && mode != GL_FILL))

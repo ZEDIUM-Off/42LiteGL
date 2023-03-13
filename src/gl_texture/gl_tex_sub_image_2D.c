@@ -6,14 +6,14 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:36:57 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 14:45:59 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	gl_tex_sub_image_2d(
-	t_GLContext *c, t_gl_enum target,
+	t_gl_context *c, t_gl_enum target,
 	t_tex_image_params *params, t_gl_void *data)
 {
 	int		cur_tex;

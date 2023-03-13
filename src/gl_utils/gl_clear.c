@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:31:03 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 21:18:17 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	clear_loop(t_gl_context *c, t_color col)
 {
-	int		i;
+	size_t	i;
 	int		x;
 	int		y;
 
@@ -22,9 +22,9 @@ void	clear_loop(t_gl_context *c, t_color col)
 	{
 		i = 0;
 		while (i < c->back_buffer.w * c->back_buffer.h)
-			((u32 *)c->back_buffer.buf)[i++] = (u32)col.a << c->a_shift
-				| (u32)col.r << c->r_shift
-				| (u32)col.g << c->g_shift | (u32)col.b << c->b_shift;
+			((t_u32 *)c->back_buffer.buf)[i++] = (t_u32)col.a << c->a_shift
+				| (t_u32)col.r << c->r_shift
+				| (t_u32)col.g << c->g_shift | (t_u32)col.b << c->b_shift;
 	}
 	else
 	{
@@ -33,9 +33,9 @@ void	clear_loop(t_gl_context *c, t_color col)
 		{
 			x = c->scissor_lx;
 			while (x < c->scissor_ux)
-				((u32 *)c->back_buffer.lastrow)[-y * c->back_buffer.w + x++]
-					= (u32)col.a << c->a_shift | (u32)col.r << c->r_shift
-					| (u32)col.g << c->g_shift | (u32)col.b << c->b_shift;
+				((t_u32 *)c->back_buffer.lastrow)[-y * c->back_buffer.w + x++]
+					= (t_u32)col.a << c->a_shift | (t_u32)col.r << c->r_shift
+					| (t_u32)col.g << c->g_shift | (t_u32)col.b << c->b_shift;
 			y++;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:59:33 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/07 12:01:48 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 21:13:49 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@
 # include "matrix/matrix.h"
 
 float	clamp(float value, float min, float max);
+float	clampf(float f, float min, float max);
+int		clampi(int i, int min, int max);
 float	clamp_01(float value);
+float	clampf_01(float f);
 t_vec2	clamp_vec2(t_vec2 v, float min, float max);
 t_vec3	clamp_vec3(t_vec3 v, float min, float max);
 t_vec4	clamp_vec4(t_vec4 v, float min, float max);

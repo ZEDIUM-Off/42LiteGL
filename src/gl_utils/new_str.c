@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:59:43 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 16:00:02 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 21:25:05 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ char	*new_str(char *str)
 
 	len = ft_strlen(str);
 	new = (char *)malloc(sizeof(char) * (len + 1));
-	ft_strcpy(new, str);
+	ft_strlcpy(new, str, len);
 	return (new);
 }

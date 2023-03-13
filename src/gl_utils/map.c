@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 14:46:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 20:13:04 by  mchenava        ###   ########.fr       */
+/*   Created: 2023/03/13 22:06:41 by  mchenava         #+#    #+#             */
+/*   Updated: 2023/03/13 22:10:18 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <lite_gl.h>
 
-void	*ft_realloc(void *ptr, size_t newsize)
+float	map(float value, float new_min, float new_max)
 {
-	void	*newptr;
-	size_t	cursize;
-
-	if (ptr == 0)
-		return (malloc(newsize));
-	cursize = sizeof(ptr);
-	if (newsize <= cursize)
-		return (ptr);
-	newptr = malloc(newsize);
-	ft_memcpy(ptr, newptr, cursize);
-	free(ptr);
-	return (newptr);
+	return ((value - (-1.0f)) / (1.0f - (-1.0f))
+		* (new_max - new_min) + new_min);
 }

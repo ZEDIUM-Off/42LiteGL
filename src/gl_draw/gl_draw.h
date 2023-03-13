@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:46:27 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 14:10:32 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 21:03:44 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ void	draw_triangle_fill(t_gl_context *c,
 void	draw_triangle_clip(
 			t_gl_context *c, t_gl_vertex **v,
 			unsigned int provoke, int clip_bit);
+void	draw_triangle_point(
+			t_gl_context *c, t_gl_vertex **vert, unsigned int provoke);
+void	draw_triangle_line(
+			t_gl_context *c, t_gl_vertex **v, unsigned int provoke);
 
 void	set_draw_tri_vars(t_gl_context *c,
 			t_draw_tri_vars *vars, t_gl_vertex **v);

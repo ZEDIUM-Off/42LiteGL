@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:13:25 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 15:07:39 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 22:14:15 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ struct s_tex_image_params
 	t_gl_sizei	height;
 	t_gl_sizei	depth;
 	t_gl_enum	format;
+	t_gl_int	border;
 	t_gl_enum	type;
 };
 
@@ -194,10 +195,9 @@ struct s_Shader_Builtins
 	t_gl_boolean	discard;
 };
 
-typedef void (*		t_vert_func) (float *vs_output, void *vertex_attribs,
-	t_shader_builtins *builtins, void *uniforms);
-typedef void (*		t_frag_func)(float *fs_input,
-	t_shader_builtins *builtins, void* uniforms);
+typedef void (*		t_vert_func) (void *vertex_attribs,
+	t_shader_builtins *builtins);
+typedef void (*		t_frag_func)(t_shader_builtins *builtins);
 typedef void (*		t_draw_triangle_func)(t_gl_context *c,
 	t_gl_vertex **v, unsigned int provoke);
 
@@ -222,6 +222,33 @@ struct s_context_settings
 	t_u32	g_mask;
 	t_u32	b_mask;
 	t_u32	a_mask;
+};
+
+struct s_draw_line_shader_vars
+{
+	float	*x;
+	float	*y;
+	float	*z;
+	float	*w;
+	float	slope;
+	t_line	line;
+	float	t;
+	float	lx;
+	float	ly;
+	float	lz;
+	float	lw;
+	float	lh;
+	t_vec2	p[2];
+	t_vec2	pr;
+	t_vec2	sub_p;
+	t_vec2	ab;
+	float	i_x[2];
+	float	i_y[2];
+	float	x_mima[2];
+	float	y_mima[2];
+	float	line_len_sq;
+	int		diag;
+	int		first_is_diag;
 };
 
 struct s_glContext

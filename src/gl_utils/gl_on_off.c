@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:45:45 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 21:17:36 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	gl_enable(t_gl_context *c, t_gl_enum cap)
 		c->depth_test = GL_TRUE;
 	else if (cap == GL_DEPTH_CLAMP)
 		c->depth_clamp = GL_TRUE;
-	else if (cap == GL_LINE_SMOOT)
+	else if (cap == GL_LINE_SMOOTH)
 		c->line_smooth = GL_TRUE;
 	else if (cap == GL_BLEND)
 		c->blend = GL_TRUE;

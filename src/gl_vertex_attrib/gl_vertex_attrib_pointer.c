@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:44:58 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 13:32:48 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 19:38:55 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	gl_vertex_attrib_pointer(t_gl_context *c, t_gl_uint index,
 	}
 	v = &(c->vertex_arrays.a[c->cur_vertex_array].vertex_attribs[index]);
 	v->size = attr.size;
-	v->type = atrr.type;
+	v->type = attr.type;
 	if (attr.stride)
 		v->stride = attr.stride;
 	else
-		v->stride = attr.size * attr.sizeof(t_gl_float);
-	v->offset = (GLsizeiptr)pointer;
+		v->stride = attr.size * sizeof(t_gl_float);
+	v->offset = (t_gl_sizeiptr)pointer;
 	v->normalized = attr.normalized;
 	v->buf = c->bound_buffers[GL_ARRAY_BUFFER - GL_ARRAY_BUFFER];
 }

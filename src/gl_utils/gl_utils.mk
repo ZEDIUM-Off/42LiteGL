@@ -15,7 +15,6 @@ GL_UTILS_SRC =	gl_line_width.c \
 								gl_blend.c \
 								gl_face.c \
 								gl_logic_op.c \
-								gl_check_framebuffer_status.c \
 								gl_stencil_func_separate.c \
 								gl_resize_frame_buffer.c \
 								gl_viewport.c \
@@ -24,6 +23,9 @@ GL_UTILS_SRC =	gl_line_width.c \
 								new_int.c \
 								new_gl_sizei.c \
 								new_str.c \
-								wrap.c
+								wrap.c \
+								new_vec4.c \
+								map.c \
+								setup_fs_input.c
 
 GL_UTILS_PATH = src/gl_utils/

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:24:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 19:32:22 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	set_components(t_gl_context *c, int *components, t_gl_enum format)
 	{
 		if (!c->error)
 			c->error = GL_INVALID_ENUM;
-		return ;
+		return (0);
 	}
 	return (1);
 }

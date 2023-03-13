@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 09:18:09 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:15 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 21:17:21 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	gl_stencil_mask(t_gl_context *c, t_gl_uint mask)
 	c->stencil_writemask_back = mask;
 }
 
-void	gl_stencil_mask_separate(t_gl_context *c, t_gl_enum face, t_gl_uint mask)
+void	gl_stencil_mask_separate(
+	t_gl_context *c, t_gl_enum face, t_gl_uint mask)
 {
 	if (face < GL_FRONT || face > GL_FRONT_AND_BACK)
 	{
@@ -28,7 +29,7 @@ void	gl_stencil_mask_separate(t_gl_context *c, t_gl_enum face, t_gl_uint mask)
 	}
 	if (face == GL_FRONT_AND_BACK)
 	{
-		gl_stencil_mask(mask);
+		gl_stencil_mask(c, mask);
 		return ;
 	}
 	if (face == GL_FRONT)

@@ -6,9 +6,11 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:14:36 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 20:41:31 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <lite_gl.h>
 
 void	gl_line_width(t_gl_context *c, t_gl_float width)
 {

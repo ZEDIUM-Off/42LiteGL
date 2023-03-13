@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:46:57 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 16:43:24 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 19:36:04 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	gl_tex_sub_image_3d(
 	int		i;
 	int		j;
 
-	texdata = (t_u32 *)c->textures.a[cur_tex].data;
 	cur_tex = c->bound_textures[target - GL_TEXTURE_UNBOUND - 1];
+	texdata = (t_u32 *)c->textures.a[cur_tex].data;
 	j = 0;
-	while (j < parmas->depth)
+	while (j < params->depth)
 	{
 		i = 0;
 		while (i++ < params->height)

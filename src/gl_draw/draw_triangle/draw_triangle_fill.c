@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:45:25 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 13:34:37 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 22:11:49 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,7 @@ void	draw_tri_action(
 		vars->z = vars->alpha * vars->h[0].z
 			+ vars->beta * vars->h[1].z
 			+ vars->gamma * vars->h[2].z;
-		vars->z = map(vars->z, -1.0f, 1.0f,
-				c->depth_range_near, c->depth_range_far);
+		vars->z = map(vars->z, c->depth_range_near, c->depth_range_far);
 		vars->z += vars->poly_offset;
 		draw_tri_action_next(c, vars, v, provoke);
 	}

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:11:41 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 13:29:20 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 22:11:09 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ void	draw_point(t_gl_context *c, t_gl_vertex *vert)
 
 	point = vert->screen_space;
 	printf("=============draw_point==============\npoint.w = %f \n", point.w);
-	point.z = map(point.z, -1.0f, 1.0f,
-			c->depth_range_near, c->depth_range_far);
+	point.z = map(point.z, c->depth_range_near, c->depth_range_far);
 	if (c->depth_clamp)
 		point.z = clampf_01(point.z);
 	ft_memcpy(fs_input, vert->vs_out, c->vs_outpout.size * sizeof(float));

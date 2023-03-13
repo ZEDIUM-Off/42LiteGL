@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:19:09 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 19:34:23 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void	gl_texture_parameteri(
 			c->error = GL_INVALID_OPERATION;
 		return ;
 	}
-	set_texparami(&c->textures.a[texture], pname, param);
+	set_texparami(c, &c->textures.a[texture], pname, param);
 }

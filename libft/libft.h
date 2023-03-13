@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:36:51 by mchenava          #+#    #+#             */
-/*   Updated: 2023/03/13 14:47:00 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 21:32:17 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,14 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void*));
+void	ft_assert(int condition);
 
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
+void	*ft_realloc(void *ptr, size_t newsize);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_free_tab(void *tab, int len);
-void	*ft_realloc(void *ptr, size_t size);
 
 #endif

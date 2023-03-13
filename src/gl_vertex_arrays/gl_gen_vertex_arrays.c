@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:52:35 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:15 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 19:36:35 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	gl_gen_vertex_arrays(t_gl_context *c, t_gl_sizei n, t_gl_uint *arrays)
 {
-	int					i;
+	size_t				i;
 	t_gl_vertex_array	tmp;
 
 	init_gl_vertex_array(&tmp);

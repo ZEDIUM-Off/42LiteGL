@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 09:53:52 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 19:33:38 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	gl_tex_parameteri(
 		return ;
 	}
 	target -= GL_TEXTURE_UNBOUND + 1;
-	set_texparami(&c->textures.a[c->bound_textures[target]], pname, param);
+	set_texparami(c, &c->textures.a[c->bound_textures[target]], pname, param);
 }

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:50:17 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 13:19:17 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 21:49:08 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ struct s_vec4
 	float	z;
 	float	w;
 };
+
+t_vec2	int_vec2(float x, float y)
+{
+	t_vec2	v;
+
+	v.x = x;
+	v.y = y;
+	return (v);
+}
 
 t_vec2	add_vec2s(t_vec2 v1, t_vec2 v2);
 t_vec3	add_vec3s(t_vec3 v1, t_vec3 v2);

@@ -48,12 +48,13 @@ VEC_SRC =	vectors/vec_mult.c \
 					vectors/vec_equal.c \
 					vectors/vec_cross.c
 
-MATH_SRC = $(VEC_SRC) $(MAT_SRC)
-MATH_SRC +=	op.c \
+GL_MATH_SRC = $(VEC_SRC) $(MAT_SRC)
+GL_MATH_SRC +=	op.c \
 						clamp.c \
 						mix.c \
 						smooth_step.c \
+						clampf.c
 
 MATH_INCLUDE = -Igl_math.h
 
-MATH_PATH = src/gl_math/
+GL_MATH_PATH = src/gl_math/

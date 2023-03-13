@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:40:33 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 19:28:32 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	copy_img_data_rec(
 	c->textures.a[vars->cur_tex].data = (t_u8 *)malloc(
 			params->height * vars->byte_width);
 	if (!c->textures.a[vars->cur_tex].data)
-		return (if (!c->error) c->error = GL_OUT_OF_MEMORY);
+		return ({if (!c->error) c->error = GL_OUT_OF_MEMORY;});
 	i = 0;
 	if (data)
 	{
@@ -85,8 +85,7 @@ void	copy_img_data_rec(
 	c->textures.a[vars->cur_tex].user_owned = GL_FALSE;
 }
 
-void	copy_loop(
-	t_gl_context *c, t_tex_image_params *params,
+void	copy_loop(t_tex_image_params *params,
 	t_tex_im_2d_vars *vars, t_gl_void *data)
 {
 	int	i;
@@ -108,7 +107,7 @@ void	copy_img_data_cube(
 	if (!c->textures.a[vars->cur_tex].w)
 		free(c->textures.a[vars->cur_tex].data);
 	if (params->width != params->height)
-		return (if (!c->error) c->error = GL_INVALID_VALUE);
+		return ({if (!c->error) c->error = GL_INVALID_VALUE;});
 	vars->mem_size = params->width * params->height * 6 * vars->components;
 	if (c->textures.a[vars->cur_tex].w == 0)
 	{
@@ -116,17 +115,17 @@ void	copy_img_data_cube(
 		c->textures.a[vars->cur_tex].h = params->width;
 		c->textures.a[vars->cur_tex].data = (t_u8 *)malloc(vars->mem_size);
 		if (!c->textures.a[vars->cur_tex].data)
-			return (if (!c->error) c->error = GL_OUT_OF_MEMORY);
+			return ({if (!c->error) c->error = GL_OUT_OF_MEMORY;});
 	}
-	else if (c->textures.a[vars->cur_tex].w != params->width)
-		return (if (!c->error) c->error = GL_INVALID_VALUE);
+	else if ((t_gl_sizei)c->textures.a[vars->cur_tex].w != params->width)
+		return ({if (!c->error) c->error = GL_INVALID_VALUE;});
 	if (data)
 	{
 		if (!vars->padding_needed)
 			ft_memcpy(&vars->texdata[vars->p * vars->target],
 				data, params->height * vars->byte_width);
 		else
-			copy_loop(c, params, vars, data);
+			copy_loop(params, vars, data);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:09:05 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:15 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 21:24:31 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	gl_viewport(t_gl_context *c, int *xy, t_gl_sizei *wh)
 			c->error = GL_INVALID_VALUE;
 		return ;
 	}
-	make_viewport_matrix(c->vp_mat, xy, wh, 1);
+	make_viewport_matrix(c->vp_mat, (float *)xy, (unsigned int *)wh, 1);
 	c->x_min = xy[0];
-	c->y_min = yxy[1];
+	c->y_min = xy[1];
 	c->x_max = xy[0] + wh[0];
 	c->y_max = xy[1] + wh[1];
 }

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 16:08:25 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 16:14:36 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 21:25:19 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ int	wrap(int i, int size, t_gl_enum mode)
 		return (tmp);
 	}
 	else
-		return (assert(0), 0);
+		return (ft_assert(0), 0);
 }

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:25:45 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:15 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 21:21:33 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	gl_stencil_func_separate(
 		return ;
 	}
 	if (face_func[0] == GL_FRONT_AND_BACK)
-		return (gl_stencil_func(face_func[1], ref, mask));
+		return (gl_stencil_func(c, face_func[1], ref, mask));
 	if (face_func[1] < GL_LESS || face_func[1] > GL_NEVER)
 	{
 		if (!c->error)

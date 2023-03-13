@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gl_check_framebuffer_status.c                      :+:      :+:    :+:   */
+/*   ft_assert.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 10:33:32 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
+/*   Created: 2023/03/13 21:31:11 by  mchenava         #+#    #+#             */
+/*   Updated: 2023/03/13 21:31:55 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_gl_enum	gl_check_framebuffer_status(t_gl_context *c, t_gl_enum target)
+#include <libft.h>
+
+void	ft_assert(int condition)
 {
-	return (0);
+	if (!condition)
+		exit(1);
 }

@@ -6,13 +6,14 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:56:43 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:15 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 20:38:24 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	gl_delete_vertex_arrays(t_gl_context *c, t_gl_sizei n, t_gl_uint *arrays)
+void	gl_delete_vertex_arrays(
+	t_gl_context *c, t_gl_sizei n, t_gl_uint *arrays)
 {
 	int	i;
 

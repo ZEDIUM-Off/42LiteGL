@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:31:12 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 15:32:45 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 21:01:15 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,16 @@ float	*new_float2(float x, float y)
 	float	*vec;
 
 	vec = (float *)malloc(sizeof(float) * 2);
+	vec[0] = x;
+	vec[1] = y;
+	return (vec);
+}
+
+float	**new_float22(float *x, float *y)
+{
+	float	**vec;
+
+	vec = (float **)malloc(sizeof(float *) * 2);
 	vec[0] = x;
 	vec[1] = y;
 	return (vec);

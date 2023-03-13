@@ -6,7 +6,7 @@
 #    By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:53:10 by mchenava          #+#    #+#              #
-#    Updated: 2023/03/13 14:47:15 by  mchenava        ###   ########.fr        #
+#    Updated: 2023/03/13 20:17:29 by  mchenava        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,9 @@ CLEAN = rm -f
 all :	$(NAME)
 
 $(NAME) : $(OBJECTS)
-	ar rc $@ $^
-	ranlib $@
+	ar rcs $@ $^
 
-%.o : %.c $(HEADER) Makefile
+%.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) $(EXTRA_FLAGS) $< -o $@
 
 clean :

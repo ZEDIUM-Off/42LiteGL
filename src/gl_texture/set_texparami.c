@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 09:58:25 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 19:35:05 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ void	set_texparami(
 		return ;
 	}
 	if (pname == GL_TEXTURE_MIN_FILTER)
+	{
 		if (!param_min_filter(c, tex, param))
 			return ;
+	}
 	else if (pname == GL_TEXTURE_MAG_FILTER)
 	{
 		if (param != GL_NEAREST && param != GL_LINEAR)

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:03:42 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 16:45:26 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/13 19:24:04 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	copy_img_data_3d(
 	c->textures.a[vars->cur_tex].data = (t_u8 *)malloc(
 			params->width * params->height * params->depth * vars->components);
 	if (!c->textures.a[vars->cur_tex].data)
-		return (if (!c->error) c->error = GL_OUT_OF_MEMORY);
+		return ({if (!c->error) c->error = GL_OUT_OF_MEMORY;});
 	vars->texdata = (t_u8 *)c->textures.a[vars->cur_tex].data;
 	if (data)
 	{
@@ -61,14 +61,14 @@ void	gl_tex_image_3d(
 	t_tex_im_3d_vars	vars;
 
 	if (target != GL_TEXTURE_3D && target != GL_TEXTURE_2D_ARRAY)
-		return (if (!c->error) c->error = GL_INVALID_ENUM);
-	if (border)
-		return (if (!c->error) c->error = GL_INVALID_VALUE);
+		return ({if (!c->error) c->error = GL_INVALID_ENUM;});
+	if (params->border)
+		return ({if (!c->error) c->error = GL_INVALID_VALUE;});
 	vars.cur_tex = c->bound_textures[target - GL_TEXTURE_UNBOUND - 1];
 	c->textures.a[vars.cur_tex].w = params->width;
 	c->textures.a[vars.cur_tex].h = params->height;
 	c->textures.a[vars.cur_tex].d = params->depth;
-	if (type != GL_UNSIGNED_BYTE)
+	if (params->type != GL_UNSIGNED_BYTE)
 		return ;
 	if (!set_components(c, &vars.components, params->format))
 		return ;

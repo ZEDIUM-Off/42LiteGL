@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 09:50:53 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 15:26:04 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	gl_draw_arrays_instanced(
 	i = 0;
 	while (i < sett->instancecount)
 	{
-		settings = {mode, sett->first, sett->count, i, 0, GL_FALSE};
+		settings = (t_pipeline_settings){mode, sett->first,
+			sett->count, i, 0, GL_FALSE};
 		run_pipeline(c, &settings);
 		i++;
 	}

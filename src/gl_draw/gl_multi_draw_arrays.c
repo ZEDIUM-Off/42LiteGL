@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:50:02 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 15:20:03 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	gl_multi_draw_arrays(
 	t_pipeline_settings	settings;
 
 	if (mode < GL_POINTS || mode > GL_TRIANGLE_FAN)
-		return (if (!c->error) c->error = GL_INVALID_ENUM);
+		return ({if (!c->error) c->error = GL_INVALID_ENUM;});
 	if (sett->drawcount < 0)
 	{
 		if (!c->error)
@@ -34,7 +34,8 @@ void	gl_multi_draw_arrays(
 			i++;
 			continue ;
 		}
-		settings = {mode, sett->first[i], sett->count[i], 0, 0, GL_FALSE};
+		settings = (t_pipeline_settings){mode, sett->first[i],
+			sett->count[i], 0, 0, GL_FALSE};
 		run_pipeline(c, &settings);
 		i++;
 	}

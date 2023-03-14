@@ -6,11 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:03:03 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/03 12:03:22 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 16:29:46 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <lite_gl.h>
+
 t_vec3	reflect_vec3(t_vec3 v, t_vec3 n)
 {
-	return (sub_vec3s(v, scale_vec3(n, 2 * dot_vec3s(v, n))));
+	return (sub_vec3s(v, scale_vec3s(n, 2 * dot_vec3s(v, n))));
 }

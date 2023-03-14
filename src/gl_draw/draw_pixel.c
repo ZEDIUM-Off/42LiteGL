@@ -6,21 +6,21 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:27:36 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 13:28:47 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 14:40:49 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-int	do_depth_test(t_gl_context *c, t_vec2 pos, float z, u8 *stencil_dest)
+int	do_depth_test(t_gl_context *c, t_vec2 pos, float z, t_u8 *stencil_dest)
 {
 	float	dest_depth;
 	float	src_depth;
 	int		depth_result;
 
-	dest_depth = ((float *)c->zbuf.lastrow)[-pos.y * c->zbuf.w + pos.x];
+	dest_depth = ((float *)c->zbuf.lastrow)[(int)(-pos.y * c->zbuf.w + pos.x)];
 	src_depth = z;
-	depth_result = depth_test(c, src_depth, dest_depth);
+	depth_result = depthtest(c, src_depth, dest_depth);
 	if (c->stencil_test)
 		stencil_op(c, 1, depth_result, stencil_dest);
 	if (!depth_result)
@@ -32,7 +32,7 @@ int	do_depth_test(t_gl_context *c, t_vec2 pos, float z, u8 *stencil_dest)
 
 int	do_test(t_gl_context *c, t_vec2 pos, float z)
 {
-	u8		*stencil_dest;
+	t_u8		*stencil_dest;
 
 	if (c->scissor_test)
 		if ((int)pos.x < c->scissor_lx || (int)pos.y < c->scissor_ly
@@ -58,13 +58,13 @@ int	do_test(t_gl_context *c, t_vec2 pos, float z)
 	return (1);
 }
 
-t_Color	blending(t_gl_context *c, t_vec4 cf, t_vec2 pos)
+void	blending(t_gl_context *c, t_vec4 cf, t_vec2 pos)
 {
-	t_Color		dest_color;
-	t_Color		src_color;
-	u32			*dest;
+	t_color		dest_color;
+	t_color		src_color;
+	t_u32		*dest;
 
-	dest = &((u32 *)c->back_buffer.lastrow)[(-(int)pos.y)
+	dest = &((t_u32 *)c->back_buffer.lastrow)[(-(int)pos.y)
 		* c->back_buffer.w + (int)pos.x];
 	dest_color = make_color((*dest & c->r_mask) >> c->r_shift,
 			(*dest & c->g_mask) >> c->g_shift,
@@ -82,15 +82,15 @@ t_Color	blending(t_gl_context *c, t_vec4 cf, t_vec2 pos)
 	}
 	if (c->logic_ops)
 		src_color = logic_ops_pixel(c, src_color, dest_color);
-	return (src_color);
+	*dest = (t_u32)src_color.a << c->a_shift
+		| (t_u32)src_color.r << c->r_shift | (t_u32)src_color.g << c->g_shift
+		| (t_u32)src_color.b << c->b_shift;
 }
 
 void	draw_pixel(t_gl_context *c, t_vec4 cf, t_vec2 pos, float z)
 {
-	t_Color	color;
-
 	if (!do_test(c, pos, z))
 		return ;
-	color = blending(c, cf, pos);
-	pixel_put(c->mlx_env, (int)pos.x, (int)pos.y, color);
+	blending(c, cf, pos);
 }
+	// pixel_put(c, (int)pos.x, (int)pos.y, color);

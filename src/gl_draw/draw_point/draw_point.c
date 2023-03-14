@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:11:41 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 22:11:09 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 11:39:30 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,29 @@ void	draw_point_part(t_gl_context *c, int *ij, t_vec4 point, float *fs_input)
 	origin = 1.0f;
 	if (c->point_spr_origin == GL_UPPER_LEFT)
 		origin = -1.0f;
-	c->builtins.gl_PointCoord.x = 0.5f + ((int)ij[1] + 0.5f - point.x)
+	c->builtins.gl_point_coord.x = 0.5f + ((int)ij[1] + 0.5f - point.x)
 		/ c->point_size;
-	c->builtins.gl_PointCoord.y = 0.5f + origin * ((int)ij[0] + 0.5f - point.y)
+	c->builtins.gl_point_coord.y = 0.5f + origin * ((int)ij[0] + 0.5f - point.y)
 		/ c->point_size;
-	set_vec4(c->builtins.gl_FragCoord, ij[1], ij[0], point.z, 1 / point.w);
+	set_vec4(&c->builtins.gl_frag_coord,
+		new_float4(ij[1], ij[0], point.z, 1 / point.w));
 	c->builtins.discard = GL_FALSE;
-	c->builtins.gl_FragDepth = point.z;
+	c->builtins.gl_frag_depth = point.z;
 	c->programs.a[c->cur_program].fragment_shader(fs_input, &c->builtins,
 		c->programs.a[c->cur_program].uniform);
 	if (!c->builtins.discard)
 	{
-		pos = {ij[1], ij[0]};
-		draw_pixel(c, c->builtins.gl_FragColor, pos, c->builtins.gl_FragDepth);
+		pos = (t_vec2){ij[1], ij[0]};
+		draw_pixel(c, c->builtins.gl_frag_color,
+			pos, c->builtins.gl_frag_depth);
 	}
 }
 
 void	point_draw_loop(t_gl_context *c, float *xy,
 		t_vec4 point, float *fs_input)
 {
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
 
 	i = xy[1] - c->point_size / 2;
 	while (i < xy[1] + c->point_size / 2)
@@ -52,7 +54,7 @@ void	point_draw_loop(t_gl_context *c, float *xy,
 		{
 			if (j < 0 || j >= c->back_buffer.w)
 				continue ;
-			draw_point_part(c, {i, j}, point, fs_input);
+			draw_point_part(c, new_int2(i, j), point, fs_input);
 			j++;
 		}
 		i++;
@@ -67,15 +69,14 @@ void	draw_point(t_gl_context *c, t_gl_vertex *vert)
 	float	y;
 
 	point = vert->screen_space;
-	printf("=============draw_point==============\npoint.w = %f \n", point.w);
 	point.z = map(point.z, c->depth_range_near, c->depth_range_far);
 	if (c->depth_clamp)
 		point.z = clampf_01(point.z);
-	ft_memcpy(fs_input, vert->vs_out, c->vs_outpout.size * sizeof(float));
+	ft_memcpy(fs_input, vert->vs_out, c->vs_output.size * sizeof(float));
 	x = point.x + 0.5f;
 	y = point.y + 0.5f;
 	if (c->point_size <= 1)
 		if (x < 0 || y < 0 || x >= c->back_buffer.w || y >= c->back_buffer.h)
 			return ;
-	point_draw_loop(c, {x, y}, point, fs_input);
+	point_draw_loop(c, new_float2(x, y), point, fs_input);
 }

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:13:25 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 22:14:15 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 19:24:47 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,10 @@ struct s_draw_elements_instanced_settings
 {
 	t_gl_int	first;
 	t_gl_sizei	count;
+	t_gl_enum	type;
 	t_gl_sizei	instancecount;
 	t_gl_uint	baseinstance;
+	t_gl_sizei	offset;
 };
 
 struct s_tex_image_params
@@ -195,11 +197,29 @@ struct s_Shader_Builtins
 	t_gl_boolean	discard;
 };
 
-typedef void (*		t_vert_func) (void *vertex_attribs,
-	t_shader_builtins *builtins);
-typedef void (*		t_frag_func)(t_shader_builtins *builtins);
+struct s_vertex_stage_vars
+{
+	unsigned int		i;
+	int					n;
+	unsigned int		vert;
+	unsigned int		num_enabled;
+	t_u8				*buf_pos;
+	float				*vec4_init;
+	int					enabled[GL_MAX_VERTEX_ATTRIBS];
+	t_gl_vertex_attrib	*v;
+	t_gl_uint			elem_buffer;
+	t_gl_uint			*uint_array;
+	t_gl_ushort			*ushort_array;
+	t_gl_ubyte			*ubyte_array;
+};
+
+typedef void (*		t_vert_func) (float *vs_output, void *vertex_attribs,
+	t_shader_builtins *builtins, void *uniforms);
+typedef void (*		t_frag_func) (float *fs_input,
+	t_shader_builtins *builtins, void *uniforms);
 typedef void (*		t_draw_triangle_func)(t_gl_context *c,
 	t_gl_vertex **v, unsigned int provoke);
+typedef float (*	t_clip_proc[6])(t_vec4 *, t_vec4 *, t_vec4 *);
 
 struct s_glProgram
 {
@@ -251,11 +271,49 @@ struct s_draw_line_shader_vars
 	int		first_is_diag;
 };
 
+struct s_draw_tri_vars
+{
+	t_shader_builtins	builtins;
+	t_vec3				h[3];
+	float				dzxy[6];
+	float				max_depth_slope;
+	float				poly_offset;
+	float				x_mima[2];
+	float				y_mima[2];
+	int					i_xy_max[2];
+	t_line				lines[3];
+	float				alpha;
+	float				beta;
+	float				gamma;
+	float				fs_input[GL_MAX_VERTEX_OUTPUT_COMPONENTS];
+	float				perspective[GL_MAX_VERTEX_OUTPUT_COMPONENTS * 3];
+	float				*vs_output;
+	float				x;
+	float				y;
+	float				z;
+	float				tmp;
+	float				tmp2;
+	float				ix;
+	float				iy;
+};
+
+struct s_draw_tri_clip_vars
+{
+	t_gl_vertex	tmp1;
+	t_gl_vertex	tmp2;
+	t_gl_vertex	**new_v;
+	float		tt;
+	float		tmp1_out[GL_MAX_VERTEX_OUTPUT_COMPONENTS];
+	float		tmp2_out[GL_MAX_VERTEX_OUTPUT_COMPONENTS];
+	int			edge_flag_tmp;
+};
+
 struct s_glContext
 {
 	t_draw_triangle_func		draw_triangle_front;
 	t_draw_triangle_func		draw_triangle_back;
 	t_mat4						vp_mat;
+	t_clip_proc					clip_proc;
 	t_cvector_gl_vertex_array	vertex_arrays;
 	t_cvector_gl_buffer			buffers;
 	t_cvector_gl_texture		textures;

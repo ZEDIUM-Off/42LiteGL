@@ -6,25 +6,25 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:45:25 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 22:11:49 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 12:32:48 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	draw_tri_action_finish(
-	t_gl_context *c, t_draw_tri_vars *vars, t_gl_vertex **v,
-	unsigned int provoke)
+	t_gl_context *c, t_draw_tri_vars *vars)
 {
-	set_vec4(vars->builtins.gl_FragCoord, vars->x, vars->y, vars->z, tmp2);
+	set_vec4(&vars->builtins.gl_frag_coord,
+		new_float4(vars->x, vars->y, vars->z, vars->tmp2));
 	vars->builtins.discard = GL_FALSE;
-	vars->builtins.gl_FragDepth = vars->z;
-	vars->builtins.gl_InstanceID = c->builtins.gl_InstanceID;
+	vars->builtins.gl_frag_depth = vars->z;
+	vars->builtins.gl_instance_id = c->builtins.gl_instance_id;
 	c->programs.a[c->cur_program].fragment_shader(vars->fs_input,
 		&vars->builtins, c->programs.a[c->cur_program].uniform);
 	if (!vars->builtins.discard)
-		draw_pixel(c, vars->builtins.gl_FragColor, {vars->x, vars->y},
-			vars->builtins.gl_FragDepth);
+		draw_pixel(c, vars->builtins.gl_frag_color, (t_vec2){vars->x, vars->y},
+			vars->builtins.gl_frag_depth);
 }
 
 void	draw_tri_action_next(
@@ -46,14 +46,15 @@ void	draw_tri_action_next(
 			vars->fs_input[i] = vars->tmp / vars->tmp2;
 		}
 		else if (c->vs_output.interpolation[i] == NOPERSPECTIVE)
-			fs_input[i] = vars->alpha * v[0]->vs_out[i]
+			vars->fs_input[i] = vars->alpha * v[0]->vs_out[i]
 				+ vars->beta * v[1]->vs_out[i]
 				+ vars->gamma * v[2]->vs_out[i];
 		else
-			fs_input[i] = vars->vs_output[provoke * c->vs_output.size + i];
+			vars->fs_input[i] = vars->vs_output[
+				provoke * c->vs_output.size + i];
 		i++;
 	}
-	draw_tri_action_finish(c, vars, v, provoke);
+	draw_tri_action_finish(c, vars);
 }
 
 void	draw_tri_action(
@@ -70,9 +71,9 @@ void	draw_tri_action(
 			|| line_func(&vars->lines[0], vars->h[2].x, vars->h[2].y)
 			* line_func(&vars->lines[0], -1, -2.5) > 0))
 	{
-		vars->tmp2 = vars->alpha * (1 / v[0]->gl_Position.w)
-			+ vars->beta * (1 / v[1]->gl_Position.w)
-			+ vars->gamma * (1 / v[2]->gl_Position.w);
+		vars->tmp2 = vars->alpha * (1 / v[0]->screen_space.w)
+			+ vars->beta * (1 / v[1]->screen_space.w)
+			+ vars->gamma * (1 / v[2]->screen_space.w);
 		vars->z = vars->alpha * vars->h[0].z
 			+ vars->beta * vars->h[1].z
 			+ vars->gamma * vars->h[2].z;
@@ -89,11 +90,11 @@ unsigned int provoke)
 
 	set_draw_tri_vars(c, &vars, v);
 	vars.iy = vars.y_mima[0];
-	while (vars.iy < vars->i_xy_max[1])
+	while (vars.iy < vars.i_xy_max[1])
 	{
 		vars.y = vars.iy + 0.5f;
 		vars.ix = vars.x_mima[0];
-		while (vars.iy < vars->i_xy_max[0])
+		while (vars.iy < vars.i_xy_max[0])
 		{
 			vars.x = vars.ix + 0.5f;
 			vars.gamma = line_func(&vars.lines[0], vars.x, vars.y)

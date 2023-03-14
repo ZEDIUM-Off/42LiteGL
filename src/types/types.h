@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:46:16 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 14:15:44 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 18:13:19 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_Plane						t_plane;
 typedef struct s_Shader_Builtins			t_shader_builtins;
 typedef struct s_glProgram					t_gl_program;
 typedef struct s_context_settings			t_context_settings;
+typedef struct s_vertex_stage_vars			t_vertex_stage_vars;
 
 typedef struct s_cvector_float				t_cvector_float;
 typedef struct s_cvector_glVertex_Array		t_cvector_gl_vertex_array;
@@ -58,7 +59,6 @@ typedef float								**t_mat4;
 typedef struct s_vec2						t_vec2;
 typedef struct s_vec3						t_vec3;
 typedef struct s_vec4						t_vec4;
-
 
 typedef uint8_t				t_u8;
 typedef uint16_t			t_u16;

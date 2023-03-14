@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 10:57:55 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 15:55:48 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 10:24:43 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ void	set_cvec(t_gl_context *c);
 void	set_context_vars(t_gl_context *c, t_context_settings *s);
 void	set_last_vars(t_gl_context *c, t_context_settings *s);
 void	set_next_vars(t_gl_context *c, t_context_settings *s);
-void	default_vs(void *vertex_attribs,
-			t_shader_builtins *builtins);
-void	default_fs(t_shader_builtins *builtins);
+void	default_vs(float *vs_output, void *vertex_attribs,
+			t_shader_builtins *builtins, void *uniforms);
+void	default_fs(float *fs_input, t_shader_builtins *builtins,
+			void *uniforms);
 
 #endif

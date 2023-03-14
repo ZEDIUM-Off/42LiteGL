@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 11:26:45 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/03 11:37:15 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 16:32:22 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	make_perspective_matrix(
 	b = -t;
 	l = b * aspect;
 	r = -l;
-	make_perspective_proj_matrix(mat, {l, r}, {b, t}, near_far);
+	make_perspective_proj_matrix(mat, new_float2(l, r),
+		new_float2(b, t), near_far);
 }
 
 void	make_perspective_proj_matrix(

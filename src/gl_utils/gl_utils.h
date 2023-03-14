@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 11:26:21 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 22:26:38 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 18:20:11 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,31 @@ t_gl_sizei		*new_sizei4(int x, int y, int z, int w);
 t_vec4			*new_vec42(t_vec4 v1, t_vec4 v2);
 t_vec4			*new_vec43(t_vec4 v1, t_vec4 v2, t_vec4 v3);
 t_vec4			*new_vec44(t_vec4 v1, t_vec4 v2, t_vec4 v3, t_vec4 v4);
+t_gl_vertex		**new_vertex2(t_gl_vertex *v1, t_gl_vertex *v2);
+t_gl_vertex		**new_vertex3(t_gl_vertex *v1, t_gl_vertex *v2,
+					t_gl_vertex *v3);
+t_gl_vertex		**new_vertex4(t_gl_vertex *v1, t_gl_vertex *v2, t_gl_vertex *v3,
+					t_gl_vertex *v4);
 char			*new_str(char *str);
 int				wrap(int i, int size, t_gl_enum mode);
 float			map(float value, float new_min, float new_max);
 void			setup_fs_input(
 					t_gl_context *c, float **vs_out,
 					t_draw_line_shader_vars *v, unsigned int provoke);
+void			init_clip_proc(t_gl_context *c);
+int				gl_clipcode(t_gl_context *c, t_vec4 pt);
+void			update_clip_pt(
+					t_gl_context *c, t_gl_vertex *q, t_gl_vertex **v, float t);
+int				is_front_facing(t_gl_context *c,
+					t_gl_vertex *v1, t_gl_vertex *v2, t_gl_vertex *v3);
+int				depthtest(t_gl_context *c, float zval, float zbufval);
+void			stencil_op(t_gl_context *c, int stencil, int depth, t_u8 *dest);
+int				stencil_test(t_gl_context *c, t_u8 stencil);
+t_color			blend_pixel(t_gl_context *c, t_vec4 src, t_vec4 dst);
+t_color			logic_ops_pixel(t_gl_context *c, t_color s, t_color d);
+void			vertex_stage(t_gl_context *c, t_pipeline_settings *sett);
+void			do_vertex(
+					t_gl_context *c, t_vertex_stage_vars *vars,
+					unsigned int i, unsigned int vert);
 
 #endif

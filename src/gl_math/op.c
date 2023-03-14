@@ -6,9 +6,11 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:06:29 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/03 12:22:23 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 16:34:50 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <lite_gl.h>
 
 float	radians(float degrees)
 {

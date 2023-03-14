@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:31:11 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 20:22:41 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 18:35:52 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdint.h>
-# include <libft.h>
 
 # include "types/types.h"
 # include "types/gl_struct.h"
 # include "types/gl_enum.h"
+# include "../libft/libft.h"
 
 # include "cvec/cvec.h"
 # include "gl_buffers/gl_buffer.h"

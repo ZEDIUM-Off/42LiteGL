@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:40:16 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/01 16:40:44 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 16:30:53 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	setx_mat3(t_mat3 m, t_vec3 v)
 	m[0][2] = v.z;
 }
 
-void	sety_mat3(mat3 m, t_vec3 v)
+void	sety_mat3(t_mat3 m, t_vec3 v)
 {
 	m[1][0] = v.x;
 	m[1][1] = v.y;

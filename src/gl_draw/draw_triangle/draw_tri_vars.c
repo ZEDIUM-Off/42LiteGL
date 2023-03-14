@@ -6,50 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:52:17 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 14:10:54 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 12:37:01 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 #define SMALL_INCR 0.000001;
-
-struct s_draw_tri_vars
-{
-	t_Shader_Builtins	builtins;
-	t_vec3				h[3];
-	float				dzxy[6];
-	float				max_depth_slope;
-	float				poly_offset;
-	float				x_mima[2];
-	float				y_mima[2];
-	int					i_xy_max[2];
-	t_Line				lines[3];
-	float				alpha;
-	float				beta;
-	float				gamma;
-	float				fs_input[GL_MAX_VERTEX_OUTPUT_COMPONENTS];
-	float				perspective[GL_MAX_VERTEX_OUTPUT_COMPONENTS * 3];
-	float				*vs_output;
-	float				x;
-	float				y;
-	float				z;
-	float				tmp;
-	float				tmp2;
-	float				ix;
-	float				iy;
-};
-
-struct s_draw_tri_clip_vars
-{
-	t_gl_vertex	tmp1;
-	t_gl_vertex	tmp2;
-	t_gl_vertex	*new_v[3];
-	float		tt;
-	float		tmp1_out[GL_MAX_VERTEX_OUTPUT_COMPONENTS];
-	float		tmp2_out[GL_MAX_VERTEX_OUTPUT_COMPONENTS];
-	int			edge_flag_tmp;
-};
 
 void	set_draw_tri_clip_vars(t_draw_tri_clip_vars *vars)
 {
@@ -108,7 +71,7 @@ void	set_draw_tri_vars(
 	vars->h[0] = vec4_to_vec3h(v[0]->screen_space);
 	vars->h[1] = vec4_to_vec3h(v[1]->screen_space);
 	vars->h[2] = vec4_to_vec3h(v[2]->screen_space);
-	set_dzxy_max_slope(vars);
+	set_dzxy_max_slope(c, vars);
 	vars->poly_offset = vars->max_depth_slope
 		* c->poly_factor + c->poly_units * SMALL_INCR;
 	vars->x_mima[0] = fmin(vars->h[0].x, fmin(vars->h[1].x, vars->h[2].x));
@@ -117,9 +80,12 @@ void	set_draw_tri_vars(
 	vars->y_mima[1] = fmax(vars->h[0].y, fmax(vars->h[1].y, vars->h[2].y));
 	vars->i_xy_max[0] = roundf(vars->x_mima[1]);
 	vars->i_xy_max[1] = roundf(vars->y_mima[1]);
-	lines = {make_line(vars->h[0].x, vars->h[0].y, vars->h[1].x, vars->h[1].y),
-		make_line(vars->h[1].x, vars->h[1].y, vars->h[2].x, vars->h[2].y),
-		make_line(vars->h[2].x, vars->h[2].y, vars->h[0].x, vars->h[0].y)};
+	vars->lines[0] = make_line(vars->h[0].x,
+			vars->h[0].y, vars->h[1].x, vars->h[1].y);
+	vars->lines[1] = make_line(vars->h[1].x,
+			vars->h[1].y, vars->h[2].x, vars->h[2].y);
+	vars->lines[2] = make_line(vars->h[2].x,
+			vars->h[2].y, vars->h[0].x, vars->h[0].y);
 	vars->vs_output = &c->vs_output.output_buf.a[0];
 	set_perspective(c, vars, v);
 }

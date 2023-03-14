@@ -13,12 +13,11 @@ DRAW_TRIANGLE_SRC =	draw_triangle/draw_triangle_clip.c \
 										draw_triangle/draw_triangle.c \
 										draw_triangle/draw_triangle_fill.c \
 										draw_triangle/draw_tri_vars.c \
-										draw_triangles/draw_triangle_point.c \
-										draw_triangles/draw_triangle_line.c \
+										draw_triangle/draw_triangle_point.c \
+										draw_triangle/draw_triangle_line.c \
 
 GL_DRAW_SRC = $(DRAW_LINE_SRC) $(DRAW_MODES_SRC) $(DRAW_POINT_SRC) $(DRAW_TRIANGLE_SRC)
 GL_DRAW_SRC += draw_pixel.c \
-						mlx_draw.c \
 						gl_draw_arrays.c \
 						gl_multi_draw_arrays.c \
 						gl_draw_arrays_instanced.c \

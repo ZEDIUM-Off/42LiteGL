@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:35:37 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 16:40:36 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 19:25:45 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	lgl_set_uniform(t_gl_context *c, void *uniform)
 	c->programs.a[c->cur_program].uniform = uniform;
 }
 
-t_gl_uint	lgl_create_program(t_gl_context *c, t_gl_program prog_attr)
+t_gl_uint	lgl_create_program(t_gl_context *c, t_gl_program prog_attr, t_gl_enum *tmp_interpolation)
 {
 	t_gl_program	tmp;
 	size_t			i;
@@ -42,7 +42,7 @@ t_gl_uint	lgl_create_program(t_gl_context *c, t_gl_program prog_attr)
 	tmp = (t_gl_program) \
 	{prog_attr.vertex_shader, prog_attr.fragment_shader, NULL, \
 	prog_attr.vs_output_size, {0}, prog_attr.fragdepth_or_discard, GL_FALSE};
-	set_interpol(&tmp, prog_attr.vs_output_size, prog_attr.interpolation);
+	set_interpol(&tmp, prog_attr.vs_output_size, tmp_interpolation);
 	i = 1;
 	while (i < c->programs.size)
 	{

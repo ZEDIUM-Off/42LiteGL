@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:46:27 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 21:03:44 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 12:04:08 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	draw_triangle_line(
 
 void	set_draw_tri_vars(t_gl_context *c,
 			t_draw_tri_vars *vars, t_gl_vertex **v);
+void	set_draw_tri_clip_vars(t_draw_tri_clip_vars *vars);
 
 void	draw_point(t_gl_context *c, t_gl_vertex *vert);
 void	draw_line_clip(t_gl_context *c, t_gl_vertex *v1, t_gl_vertex *v2);

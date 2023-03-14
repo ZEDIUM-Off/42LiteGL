@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:39:20 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 11:34:13 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ void	draw_perp_line_slope_less_minus_one(
 		vars->first_is_diag = GL_TRUE;
 	vars->lx = vars->x_mima[0];
 	vars->ly = vars->y_mima[1];
-	while (vars->lx <= x_mima[1] && vars->ly >= vars->y_mima[0])
+	while (vars->lx <= vars->x_mima[1] && vars->ly >= vars->y_mima[0])
 	{
 		if (vars->lx >= 0 && vars->lx < vars->lw
 			&& vars->ly >= 0 && vars->ly < vars->lh)
 		{
-			c->builtins.gl_FragCoord.x = vars->lx;
-			c->builtins.gl_FragCoord.y = vars->ly;
+			c->builtins.gl_frag_coord.x = vars->lx;
+			c->builtins.gl_frag_coord.y = vars->ly;
 			c->builtins.discard = GL_FALSE;
-			c->builtins.gl_FragDepth = vars->lz;
-			c->programs.a[c->programs.cur_program].fragment_shader(c->fs_input,
-				&c->builtins, c->programs.a[c->programs.cur_program].uniform);
+			c->builtins.gl_frag_depth = vars->lz;
+			c->programs.a[c->cur_program].fragment_shader(c->fs_input,
+				&c->builtins, c->programs.a[c->cur_program].uniform);
 			if (!c->builtins.discard)
-				draw_pixel(c, c->builtins.gl_FragColor,
-				{vars->lx, vars->ly}, c->builtins.gl_FragDepth);
+				draw_pixel(c, c->builtins.gl_frag_color,
+					(t_vec2){vars->lx, vars->ly}, c->builtins.gl_frag_depth);
 		}
 		if (line_func(&vars->line, vars->lx + 0.5f, vars->ly - 1) < 0)
 			vars->lx++;
@@ -40,7 +40,7 @@ void	draw_perp_line_slope_less_minus_one(
 	}
 }
 
-void	draw_perp_line_slop_less_zero(
+void	draw_perp_line_slope_less_zero(
 	t_gl_context *c, t_draw_line_shader_vars *vars)
 {
 	if (line_func(&vars->line, vars->x_mima[0] + 1, vars->y_mima[1] - 0.5f) > 0)
@@ -52,15 +52,15 @@ void	draw_perp_line_slop_less_zero(
 		if (vars->lx >= 0 && vars->lx < vars->lw
 			&& vars->ly >= 0 && vars->ly < vars->lh)
 		{
-			c->builtins.gl_FragCoord.x = vars->lx;
-			c->builtins.gl_FragCoord.y = vars->ly;
+			c->builtins.gl_frag_coord.x = vars->lx;
+			c->builtins.gl_frag_coord.y = vars->ly;
 			c->builtins.discard = GL_FALSE;
-			c->builtins.gl_FragDepth = vars->lz;
-			c->programs.a[c->programs.cur_program].fragment_shader(c->fs_input,
-				&c->builtins, c->programs.a[c->programs.cur_program].uniform);
+			c->builtins.gl_frag_depth = vars->lz;
+			c->programs.a[c->cur_program].fragment_shader(c->fs_input,
+				&c->builtins, c->programs.a[c->cur_program].uniform);
 			if (!c->builtins.discard)
-				draw_pixel(c, c->builtins.gl_FragColor,
-				{vars->lx, vars->ly}, c->builtins.gl_FragDepth);
+				draw_pixel(c, c->builtins.gl_frag_color,
+					(t_vec2){vars->lx, vars->ly}, c->builtins.gl_frag_depth);
 		}
 		if (line_func(&vars->line, vars->lx + 1, vars->ly - 0.5f) > 0)
 			vars->ly--;
@@ -80,15 +80,15 @@ void	draw_perp_line_slope_less_one(
 		if (vars->lx >= 0 && vars->lx < vars->lw
 			&& vars->ly >= 0 && vars->ly < vars->lh)
 		{
-			c->builtins.gl_FragCoord.x = vars->lx;
-			c->builtins.gl_FragCoord.y = vars->ly;
+			c->builtins.gl_frag_coord.x = vars->lx;
+			c->builtins.gl_frag_coord.y = vars->ly;
 			c->builtins.discard = GL_FALSE;
-			c->builtins.gl_FragDepth = vars->lz;
-			c->programs.a[c->programs.cur_program].fragment_shader(c->fs_input,
-				&c->builtins, c->programs.a[c->programs.cur_program].uniform);
+			c->builtins.gl_frag_depth = vars->lz;
+			c->programs.a[c->cur_program].fragment_shader(c->fs_input,
+				&c->builtins, c->programs.a[c->cur_program].uniform);
 			if (!c->builtins.discard)
-				draw_pixel(c, c->builtins.gl_FragColor,
-				{vars->lx, vars->ly}, c->builtins.gl_FragDepth);
+				draw_pixel(c, c->builtins.gl_frag_color,
+					(t_vec2){vars->lx, vars->ly}, c->builtins.gl_frag_depth);
 		}
 		if (line_func(&vars->line, vars->lx + 1, vars->ly + 0.5f) < 0)
 			vars->ly++;
@@ -108,15 +108,15 @@ void	draw_perp_line_slope_more_one(
 		if (vars->lx >= 0 && vars->lx < vars->lw
 			&& vars->ly >= 0 && vars->ly < vars->lh)
 		{
-			c->builtins.gl_FragCoord.x = vars->lx;
-			c->builtins.gl_FragCoord.y = vars->ly;
+			c->builtins.gl_frag_coord.x = vars->lx;
+			c->builtins.gl_frag_coord.y = vars->ly;
 			c->builtins.discard = GL_FALSE;
-			c->builtins.gl_FragDepth = vars->lz;
-			c->programs.a[c->programs.cur_program].fragment_shader(c->fs_input,
-				&c->builtins, c->programs.a[c->programs.cur_program].uniform);
+			c->builtins.gl_frag_depth = vars->lz;
+			c->programs.a[c->cur_program].fragment_shader(c->fs_input,
+				&c->builtins, c->programs.a[c->cur_program].uniform);
 			if (!c->builtins.discard)
-				draw_pixel(c, c->builtins.gl_FragColor,
-				{vars->lx, vars->ly}, c->builtins.gl_FragDepth);
+				draw_pixel(c, c->builtins.gl_frag_color,
+					(t_vec2){vars->lx, vars->ly}, c->builtins.gl_frag_depth);
 		}
 		if (line_func(&vars->line, vars->lx + 0.5f, vars->ly + 1) > 0)
 			vars->lx++;

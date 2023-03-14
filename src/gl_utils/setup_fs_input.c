@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:17:27 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 22:26:11 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 17:21:18 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ void	setup_fs_input(
 	t_draw_line_shader_vars *v, unsigned int provoke)
 {
 	float	*vs_output;
-	size_t	i;
+	int		i;
 
-	vs_outpout = &c->vs_output.output_buf.a[0];
+	vs_output = &c->vs_output.output_buf.a[0];
 	i = 0;
 	while (i < c->vs_output.size)
 	{
 		if (c->vs_output.interpolation[i] == SMOOTH)
-			c->fs_input[i] = (v->vs_out[0][i] * (1 / v->w[0]) + v->t
-					* (v->vs_out[1][i] * (1 / v->w[1]) - v->vs_out[0][i]
+			c->fs_input[i] = (vs_out[0][i] * (1 / v->w[0]) + v->t
+					* (vs_out[1][i] * (1 / v->w[1]) - vs_out[0][i]
 						* (1 / v->w[0]))) / ((1 / v->w[0]) + v->t
 					* ((1 / v->w[1]) - (1 / v->w[0])));
 		else if (c->vs_output.interpolation[i] == NOPERSPECTIVE)
-			c->fs_input[i] = v->vs_out[0][i] + v->t
+			c->fs_input[i] = vs_out[0][i] + v->t
 				* (vs_out[1][i] - vs_out[0][i]);
 		else
 			c->fs_input[i] = vs_output[provoke * c->vs_output.size + i];

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:02:37 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 13:29:49 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 11:30:20 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void	thikness_choice(t_gl_context *c, t_vec4 *traces, float **v_out,
 		draw_thick_line_shader(c, traces, v_out, provoke);
 }
 
-static void	interpolate_clipped_line(glVertex	**vertexes,
-	float **v_out, float *tmin_max)
+static void	interpolate_clipped_line(t_gl_context *c, t_gl_vertex	**vertexes,
+	float v_out[2][GL_MAX_VERTEX_OUTPUT_COMPONENTS], float *tmin_max)
 {
 	int	i;
 
@@ -43,9 +43,9 @@ void	clip_and_draw_line(t_gl_context *c, t_gl_vertex **vertexes,
 	float	v_out[2][GL_MAX_VERTEX_OUTPUT_COMPONENTS];
 	t_vec4	diff;
 	float	t[2];
-	t_vec4	cs[2];
+	t_vec4	*cs;
 
-	cs = {vertexes[0]->clip_space, vertexes[1]->clip_space};
+	cs = new_vec42(vertexes[0]->clip_space, vertexes[1]->clip_space);
 	diff = sub_vec4s(cs[1], cs[0]);
 	t[0] = 0;
 	t[1] = 1;
@@ -57,13 +57,13 @@ void	clip_and_draw_line(t_gl_context *c, t_gl_vertex **vertexes,
 		&& clip_line(diff.z + diff.w, -cs[0].z - cs[0].w, &t[0], &t[1])
 		&& clip_line(-diff.z + diff.w, cs[0].z - cs[0].w, &t[0], &t[1]))
 	{
-		traces[0] = add_vec4s(cs[0], scale_vec4(diff, t[0]));
-		traces[1] = add_vec4s(cs[0], scale_vec4(diff, t[1]));
+		traces[0] = add_vec4s(cs[0], scale_vec4s(diff, t[0]));
+		traces[1] = add_vec4s(cs[0], scale_vec4s(diff, t[1]));
 		traces[0] = mult_mat4_vec4(c->vp_mat, traces[0]);
 		traces[1] = mult_mat4_vec4(c->vp_mat, traces[1]);
-		interpolate_clipped_line(vertexes, v_out, t);
-		thikness_choice(c, traces, {vertexes[0]->vs_out,
-			vertexes[1]->vs_out}, provoke);
+		interpolate_clipped_line(c, vertexes, v_out, t);
+		thikness_choice(c, traces, new_float22(vertexes[0]->vs_out,
+				vertexes[1]->vs_out), provoke);
 	}
 }
 
@@ -79,10 +79,11 @@ void	draw_line_clip(t_gl_context *c, t_gl_vertex *v1, t_gl_vertex *v2)
 		return ;
 	else if ((v1->clip_code | v2->clip_code) == 0)
 	{
-		traces[0] = mult_mat4_vec4(c->vp_mat, cs[0]);
+		traces[0] = mult_mat4_vec4(c->vp_mat, v1->clip_space);
 		traces[1] = mult_mat4_vec4(c->vp_mat, v2->clip_space);
-		thikness_choice(c, traces, {v1->vs_out, v2->vs_out}, provoke);
+		thikness_choice(c, traces,
+			new_float22(v1->vs_out, v2->vs_out), provoke);
 	}
 	else
-		clip_and_draw_line(c, {v1, v2}, traces, provoke);
+		clip_and_draw_line(c, new_vertex2(v1, v2), traces, provoke);
 }

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:44:11 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 11:35:24 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	point_mode(t_gl_context *c, t_gl_uint first, t_gl_sizei count)
 {
-	int	i;
-	int	vert;
+	t_gl_uint	i;
+	int			vert;
 
 	i = first;
 	vert = 0;
@@ -57,8 +57,9 @@ void	triangle_mode(t_gl_context *c, t_gl_int first, t_gl_sizei count)
 		provoke = 2;
 	while (i < first + count - 2)
 	{
-		draw_triangle(c, {&c->glverts.a[vert],
-			&c->glverts.a[vert + 1], &c->glverts.a[vert + 2]}, vert + provoke);
+		draw_triangle(c, new_vertex3(&c->glverts.a[vert],
+				&c->glverts.a[vert + 1],
+				&c->glverts.a[vert + 2]), vert + provoke);
 		i += 3;
 		vert += 3;
 	}

@@ -26,6 +26,16 @@ GL_UTILS_SRC =	gl_line_width.c \
 								wrap.c \
 								new_vec4.c \
 								map.c \
-								setup_fs_input.c
+								setup_fs_input.c \
+								new_vertex.c \
+								clip_proc.c \
+								update_clip_pt.c \
+								is_front_facing.c \
+								depthtest.c \
+								stencil_op.c \
+								blend_pixel.c \
+								logic_ops_pixel.c \
+								vertex_stage.c \
+								do_vertex.c \
 
 GL_UTILS_PATH = src/gl_utils/

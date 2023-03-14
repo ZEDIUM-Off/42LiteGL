@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 11:01:34 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 13:29:20 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/14 12:23:45 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	draw_triangle_final(
 	v[0]->screen_space = mult_mat4_vec4(c->vp_mat, v[0]->clip_space);
 	v[1]->screen_space = mult_mat4_vec4(c->vp_mat, v[1]->clip_space);
 	v[2]->screen_space = mult_mat4_vec4(c->vp_mat, v[2]->clip_space);
-	front_facing = is_front_facing(v[0], v[1], v[2]);
+	front_facing = is_front_facing(c, v[0], v[1], v[2]);
 	if (c->cull_face)
 	{
 		if (c->cull_mode == GL_FRONT_AND_BACK)
@@ -30,7 +30,7 @@ void	draw_triangle_final(
 		if (c->cull_mode == GL_FRONT && front_facing)
 			return ;
 	}
-	c->builtins.gl_FrontFacing = front_facing;
+	c->builtins.gl_front_facing = front_facing;
 	if (front_facing)
 		c->draw_triangle_front(c, v, provoke);
 	else

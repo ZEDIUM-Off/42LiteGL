@@ -21,6 +21,7 @@ GL_UTILS_SRC =	gl_line_width.c \
 								get_shift.c \
 								new_float.c \
 								new_int.c \
+								new_uint.c \
 								new_gl_sizei.c \
 								new_str.c \
 								wrap.c \

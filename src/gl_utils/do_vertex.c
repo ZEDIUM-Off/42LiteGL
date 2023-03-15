@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:11:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/14 18:22:47 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 14:48:28 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	do_vertex(
 		ft_memcpy(&tmpvec4, buf_pos, sizeof(float)
 			* vars->v[vars->enabled[j]].size);
 		c->vertex_attribs_vs[vars->enabled[j]] = tmpvec4;
+		j++;
 	}
 	c->programs.a[c->cur_program].vertex_shader(&c->vs_output.output_buf.a[vert
 			* c->vs_output.size], c->vertex_attribs_vs, &c->builtins,

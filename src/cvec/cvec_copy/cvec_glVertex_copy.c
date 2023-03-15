@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    cvec_glVector_copy.c                              :+:      :+:    :+:   */
+/*   cvec_glVertex_copy.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:04:49 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/07 09:13:45 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 10:24:16 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	cvec_copyc_gl_vertex(void *dest, void *src)
 {
-	cvector_gl_vertex	*vec1;
-	cvector_gl_vertex	*vec2;
+	t_cvector_gl_vertex	*vec1;
+	t_cvector_gl_vertex	*vec2;
 
 	vec1 = (t_cvector_gl_vertex *)dest;
 	vec2 = (t_cvector_gl_vertex *)src;
@@ -25,7 +25,7 @@ int	cvec_copyc_gl_vertex(void *dest, void *src)
 	return (cvec_copy_gl_vertex(vec1, vec2));
 }
 
-int	cvec_copy_gl_vertex(cvector_gl_vertex	*dest, t_cvector_gl_vertex *src)
+int	cvec_copy_gl_vertex(t_cvector_gl_vertex	*dest, t_cvector_gl_vertex *src)
 {
 	t_gl_vertex	*tmp;
 

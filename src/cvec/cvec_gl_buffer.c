@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:44:04 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/07 10:05:09 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 10:36:50 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_cvector_gl_buffer	*cvec_gl_buffer_heap(size_t size, size_t capacity)
 		return (NULL);
 	}
 	vec->size = size;
-	vec->capacity = vec->size + CVEC_SZ;
+	vec->capacity = vec->size + CVEC_SIZE;
 	if (capacity > vec->size || (vec->size && capacity == vec->size))
 		vec->capacity = capacity;
 	vec->a = (t_gl_buffer *)malloc(vec->capacity * sizeof(t_gl_buffer));
@@ -46,7 +46,7 @@ t_cvector_gl_buffer	*cvec_init_gl_buffer_heap(t_gl_buffer *vals, size_t num)
 		ft_assert(vec != NULL);
 		return (NULL);
 	}
-	vec->capacity = num + CVEC_SZ;
+	vec->capacity = num + CVEC_SIZE;
 	vec->size = num;
 	vec->a = (t_gl_buffer *)malloc(vec->capacity * sizeof(t_gl_buffer));
 	if (!vec->a)
@@ -62,7 +62,7 @@ t_cvector_gl_buffer	*cvec_init_gl_buffer_heap(t_gl_buffer *vals, size_t num)
 int	cvec_gl_buffer(t_cvector_gl_buffer *vec, size_t size, size_t capacity)
 {
 	vec->size = size;
-	vec->capacity = vec->size + CVEC_SZ;
+	vec->capacity = vec->size + CVEC_SIZE;
 	if (capacity > vec->size || (vec->size && capacity == vec->size))
 		vec->capacity = capacity;
 	vec->a = (t_gl_buffer *)malloc(vec->capacity * sizeof(t_gl_buffer));
@@ -79,7 +79,7 @@ int	cvec_gl_buffer(t_cvector_gl_buffer *vec, size_t size, size_t capacity)
 int	cvec_init_gl_buffer(
 	t_cvector_gl_buffer *vec, t_gl_buffer *vals, size_t num)
 {
-	vec->capacity = num + CVEC_SZ;
+	vec->capacity = num + CVEC_SIZE;
 	vec->size = num;
 	vec->a = (t_gl_buffer *)malloc(vec->capacity * sizeof(t_gl_buffer));
 	if (!vec->a)
@@ -100,7 +100,7 @@ int	cvec_extend_gl_buffer(t_cvector_gl_buffer *vec, size_t num)
 
 	if (vec->capacity < vec->size + num)
 	{
-		tmp_sz = vec->capacity + num + CVEC_SZ;
+		tmp_sz = vec->capacity + num + CVEC_SIZE;
 		tmp = (t_gl_buffer *)ft_realloc(vec->a, sizeof(t_gl_buffer) * tmp_sz);
 		if (!tmp)
 		{

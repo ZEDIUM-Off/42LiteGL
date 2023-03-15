@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:40:08 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/14 18:13:44 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 15:11:30 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,21 @@ void	first_part(
 	while (vars->i < GL_MAX_VERTEX_ATTRIBS)
 	{
 		if (vars->v[vars->i].enabled)
-			vars->enabled[vars->num_enabled++] = vars->i;
-		else if (!(sett->instance % vars->v[vars->i].divisor))
 		{
-			ft_memcpy(&c->vertex_attribs_vs[vars->i],
-				vars->vec4_init, sizeof(t_vec4));
-			vars->n = sett->instance
-				/ vars->v[vars->i].divisor + sett->base_instance;
-			vars->buf_pos = (t_u8 *)c->buffers.a[
-				vars->v[vars->i].buf].data + vars->v[vars->i].offset
-				+ vars->v[vars->i].stride * vars->n;
-			ft_memcpy(&c->vertex_attribs_vs[vars->i], vars->buf_pos,
-				sizeof(float) * vars->v[vars->i].size);
+			if (vars->v[vars->i].divisor == 0)
+				vars->enabled[vars->num_enabled++] = vars->i;
+			else if (!(sett->instance % vars->v[vars->i].divisor))
+			{
+				ft_memcpy(&c->vertex_attribs_vs[vars->i],
+					vars->vec4_init, sizeof(t_vec4));
+				vars->n = sett->instance
+					/ vars->v[vars->i].divisor + sett->base_instance;
+				vars->buf_pos = (t_u8 *)c->buffers.a[
+					vars->v[vars->i].buf].data + vars->v[vars->i].offset
+					+ vars->v[vars->i].stride * vars->n;
+				ft_memcpy(&c->vertex_attribs_vs[vars->i], vars->buf_pos,
+					sizeof(float) * vars->v[vars->i].size);
+			}
 		}
 		vars->i++;
 	}

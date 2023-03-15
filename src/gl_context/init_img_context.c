@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:48:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 15:47:51 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 15:20:35 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ int	init_img_context(t_gl_context *c, t_context_settings *setts)
 	if (setts->bitdepth > 32 || !setts->back)
 		return (0);
 	c->user_alloced_backbuf = *(setts->back) != NULL;
-	if (!*(setts->back))
+	if (!*setts->back)
 	{
 		bpp = (setts->bitdepth + CHAR_BIT - 1) / CHAR_BIT;
-		*(setts->back) = (t_u32 *)malloc(setts->w * setts->h * bpp);
+		*setts->back = (t_u32 *)malloc(setts->w * setts->h * bpp);
 		if (!*(setts->back))
 			return (0);
 	}

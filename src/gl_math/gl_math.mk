@@ -26,7 +26,9 @@ MAT_SRC +=	matrix/make_persp_mat.c \
 						matrix/make_ortho_mat.c \
 						matrix/load_rot_mat.c \
 						matrix/translation_mat.c \
-						matrix/make_viewport_mat.c
+						matrix/make_viewport_mat.c \
+						matrix/id_mat.c \
+						matrix/mat_set_id.c
 
 VEC_SRC =	vectors/vec_mult.c \
 					vectors/vec_add.c \
@@ -46,7 +48,8 @@ VEC_SRC =	vectors/vec_mult.c \
 					vectors/vec_equal_eps.c \
 					vectors/vec_normalize.c \
 					vectors/vec_equal.c \
-					vectors/vec_cross.c
+					vectors/vec_cross.c \
+					vectors/init_vec.c
 
 GL_MATH_SRC = $(VEC_SRC) $(MAT_SRC)
 GL_MATH_SRC +=	op.c \

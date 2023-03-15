@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:01:17 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 14:13:05 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 15:09:59 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	gl_gen_buffers(t_gl_context *c, t_gl_sizei n, t_gl_uint *buffers)
 	}
 	if (j != n)
 	{
-		cvec_extend_gl_buffer(&c->buffers, n - j);
 		i = c->buffers.size;
+		cvec_extend_gl_buffer(&c->buffers, n - j);
 		while (j < n)
 		{
 			c->buffers.a[i].data = NULL;

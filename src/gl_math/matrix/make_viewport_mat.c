@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 11:41:13 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/03 11:49:37 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 14:52:45 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	make_viewport_matrix(
 		lr[1] = lr[0] + wh[0] - 0.01f;
 		bt[1] = bt[0] + wh[1] - 0.01f;
 	}
-	mat = identity_mat4();
 	mat[0][0] = (lr[1] - lr[0]) / 2.0f;
 	mat[0][3] = (lr[1] + lr[0]) / 2.0f;
 	mat[1][1] = (bt[1] - bt[0]) / 2.0f;

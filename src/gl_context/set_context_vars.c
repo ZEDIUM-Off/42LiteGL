@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:56:18 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 15:42:36 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 14:54:22 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,9 @@ void	set_context_vars(t_gl_context *c, t_context_settings *s)
 	c->clear_depth = 1.0f;
 	c->depth_range_near = 0.0f;
 	c->depth_range_far = 1.0f;
-	make_viewport_matrix(c->vp_mat, new_float2(0, 0), new_uint2(s->w, s->h), 1);
+	c->vp_mat = identity_mat4();
+	make_viewport_matrix(c->vp_mat,
+		new_float2(0, 0), new_uint2(s->w, s->h), 1);
 	c->provoking_vert = GL_LAST_VERTEX_CONVENTION;
 	c->cull_mode = GL_BACK;
 	c->cull_face = GL_FALSE;
@@ -111,7 +113,5 @@ void	set_context_vars(t_gl_context *c, t_context_settings *s)
 	c->blend = GL_FALSE;
 	c->logic_ops = GL_FALSE;
 	c->poly_offset = GL_FALSE;
-	c->scissor_test = GL_FALSE;
-	c->stencil_test = GL_FALSE;
 	set_next_vars(c, s);
 }

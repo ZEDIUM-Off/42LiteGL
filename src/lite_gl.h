@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:31:11 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/14 18:35:52 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 10:29:48 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define GL_MAX_VERTEX_OUTPUT_COMPONENTS 64
 # define GL_MAX_DRAW_BUFFERS 8
 # define GL_MAX_COLOR_ATTACHMENTS 8
+# define CVEC_SIZE 50
 
 # define EPSILON 0.000001
 

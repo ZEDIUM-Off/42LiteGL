@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:23:03 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 14:54:44 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 10:36:19 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include "cvec_push_pop/cvec_push_pop.h"
 # include "cvec_set/cvec_set.h"
 # include "cvec_utils/cvec_utils.h"
-
-# define CVEC_SZ 50
 
 struct s_cvector_float
 {

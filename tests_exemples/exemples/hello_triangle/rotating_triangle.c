@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:24:58 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/14 19:16:06 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 16:58:24 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,39 @@ int main(int argc, char** argv)
 
 	My_Uniforms the_uniforms;
 
+	proj_mat = identity_mat4();
 	make_perspective_matrix(proj_mat, radians(45), WIDTH/HEIGHT, new_float2(1, 20));
+	// printf("proj_mat:\n");
+	// for (int i = 0; i < 4; i++)
+	// {
+	// 	for (int j = 0; j < 4; j++)
+	// 		printf("%f ", proj_mat[i][j]);
+	// 	printf("\n");
+	// }
+	// 	printf("\n");
+
+	trans_mat = identity_mat4();
 	translation_mat4(trans_mat, 0, 0, -5);
+	// printf("trans_mat:\n");
+	// for (int i = 0; i < 4; i++)
+	// {
+	// 	for (int j = 0; j < 4; j++)
+	// 		printf("%f ", trans_mat[i][j]);
+	// 	printf("\n");
+	// }
+	// 	printf("\n");
+
+	vp_mat = identity_mat4();
 	mult_mat4_mat4(vp_mat, proj_mat, trans_mat);
+	// printf("vp_mat:\n");
+	// for (int i = 0; i < 4; i++)
+	// {
+	// 	for (int j = 0; j < 4; j++)
+	// 		printf("%f ", vp_mat[i][j]);
+	// 	printf("\n");
+	// }
+	// 	printf("\n");
+
 	t_gl_uint triangle;
 	gl_gen_buffers(&gl_context, 1, &triangle);
 	gl_bind_buffer(&gl_context, GL_ARRAY_BUFFER, triangle);
@@ -71,7 +101,6 @@ int main(int argc, char** argv)
 	gl_enable_vertex_attrib_array(&gl_context, 0);
 	t_gl_vertex_attrib attr =  {.size = 3, .type = GL_FLOAT, .normalized = GL_FALSE, .stride = 0};
 	gl_vertex_attrib_pointer(&gl_context, 0, attr, 0);
-
 	t_gl_uint colors;
 	gl_gen_buffers(&gl_context, 1, &colors);
 	gl_bind_buffer(&gl_context, GL_ARRAY_BUFFER, colors);
@@ -79,20 +108,24 @@ int main(int argc, char** argv)
 	gl_enable_vertex_attrib_array(&gl_context, 4);
 	t_gl_vertex_attrib attr2 =  {.size = 4, .type = GL_FLOAT, .normalized = GL_FALSE, .stride = 0};
 	gl_vertex_attrib_pointer(&gl_context, 4, attr2, 0);
-	t_gl_program prog_attr = {.vertex_shader = smooth_vs, .fragment_shader = smooth_fs, .vs_output_size = 4, .interpolation = smooth, .fragdepth_or_discard = GL_FALSE};
-	t_gl_uint myshader = lgl_create_program(&gl_context, prog_attr);
+	t_gl_program prog_attr = {.vertex_shader = smooth_vs, .fragment_shader = smooth_fs, .vs_output_size = 4, .fragdepth_or_discard = GL_FALSE};
+	t_gl_uint myshader = lgl_create_program(&gl_context, prog_attr, smooth);
 	gl_use_program(&gl_context, myshader);
 	lgl_set_uniform(&gl_context, &the_uniforms);
 	the_uniforms.v_color = Red;
 	gl_clear_color(&gl_context, new_float4(0, 0, 0, 1));
-
+	printf("starting main loop ...");
 	SDL_Event e;
 	int quit = 0;
 
 	unsigned int old_time = 0, new_time=0, counter = 0;
 	unsigned int last_frame = 0;
 	float frame_time = 0;
+	int first_test = 1;
+	int sec_test = 1;
 		
+	rot_mat = identity_mat4();
+	the_uniforms.mvp_mat = identity_mat4();
 	while (!quit) {
 		while (SDL_PollEvent(&e)) {
 			if (e.type == SDL_QUIT)
@@ -108,28 +141,45 @@ int main(int argc, char** argv)
 		last_frame = new_time;
 		counter++;
 		if (!(counter % 300)) {
-			printf("%d  %f FPS\n", new_time-old_time, 300000/((float)(new_time-old_time)));
+			printf("\n%d  %f ==================FPS\n", new_time-old_time, 300000/((float)(new_time-old_time)));
 			old_time = new_time;
 			counter = 0;
 		}
 		gl_clear(&gl_context, GL_COLOR_BUFFER_BIT);
 		t_vec3 y_axis = { 0, 1, 0 };
-		load_rotation_mat4(rot_mat, y_axis, DEG_TO_RAD(30)*frame_time);
+		load_rotation_mat4(rot_mat, y_axis, radians(30) *0.002 /* frame_time*/);
 		mult_mat4_mat4(tmp_mat, rot_mat, save_rot);
-
+		if (first_test || sec_test)
+		{
+			printf("rot_mat:\n");
+			for (int i = 0; i < 4; i++)
+			{
+				for (int j = 0; j < 4; j++)
+					printf("%f ", rot_mat[i][j]);
+				printf("\n");
+			}
+			printf("\n");
+			printf("tmp_mat:\n");
+			for (int i = 0; i < 4; i++)
+			{
+				for (int j = 0; j < 4; j++)
+					printf("%f ", tmp_mat[i][j]);
+				printf("\n");
+			}
+			printf("\n");
+			if (!first_test)
+				sec_test = 0;
+			first_test = 0;
+		}
 		memcpy(save_rot, tmp_mat, sizeof(t_mat4));
 		mult_mat4_mat4(the_uniforms.mvp_mat, vp_mat, save_rot);
-
+		
 		gl_draw_arrays(&gl_context, GL_TRIANGLES, 0, 3);
-
 		SDL_UpdateTexture(tex, NULL, bbufpix, WIDTH * sizeof(t_u32));
-		//Render the scene
 		SDL_RenderCopy(ren, tex, NULL, NULL);
 		SDL_RenderPresent(ren);
 	}
-
-	cleanup();
-
+	cleanup(&gl_context);
 	return 0;
 }
 

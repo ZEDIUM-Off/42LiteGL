@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 15:16:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 13:17:51 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 12:29:19 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,70 +15,9 @@
 
 # include <lite_gl.h>
 
-t_mat2	identity_mat2(void)
-{
-	t_mat2	mat;
-
-	mat = (t_mat2)malloc(sizeof(float *) * 2);
-	mat[0] = (float *)malloc(sizeof(float) * 2);
-	mat[1] = (float *)malloc(sizeof(float) * 2);
-	mat[0][0] = 1.0f;
-	mat[0][1] = 0.0f;
-	mat[1][0] = 0.0f;
-	mat[1][1] = 1.0f;
-	return (mat);
-}
-
-t_mat3	identity_mat3(void)
-{
-	t_mat3	mat;
-
-	mat = (t_mat3)malloc(sizeof(float *) * 3);
-	mat[0] = (float *)malloc(sizeof(float) * 3);
-	mat[1] = (float *)malloc(sizeof(float) * 3);
-	mat[2] = (float *)malloc(sizeof(float) * 3);
-	mat[0][0] = 1.0f;
-	mat[0][1] = 0.0f;
-	mat[0][2] = 0.0f;
-	mat[1][0] = 0.0f;
-	mat[1][1] = 1.0f;
-	mat[1][2] = 0.0f;
-	mat[2][0] = 0.0f;
-	mat[2][1] = 0.0f;
-	mat[2][2] = 1.0f;
-	return (mat);
-}
-
-t_mat4	identity_mat4(void)
-{
-	t_mat4	mat;
-
-	mat = (t_mat4)malloc(sizeof(float *) * 4);
-	mat[0] = (float *)malloc(sizeof(float) * 4);
-	mat[1] = (float *)malloc(sizeof(float) * 4);
-	mat[2] = (float *)malloc(sizeof(float) * 4);
-	mat[3] = (float *)malloc(sizeof(float) * 4);
-	mat[0][0] = 1.0f;
-	mat[0][1] = 0.0f;
-	mat[0][2] = 0.0f;
-	mat[0][3] = 0.0f;
-	mat[1][0] = 0.0f;
-	mat[1][1] = 1.0f;
-	mat[1][2] = 0.0f;
-	mat[1][3] = 0.0f;
-	mat[2][0] = 0.0f;
-	mat[2][1] = 0.0f;
-	mat[2][2] = 1.0f;
-	mat[2][3] = 0.0f;
-	mat[3][0] = 0.0f;
-	mat[3][1] = 0.0f;
-	mat[3][2] = 0.0f;
-	mat[3][3] = 1.0f;
-	return (mat);
-}
-
 // mat 2
-void	set_identity_mat2(t_mat2 mat);
+t_mat2	identity_mat2(void);
+t_mat2	set_identity_mat2(t_mat2 mat);
 t_vec2	x_mat2(t_mat2 m);
 t_vec2	y_mat2(t_mat2 m);
 t_vec2	c1_mat2(t_mat2 m);
@@ -93,7 +32,8 @@ void	sety_mat2(t_mat2 m, t_vec2 v);
 t_vec2	mult_mat2_vec2(t_mat2 m, t_vec2 v);
 
 // mat 3
-void	set_identity_mat3(t_mat3 mat);
+t_mat3	identity_mat3(void);
+t_mat3	set_identity_mat3(t_mat3 mat);
 t_vec3	x_mat3(t_mat3 m);
 t_vec3	y_mat3(t_mat3 m);
 t_vec3	z_mat3(t_mat3 m);
@@ -112,7 +52,8 @@ void	setz_mat3(t_mat3 m, t_vec3 v);
 t_vec3	mult_mat3_vec3(t_mat3 m, t_vec3 v);
 
 // mat 4
-void	set_identity_mat4(t_mat4 mat);
+t_mat4	identity_mat4(void);
+t_mat4	set_identity_mat4(t_mat4 mat);
 t_vec4	c1_mat4(t_mat4 m);
 t_vec4	c2_mat4(t_mat4 m);
 t_vec4	c3_mat4(t_mat4 m);

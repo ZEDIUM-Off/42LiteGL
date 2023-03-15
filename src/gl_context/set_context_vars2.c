@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:40:59 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 12:44:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 14:54:03 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	set_last_vars(t_gl_context *c, t_context_settings *s)
 	c->draw_triangle_front = draw_triangle_fill;
 	c->draw_triangle_back = draw_triangle_fill;
 	c->error = GL_NO_ERROR;
+	c->stencil_test = GL_FALSE;
+	c->scissor_test = GL_FALSE;
 }
 
 void	set_next_vars(t_gl_context *c, t_context_settings *s)

@@ -6,12 +6,11 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:37:28 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 20:37:02 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 15:09:27 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
-#include <libft.h>
 
 void	gl_buffer_data(t_gl_context *c,
 	t_gl_enum target, t_gl_sizei size, const t_gl_void *data)

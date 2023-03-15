@@ -6,9 +6,11 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:26:03 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/03 14:51:30 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 10:14:26 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <lite_gl.h>
 
 void	cvec_clear_gl_vertex_array(t_cvector_gl_vertex_array *vec)
 {

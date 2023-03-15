@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:51:14 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/07 10:05:09 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 10:36:50 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	cvec_insert_array_gl_buffer(
 
 	if (vec->capacity < vec->size + num)
 	{
-		tmp_sz = vec->capacity + num + CVEC_SZ;
+		tmp_sz = vec->capacity + num + CVEC_SIZE;
 		tmp = (t_gl_buffer *)ft_realloc(vec->a, sizeof(t_gl_buffer) * tmp_sz);
 		if (!tmp)
 		{

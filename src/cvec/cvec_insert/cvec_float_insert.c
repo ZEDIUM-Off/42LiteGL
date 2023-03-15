@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cvec_insert.c                                      :+:      :+:    :+:   */
+/*   cvec_float_insert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:55:20 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/03 14:12:43 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 10:30:49 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	cvec_insert_float(t_cvector_float *vec, size_t i, float a)
 
 	if (vec->capacity > vec->size)
 	{
-		ft_memmove(&vec->a[i + 1], vec->a[i], sizeof(float) * (vec->size - i));
+		ft_memmove(&vec->a[i + 1], &vec->a[i], sizeof(float) * (vec->size - i));
 		vec->a[i] = a;
 	}
 	else
@@ -47,7 +47,7 @@ int	cvec_insert_array_float(t_cvector_float *vec, size_t i, float *a, size_t n)
 
 	if (vec->capacity < vec->size + n)
 	{
-		tmp_sz = vec->capacity + n + CVEC_FLOAT_SIZE;
+		tmp_sz = vec->capacity + n + CVEC_SIZE;
 		tmp = (float *)ft_realloc(vec->a, sizeof(float) * tmp_sz);
 		if (!tmp)
 		{

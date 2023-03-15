@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:25:24 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/07 10:04:37 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 10:36:50 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_cvector_gl_texture	*cvec_init_gl_texture_heap(
 		ft_assert(vec != NULL);
 		return (NULL);
 	}
-	vec->capacity = num + CVEC_SZ;
+	vec->capacity = num + CVEC_SIZE;
 	vec->size = num;
 	vec->a = (t_gl_texture *)malloc(vec->capacity * sizeof(t_gl_texture));
 	if (!vec->a)
@@ -39,7 +39,7 @@ t_cvector_gl_texture	*cvec_init_gl_texture_heap(
 int	cvec_gl_texture(t_cvector_gl_texture *vec, size_t size, size_t capacity)
 {
 	vec->size = size;
-	vec->capacity = vec->size + CVEC_SZ;
+	vec->capacity = vec->size + CVEC_SIZE;
 	if (capacity > vec->size || (vec->size && capacity == vec->size))
 		vec->capacity = capacity;
 	vec->a = (t_gl_texture *)malloc(vec->capacity * sizeof(t_gl_texture));
@@ -56,7 +56,7 @@ int	cvec_gl_texture(t_cvector_gl_texture *vec, size_t size, size_t capacity)
 int	cvec_init_gl_texture(
 	t_cvector_gl_texture *vec, t_gl_texture *vals, size_t num)
 {
-	vec->capacity = num + CVEC_SZ;
+	vec->capacity = num + CVEC_SIZE;
 	vec->size = num;
 	vec->a = (t_gl_texture *)malloc(vec->capacity * sizeof(t_gl_texture));
 	if (!vec->a)
@@ -77,7 +77,7 @@ int	cvec_extend_gl_texture(t_cvector_gl_texture *vec, size_t num)
 
 	if (vec->capacity < vec->size + num)
 	{
-		tmp_sz = vec->capacity + num + CVEC_SZ;
+		tmp_sz = vec->capacity + num + CVEC_SIZE;
 		tmp = (t_gl_texture *)ft_realloc(vec->a, sizeof(t_gl_texture) * tmp_sz);
 		if (!tmp)
 		{

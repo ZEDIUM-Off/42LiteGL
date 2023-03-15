@@ -44,4 +44,4 @@ CVEC_SRC = $(CVEC_CLEAR_SRC) $(CVEC_COPY_SRC) $(CVEC_INSERT_SRC) $(CVEC_PUSH_POP
 CVEC_SRC += cvec_float.c cvec_gl_buffer.c cvec_glProgram.c cvec_glTexture.c cvec_glVertex.c cvec_glVertex_Array.c
 
 CVEC_INCLUDE = -Icvec.h
-CVEC_PATH = src/cvec
+CVEC_PATH = src/cvec/

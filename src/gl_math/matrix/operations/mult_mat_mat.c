@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:14:54 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/01 17:21:57 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 17:26:15 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,19 @@ void	mult_mat4_mat4(t_mat4 c, t_mat4 a, t_mat4 b)
 	int	j;
 	int	k;
 
-	i = 0;
-	while (i < 4)
+	i = -1;
+	while (++i < 4)
 	{
-		j = 0;
-		while (j < 4)
+		j = -1;
+		while (++j < 4)
 		{
-			k = 0;
+			k = -1;
 			c[i][j] = 0;
-			while (k < 4)
+			while (++k < 4)
 			{
 				c[i][j] += a[i][k] * b[k][j];
-				k++;
+				printf("c[%d][%d] = %f + %f * %f, \n", i, j, c[i][j], a[i][k], b[k][j]);
 			}
-			j++;
 		}
-		i++;
 	}
 }

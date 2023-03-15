@@ -10,6 +10,7 @@ include src/gl_texture/gl_texture.mk
 include src/gl_vertex_arrays/gl_vertex_arrays.mk
 include src/gl_vertex_attrib/gl_vertex_attrib.mk
 include src/gl_utils/gl_utils.mk
+include src/cvec/cvec.mk
 
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -25,15 +26,18 @@ SRC	=	$(GL_BUFFER_SRC:%.c=$(GL_BUFFER_PATH)%.c) \
 			$(GL_TEXTURE_SRC:%.c=$(GL_TEXTURE_PATH)%.c) \
 			$(GL_VERTEX_ARRAYS_SRC:%.c=$(GL_VERTEX_ARRAYS_PATH)%.c) \
 			$(GL_VERTEX_ATTRIB_SRC:%.c=$(GL_VERTEX_ATTRIB_PATH)%.c) \
-			$(GL_UTILS_SRC:%.c=$(GL_UTILS_PATH)%.c)
+			$(GL_UTILS_SRC:%.c=$(GL_UTILS_PATH)%.c) \
+			$(CVEC_SRC:%.c=$(CVEC_PATH)%.c) \
+
+SRC += $(LIBFT_DIR)/ft_realloc.c $(LIBFT_DIR)/ft_assert.c $(LIBFT_DIR)/ft_memcpy.c $(LIBFT_DIR)/ft_memmove.c
 
 OBJ = $(SRC:.c=.o)
-CFLAGS = -I./src/ -I$(LIBFT_DIR) -Wall -Wextra -Werror
+CFLAGS = -Isrc/ -I$(LIBFT_DIR) -Wall -Wextra -Werror -fsanitize=address -g3
 NAME = lite_gl.a
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ)
 	ar rcs $@ $^
 	@echo "Lite_gl compiled"
 

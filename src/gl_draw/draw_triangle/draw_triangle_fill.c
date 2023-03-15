@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:45:25 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/14 12:32:48 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 15:09:13 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ unsigned int provoke)
 	{
 		vars.y = vars.iy + 0.5f;
 		vars.ix = vars.x_mima[0];
-		while (vars.iy < vars.i_xy_max[0])
+		while (vars.ix < vars.i_xy_max[0])
 		{
 			vars.x = vars.ix + 0.5f;
 			vars.gamma = line_func(&vars.lines[0], vars.x, vars.y)

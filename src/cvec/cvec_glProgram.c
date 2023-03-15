@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:35:15 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/07 10:04:25 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 10:36:50 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_cvector_gl_program	*cvec_gl_program_heap(size_t size, size_t capacity)
 		return (NULL);
 	}
 	vec->size = size;
-	vec->capacity = vec->size + CVEC_SZ;
+	vec->capacity = vec->size + CVEC_SIZE;
 	if (capacity > vec->size || (vec->size && capacity == vec->size))
 		vec->capacity = capacity;
 	vec->a = (t_gl_program *)malloc(vec->capacity * sizeof(t_gl_program));
@@ -47,7 +47,7 @@ t_cvector_gl_program	*cvec_init_gl_program_heap(
 		ft_assert(vec != NULL);
 		return (NULL);
 	}
-	vec->capacity = num + CVEC_SZ;
+	vec->capacity = num + CVEC_SIZE;
 	vec->size = num;
 	vec->a = (t_gl_program *)malloc(vec->capacity * sizeof(t_gl_program));
 	if (!vec->a)
@@ -64,7 +64,7 @@ int	cvec_gl_program(
 	t_cvector_gl_program *vec, size_t size, size_t capacity)
 {
 	vec->size = size;
-	vec->capacity = vec->size + CVEC_SZ;
+	vec->capacity = vec->size + CVEC_SIZE;
 	if (capacity > vec->size || (vec->size && capacity == vec->size))
 		vec->capacity = capacity;
 	vec->a = (t_gl_program *)malloc(vec->capacity * sizeof(t_gl_program));
@@ -81,7 +81,7 @@ int	cvec_gl_program(
 int	cvec_init_gl_program(
 	t_cvector_gl_program *vec, t_gl_program *vals, size_t num)
 {
-	vec->capacity = num + CVEC_SZ;
+	vec->capacity = num + CVEC_SIZE;
 	vec->size = num;
 	vec->a = (t_gl_program *)malloc(vec->capacity * sizeof(t_gl_program));
 	if (!vec->a)
@@ -102,7 +102,7 @@ int	cvec_extend_gl_program(t_cvector_gl_program *vec, size_t num)
 
 	if (vec->capacity < vec->size + num)
 	{
-		tmp_sz = vec->capacity + num + CVEC_SZ;
+		tmp_sz = vec->capacity + num + CVEC_SIZE;
 		tmp = (t_gl_program *)ft_realloc(
 				vec->a, sizeof(t_gl_program) * tmp_sz);
 		if (!tmp)

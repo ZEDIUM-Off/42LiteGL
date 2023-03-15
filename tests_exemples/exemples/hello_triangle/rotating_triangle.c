@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:24:58 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 16:58:24 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 17:59:43 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,7 @@ int main(int argc, char** argv)
 	unsigned int old_time = 0, new_time=0, counter = 0;
 	unsigned int last_frame = 0;
 	float frame_time = 0;
-	int first_test = 1;
-	int sec_test = 1;
-		
+
 	rot_mat = identity_mat4();
 	the_uniforms.mvp_mat = identity_mat4();
 	while (!quit) {
@@ -147,31 +145,9 @@ int main(int argc, char** argv)
 		}
 		gl_clear(&gl_context, GL_COLOR_BUFFER_BIT);
 		t_vec3 y_axis = { 0, 1, 0 };
-		load_rotation_mat4(rot_mat, y_axis, radians(30) *0.002 /* frame_time*/);
+		load_rotation_mat4(rot_mat, y_axis, radians(30) * frame_time);
 		mult_mat4_mat4(tmp_mat, rot_mat, save_rot);
-		if (first_test || sec_test)
-		{
-			printf("rot_mat:\n");
-			for (int i = 0; i < 4; i++)
-			{
-				for (int j = 0; j < 4; j++)
-					printf("%f ", rot_mat[i][j]);
-				printf("\n");
-			}
-			printf("\n");
-			printf("tmp_mat:\n");
-			for (int i = 0; i < 4; i++)
-			{
-				for (int j = 0; j < 4; j++)
-					printf("%f ", tmp_mat[i][j]);
-				printf("\n");
-			}
-			printf("\n");
-			if (!first_test)
-				sec_test = 0;
-			first_test = 0;
-		}
-		memcpy(save_rot, tmp_mat, sizeof(t_mat4));
+		mat4_cpy(save_rot, tmp_mat);
 		mult_mat4_mat4(the_uniforms.mvp_mat, vp_mat, save_rot);
 		
 		gl_draw_arrays(&gl_context, GL_TRIANGLES, 0, 3);

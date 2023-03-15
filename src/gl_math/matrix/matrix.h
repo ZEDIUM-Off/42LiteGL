@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 15:16:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 12:29:19 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/15 17:58:23 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,9 @@ void	scale_mat4(t_mat4 m, float x, float y, float z);
 void	load_rotation_mat2(t_mat2 mat, float angle);
 void	load_rotation_mat3(t_mat3 mat, t_vec3 v, float angle);
 void	load_rotation_mat4(t_mat4 mat, t_vec3 v, float angle);
+void	mat4_cpy(t_mat4 dst, t_mat4 src);
+void	mat3_cpy(t_mat3 dst, t_mat3 src);
+void	mat2_cpy(t_mat2 dst, t_mat2 src);
 
 void	make_orthographic_matrix(
 			t_mat4 mat, float	*lr, float *bt, float *near_far);

@@ -1,0 +1,1 @@
+cc tests_exemples/exemples/hello_triangle/rotating_triangle.c lite_gl.a -I. -Ilibft -I/usr/local/Cellar/sdl2/2.26.4/include/SDL2 -L/usr/local/Cellar/sdl2/2.26.4/lib -lSDL2-2.0.0 -fsanitize=address -g3 -o tests_exemples/exemples/hello_triangle/rotating_triangle.out && tests_exemples/exemples/hello_triangle/rotating_triangle.out

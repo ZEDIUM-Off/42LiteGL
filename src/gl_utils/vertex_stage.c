@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:40:08 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 15:11:30 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/24 12:24:00 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,23 @@ void	first_part(
 {
 	while (vars->i < GL_MAX_VERTEX_ATTRIBS)
 	{
-		if (vars->v[vars->i].enabled)
+		if (vars->v[vars->i++].enabled)
 		{
-			if (vars->v[vars->i].divisor == 0)
-				vars->enabled[vars->num_enabled++] = vars->i;
-			else if (!(sett->instance % vars->v[vars->i].divisor))
+			if (vars->v[vars->i - 1].divisor == 0)
+				vars->enabled[vars->num_enabled++] = vars->i - 1;
+			else if (!(sett->instance % vars->v[vars->i - 1].divisor))
 			{
-				ft_memcpy(&c->vertex_attribs_vs[vars->i],
+				ft_memcpy(&c->vertex_attribs_vs[vars->i - 1],
 					vars->vec4_init, sizeof(t_vec4));
 				vars->n = sett->instance
-					/ vars->v[vars->i].divisor + sett->base_instance;
+					/ vars->v[vars->i - 1].divisor + sett->base_instance;
 				vars->buf_pos = (t_u8 *)c->buffers.a[
-					vars->v[vars->i].buf].data + vars->v[vars->i].offset
-					+ vars->v[vars->i].stride * vars->n;
-				ft_memcpy(&c->vertex_attribs_vs[vars->i], vars->buf_pos,
-					sizeof(float) * vars->v[vars->i].size);
+					vars->v[vars->i - 1].buf].data + vars->v[vars->i - 1].offset
+					+ vars->v[vars->i - 1].stride * vars->n;
+				ft_memcpy(&c->vertex_attribs_vs[vars->i - 1], vars->buf_pos,
+					sizeof(float) * vars->v[vars->i - 1].size);
 			}
 		}
-		vars->i++;
 	}
 	cvec_reserve_gl_vertex(&c->glverts, sett->count);
 	c->builtins.gl_instance_id = sett->instance;
@@ -48,22 +47,39 @@ void	second_part(
 {
 	vars->vert = 0;
 	vars->i = sett->first;
-	if (!sett->use_elements)
-		while (vars->i < sett->first + sett->count)
-			do_vertex(c, vars, vars->i++, vars->vert++);
-	else
+	while (vars->i < sett->first + sett->count)
 	{
-		if (c->buffers.a[vars->elem_buffer].type == GL_UNSIGNED_BYTE)
-			while (vars->i < sett->first + sett->count)
-				do_vertex(c, vars, vars->ubyte_array[vars->i++], vars->vert++);
-		else if (c->buffers.a[vars->elem_buffer].type == GL_UNSIGNED_SHORT)
-			while (vars->i < sett->first + sett->count)
-				do_vertex(c, vars, vars->ushort_array[vars->i++], vars->vert++);
-		else if (c->buffers.a[vars->elem_buffer].type == GL_UNSIGNED_INT)
-			while (vars->i < sett->first + sett->count)
-				do_vertex(c, vars, vars->uint_array[vars->i++], vars->vert++);
+		if (!sett->use_elements)
+			do_vertex(c, vars, vars->i, vars->vert);
+		else
+		{
+			if (c->buffers.a[vars->elem_buffer].type == GL_UNSIGNED_BYTE)
+				do_vertex(c, vars, vars->ubyte_array[vars->i], vars->vert);
+			else if (c->buffers.a[vars->elem_buffer].type == GL_UNSIGNED_SHORT)
+				do_vertex(c, vars, vars->ushort_array[vars->i], vars->vert);
+			else if (c->buffers.a[vars->elem_buffer].type == GL_UNSIGNED_INT)
+				do_vertex(c, vars, vars->uint_array[vars->i], vars->vert);
+		}
+		vars->i++;
+		vars->vert++;
 	}
 }
+
+	// if (!sett->use_elements)
+	// 	while (vars->i < sett->first + sett->count)
+	// 		do_vertex(c, vars, vars->i++, vars->vert++);
+	// else
+	// {
+	// 	if (c->buffers.a[vars->elem_buffer].type == GL_UNSIGNED_BYTE)
+	// 		while (vars->i < sett->first + sett->count)
+	// 			do_vertex(c, vars, vars->ubyte_array[vars->i++], vars->vert++);
+	// 	else if (c->buffers.a[vars->elem_buffer].type == GL_UNSIGNED_SHORT)
+	// 		while (vars->i < sett->first + sett->count)
+	// 			do_vertex(c, vars, vars->ushort_array[vars->i++], vars->vert++);
+	// 	else if (c->buffers.a[vars->elem_buffer].type == GL_UNSIGNED_INT)
+	// 		while (vars->i < sett->first + sett->count)
+	// 			do_vertex(c, vars, vars->uint_array[vars->i++], vars->vert++);
+	// }
 
 void	vertex_stage(t_gl_context *c, t_pipeline_settings *sett)
 {

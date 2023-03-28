@@ -14,6 +14,10 @@ include src/cvec/cvec.mk
 
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
+MLX = MLX42/build/libmlx42.a
+MLXH = MLX42/include/MLX42
+GLFW = /usr/local/Cellar/glfw/3.3.8/lib/
+EXEMPLE_MLX = tests_exemples/exemples/using_mlx42/rotating_cube_mlx.c
 
 SRC	=	$(GL_BUFFER_SRC:%.c=$(GL_BUFFER_PATH)%.c) \
 			$(GL_COLOR_SRC:%.c=$(GL_COLOR_PATH)%.c) \
@@ -32,7 +36,7 @@ SRC	=	$(GL_BUFFER_SRC:%.c=$(GL_BUFFER_PATH)%.c) \
 SRC += $(LIBFT_DIR)/ft_realloc.c $(LIBFT_DIR)/ft_assert.c $(LIBFT_DIR)/ft_memcpy.c $(LIBFT_DIR)/ft_memmove.c
 
 OBJ = $(SRC:.c=.o)
-CFLAGS = -Isrc/ -I$(LIBFT_DIR) -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -I. -I$(LIBFT_DIR) -Wall -Wextra -Werror -fsanitize=address -g3
 NAME = lite_gl.a
 
 all: $(NAME)
@@ -46,10 +50,19 @@ $(NAME): $(OBJ)
 
 $(LIBFT): lib
 
+demo_mlx : $(NAME)
+	$(CC) -fsanitize=address -g3 -I. -I$(MLXH) -I$(LIBFT_DIR) -L$(GLFW) -lglfw $(EXEMPLE_MLX) $(MLX) $(NAME) -o $(EXEMPLE_MLX:.c=.out)
+
+exec_demo_mlx : demo_mlx
+	./$(EXEMPLE_MLX:.c=.out)
+
+run_tests : $(NAME)
+	$(MAKE) -C tests_exemples/testing/ re
+	./tests_exemples/testing/test.out $(TEST_ARGS)
+
 lib : 
 	$(MAKE) -C $(LIBFT_DIR)
 	@echo "Libft compiled"
-
 
 clean:
 	@rm -f $(OBJ)
@@ -57,6 +70,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f $(EXEMPLE_MLX:.c=.out)
 	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all

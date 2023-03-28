@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:24:58 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 17:59:43 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/24 17:45:37 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include <stdio.h>
 #include <SDL.h>
 #define SDL_MAIN_HANDLED
-#define WIDTH 640
-#define HEIGHT 480
+#define WIDTH 800
+#define HEIGHT 800
 
 t_vec4 Red = { 1.0f, 0.0f, 0.0f, 0.0f };
 t_vec4 Green = { 0.0f, 1.0f, 0.0f, 0.0f };
@@ -63,26 +63,8 @@ int main(int argc, char** argv)
 
 	proj_mat = identity_mat4();
 	make_perspective_matrix(proj_mat, radians(45), WIDTH/HEIGHT, new_float2(1, 20));
-	// printf("proj_mat:\n");
-	// for (int i = 0; i < 4; i++)
-	// {
-	// 	for (int j = 0; j < 4; j++)
-	// 		printf("%f ", proj_mat[i][j]);
-	// 	printf("\n");
-	// }
-	// 	printf("\n");
-
 	trans_mat = identity_mat4();
 	translation_mat4(trans_mat, 0, 0, -5);
-	// printf("trans_mat:\n");
-	// for (int i = 0; i < 4; i++)
-	// {
-	// 	for (int j = 0; j < 4; j++)
-	// 		printf("%f ", trans_mat[i][j]);
-	// 	printf("\n");
-	// }
-	// 	printf("\n");
-
 	vp_mat = identity_mat4();
 	mult_mat4_mat4(vp_mat, proj_mat, trans_mat);
 	// printf("vp_mat:\n");
@@ -113,6 +95,7 @@ int main(int argc, char** argv)
 	gl_use_program(&gl_context, myshader);
 	lgl_set_uniform(&gl_context, &the_uniforms);
 	the_uniforms.v_color = Red;
+	gl_polygon_mode(&gl_context, GL_BACK, GL_LINE);
 	gl_clear_color(&gl_context, new_float4(0, 0, 0, 1));
 	printf("starting main loop ...");
 	SDL_Event e;

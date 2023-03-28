@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:27:36 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/14 14:40:49 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/24 12:05:44 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,3 @@ void	draw_pixel(t_gl_context *c, t_vec4 cf, t_vec2 pos, float z)
 		return ;
 	blending(c, cf, pos);
 }
-	// pixel_put(c, (int)pos.x, (int)pos.y, color);

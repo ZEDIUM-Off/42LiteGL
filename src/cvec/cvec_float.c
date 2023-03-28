@@ -100,7 +100,7 @@ int	cvec_extend_float(t_cvector_float *vec, size_t num)
 	if (vec->capacity < vec->size + num)
 	{
 		tmp_sz = vec->capacity + num + CVEC_SIZE;
-		tmp = (float *)ft_realloc(vec->a, sizeof(float) * tmp_sz);
+		tmp = (float *)realloc(vec->a, sizeof(float) * tmp_sz);
 		if (!tmp)
 		{
 			ft_assert(tmp != NULL);

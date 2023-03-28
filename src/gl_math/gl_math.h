@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:59:33 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 21:13:49 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/22 11:33:46 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,9 @@ float	fract(float x);
 float	sq_dist_pt_segment2s(t_vec2 a, t_vec2 b, t_vec2 c);
 
 float	smooth_step(float edge0, float edge1, float x);
+
+void	print_mat4(t_mat4 mat, char *name);
+void	print_mat3(t_mat3 mat, char *name);
+void	print_mat2(t_mat2 mat, char *name);
 
 #endif

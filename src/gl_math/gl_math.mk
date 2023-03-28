@@ -50,14 +50,16 @@ VEC_SRC =	vectors/vec_mult.c \
 					vectors/vec_normalize.c \
 					vectors/vec_equal.c \
 					vectors/vec_cross.c \
-					vectors/init_vec.c
+					vectors/init_vec.c \
+					vectors/make_ivec.c
 
 GL_MATH_SRC = $(VEC_SRC) $(MAT_SRC)
 GL_MATH_SRC +=	op.c \
 						clamp.c \
 						mix.c \
 						smooth_step.c \
-						clampf.c
+						clampf.c \
+						print_mat.c \
 
 MATH_INCLUDE = -Igl_math.h
 

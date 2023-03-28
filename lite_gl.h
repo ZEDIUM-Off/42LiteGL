@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:31:11 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 10:29:48 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/22 10:47:45 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,23 @@
 # include <stdlib.h>
 # include <stdint.h>
 
-# include "types/types.h"
-# include "types/gl_struct.h"
-# include "types/gl_enum.h"
-# include "../libft/libft.h"
+# include "src/types/types.h"
+# include "src/types/gl_struct.h"
+// # include "src/types/gl_enum.h"
+# include "libft/libft.h"
 
-# include "cvec/cvec.h"
-# include "gl_buffers/gl_buffer.h"
-# include "gl_color/color.h"
-# include "gl_context/gl_context.h"
-# include "gl_draw/gl_draw.h"
-# include "gl_getters/gl_getters.h"
-# include "gl_line/gl_line.h"
-# include "gl_math/gl_math.h"
-# include "gl_shader/gl_shader.h"
-# include "gl_texture/gl_texture.h"
-# include "gl_utils/gl_utils.h"
-# include "gl_vertex_arrays/gl_vertex_arrays.h"
-# include "gl_vertex_attrib/gl_vertex_attrib.h"
+# include "src/cvec/cvec.h"
+# include "src/gl_buffers/gl_buffer.h"
+# include "src/gl_color/color.h"
+# include "src/gl_context/gl_context.h"
+# include "src/gl_draw/gl_draw.h"
+# include "src/gl_getters/gl_getters.h"
+# include "src/gl_line/gl_line.h"
+# include "src/gl_math/gl_math.h"
+# include "src/gl_shader/gl_shader.h"
+# include "src/gl_texture/gl_texture.h"
+# include "src/gl_utils/gl_utils.h"
+# include "src/gl_vertex_arrays/gl_vertex_arrays.h"
+# include "src/gl_vertex_attrib/gl_vertex_attrib.h"
 
 #endif

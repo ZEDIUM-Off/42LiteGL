@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:48:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 15:20:35 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/21 16:50:57 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	alloc_sten_buf(t_gl_context *c, t_context_settings *setts)
 	return (1);
 }
 
-//	init_mlx_context(c, setts);
 int	init_img_context(t_gl_context *c, t_context_settings *setts)
 {
 	int	bpp;

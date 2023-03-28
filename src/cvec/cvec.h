@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:23:03 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 10:36:19 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/28 11:30:01 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,27 @@ struct s_cvector_gl_program
 	t_gl_program	*a;
 	size_t			size;
 	size_t			capacity;
+};
+
+struct s_cvector_vec3
+{
+	t_vec3	*a;
+	size_t	size;
+	size_t	capacity;
+};
+
+struct s_cvector_ivec3
+{
+	t_ivec3	*a;
+	size_t	size;
+	size_t	capacity;
+};
+
+struct s_cvector_vec2
+{
+	t_vec2	*a;
+	size_t	size;
+	size_t	capacity;
 };
 
 int							cvec_float(
@@ -133,5 +154,15 @@ t_cvector_gl_vertex			*cvec_init_gl_vertex_heap(
 								t_gl_vertex *vals, size_t num);
 int							cvec_extend_gl_vertex(
 								t_cvector_gl_vertex *vec, size_t num);
+
+int							cvec_vec3(
+								t_cvector_vec3 *vec,
+								size_t size, size_t capacity);
+int							cvec_init_vec3(
+								t_cvector_vec3 *vec,
+								t_vec3 *vals, size_t num);
+t_cvector_vec3				*cvec_vec3_heap(size_t size, size_t capacity);
+t_cvector_vec3				*cvec_init_vec3_heap(t_vec3 *vals, size_t num);
+int							cvec_extend_vec3(t_cvector_vec3 *vec, size_t num);
 
 #endif

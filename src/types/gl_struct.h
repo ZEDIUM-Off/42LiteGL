@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:13:25 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/14 19:24:47 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/21 15:41:32 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,6 @@
 # include "gl_enum.h"
 # include "../cvec/cvec.h"
 # include "../gl_math/gl_math.h"
-
-struct s_mlx_env
-{
-	void		*mlx;
-	void		*win;
-	void		*img;
-	char		*img_addr;
-	int			bpp;
-	int			line_len;
-	int			endian;
-};
 
 struct s_multi_draw_arrays_settings
 {
@@ -164,7 +153,7 @@ struct s_glBuffer
 	t_gl_boolean	user_owned;
 };
 
-struct s_Color // rendre compatible avec mlx
+struct s_Color
 {
 	t_u8	r;
 	t_u8	g;

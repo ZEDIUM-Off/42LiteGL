@@ -38,5 +38,6 @@ GL_UTILS_SRC =	gl_line_width.c \
 								logic_ops_pixel.c \
 								vertex_stage.c \
 								do_vertex.c \
+								new_vec3.c \
 
 GL_UTILS_PATH = src/gl_utils/

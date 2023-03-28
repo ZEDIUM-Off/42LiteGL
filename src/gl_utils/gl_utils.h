@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 11:26:21 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/14 18:20:11 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/24 12:04:27 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,9 @@ t_gl_sizei		*new_sizei4(int x, int y, int z, int w);
 t_vec4			*new_vec42(t_vec4 v1, t_vec4 v2);
 t_vec4			*new_vec43(t_vec4 v1, t_vec4 v2, t_vec4 v3);
 t_vec4			*new_vec44(t_vec4 v1, t_vec4 v2, t_vec4 v3, t_vec4 v4);
+t_vec3			*new_vec32(t_vec3 v1, t_vec3 v2);
+t_vec3			*new_vec33(t_vec3 v1, t_vec3 v2, t_vec3 v3);
+t_vec3			*new_vec34(t_vec3 v1, t_vec3 v2, t_vec3 v3, t_vec3 v4);
 t_gl_vertex		**new_vertex2(t_gl_vertex *v1, t_gl_vertex *v2);
 t_gl_vertex		**new_vertex3(t_gl_vertex *v1, t_gl_vertex *v2,
 					t_gl_vertex *v3);

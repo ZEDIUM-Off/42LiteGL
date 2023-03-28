@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:50:17 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 10:45:55 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/28 10:55:54 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ struct s_vec4
 	float	y;
 	float	z;
 	float	w;
+};
+
+struct	s_ivec3
+{
+	int	x;
+	int	y;
+	int	z;
 };
 
 t_vec2	add_vec2s(t_vec2 v1, t_vec2 v2);
@@ -106,6 +113,8 @@ t_vec2	sub_vec2s(t_vec2 v1, t_vec2 v2);
 t_vec3	sub_vec3s(t_vec3 v1, t_vec3 v2);
 t_vec4	sub_vec4s(t_vec4 v1, t_vec4 v2);
 
-t_vec2	int_vec2(float x, float y);
+t_vec2	init_vec2(float x, float y);
+
+t_ivec3	make_ivec3(int x, int y, int z);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:49:57 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/14 10:34:44 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/24 12:05:04 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void	draw_line_shader(t_gl_context *c, t_vec4 *vertexes, float **v_out,
 {
 	t_draw_line_shader_vars	vars;
 
-	set_line_shader_vars(c, &vars, vertexes, &v_out);
+	set_line_shader_vars(c, &vars, vertexes, v_out);
 	if (vars.slope <= -1)
 		draw_line_shader_slope_less_minus_one(c, &vars, v_out, provoke);
 	else if (vars.slope <= 0)

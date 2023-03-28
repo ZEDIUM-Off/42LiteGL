@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 10:45:23 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 10:45:58 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/28 10:55:21 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-t_vec2	int_vec2(float x, float y)
+t_vec2	init_vec2(float x, float y)
 {
 	t_vec2	v;
 

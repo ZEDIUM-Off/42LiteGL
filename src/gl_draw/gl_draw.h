@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:46:27 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/14 12:04:08 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/24 11:53:03 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define GL_DRAW_H
 
 # include <lite_gl.h>
-
-void	pixel_put(t_mlx_env	*env, int x, int y, int color);
 
 void	draw_pixel(t_gl_context *c, t_vec4 cf, t_vec2 pos, float z);
 
@@ -78,6 +76,6 @@ int		draw_perp_line(t_gl_context *c, float slope, float *vx, float *vy);
 void	set_perp_line_vars(t_gl_context *c,
 			t_draw_line_shader_vars *vars, float *vx, float *vy);
 void	set_line_shader_vars(t_gl_context *c, t_draw_line_shader_vars *vars,
-			t_vec4 *vertexes, float ***v_out);
+			t_vec4 *vertexes, float **v_out);
 
 #endif

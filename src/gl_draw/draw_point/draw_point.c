@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:11:41 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/14 11:39:30 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/30 10:16:26 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	draw_point_part(t_gl_context *c, int *ij, t_vec4 point, float *fs_input)
 void	point_draw_loop(t_gl_context *c, float *xy,
 		t_vec4 point, float *fs_input)
 {
-	size_t	i;
-	size_t	j;
+	float	i;
+	float	j;
 
 	i = xy[1] - c->point_size / 2;
 	while (i < xy[1] + c->point_size / 2)

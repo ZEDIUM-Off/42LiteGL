@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:36:57 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 19:35:29 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/30 10:24:43 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ void	gl_tex_sub_image_2d(
 {
 	int		cur_tex;
 	t_u32	*texdata;
+	t_u32	*d;
 	int		i;
 
+	d = (t_u32 *)data;
 	cur_tex = c->bound_textures[target - GL_TEXTURE_UNBOUND - 1];
 	texdata = (t_u32 *)c->textures.a[cur_tex].data;
 	i = 0;
 	if (target == GL_TEXTURE_2D)
 		while (i++ < params->height)
 			ft_memcpy(&texdata[(params->yoffset + i) * c->textures.a[cur_tex].w
-				+ params->xoffset], &data[i * params->width],
+				+ params->xoffset], &d[i * params->width],
 				params->width * sizeof(t_u32));
 	else
 	{
@@ -37,6 +39,6 @@ void	gl_tex_sub_image_2d(
 			ft_memcpy(&texdata[c->textures.a[cur_tex].w
 				* c->textures.a[cur_tex].w * target + (params->yoffset + i)
 				* c->textures.a[cur_tex].w + params->xoffset],
-				&data[i * params->width], params->width * sizeof(t_u32));
+				&d[i * params->width], params->width * sizeof(t_u32));
 	}
 }

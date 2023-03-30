@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:40:08 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/24 12:24:00 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/30 14:41:44 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,25 @@ void	first_part(
 {
 	while (vars->i < GL_MAX_VERTEX_ATTRIBS)
 	{
-		if (vars->v[vars->i++].enabled)
+		if (vars->v[vars->i].enabled)
 		{
-			if (vars->v[vars->i - 1].divisor == 0)
-				vars->enabled[vars->num_enabled++] = vars->i - 1;
-			else if (!(sett->instance % vars->v[vars->i - 1].divisor))
+			if (vars->v[vars->i].divisor == 0)
+				vars->enabled[vars->num_enabled++] = vars->i;
+			else if (!(sett->instance % vars->v[vars->i].divisor))
 			{
-				ft_memcpy(&c->vertex_attribs_vs[vars->i - 1],
+				ft_memcpy(&c->vertex_attribs_vs[vars->i],
 					vars->vec4_init, sizeof(t_vec4));
 				vars->n = sett->instance
-					/ vars->v[vars->i - 1].divisor + sett->base_instance;
+					/ vars->v[vars->i].divisor + sett->base_instance;
 				vars->buf_pos = (t_u8 *)c->buffers.a[
-					vars->v[vars->i - 1].buf].data + vars->v[vars->i - 1].offset
-					+ vars->v[vars->i - 1].stride * vars->n;
-				ft_memcpy(&c->vertex_attribs_vs[vars->i - 1], vars->buf_pos,
-					sizeof(float) * vars->v[vars->i - 1].size);
+					vars->v[vars->i].buf].data + vars->v[vars->i].offset
+					+ vars->v[vars->i].stride * vars->n;
+				ft_memcpy(&c->vertex_attribs_vs[vars->i], vars->buf_pos,
+					sizeof(float) * vars->v[vars->i].size);
 			}
 		}
+		vars->i++;
 	}
-	cvec_reserve_gl_vertex(&c->glverts, sett->count);
-	c->builtins.gl_instance_id = sett->instance;
-	vars->uint_array = (t_gl_uint *)c->buffers.a[vars->elem_buffer].data;
-	vars->ushort_array = (t_gl_ushort *)c->buffers.a[vars->elem_buffer].data;
-	vars->ubyte_array = (t_gl_ubyte *)c->buffers.a[vars->elem_buffer].data;
 }
 
 void	second_part(
@@ -91,5 +87,10 @@ void	vertex_stage(t_gl_context *c, t_pipeline_settings *sett)
 	vars.i = 0;
 	vars.num_enabled = 0;
 	first_part(c, sett, &vars);
+	cvec_reserve_gl_vertex(&c->glverts, sett->count);
+	c->builtins.gl_instance_id = sett->instance;
+	vars.uint_array = (t_gl_uint *)c->buffers.a[vars.elem_buffer].data;
+	vars.ushort_array = (t_gl_ushort *)c->buffers.a[vars.elem_buffer].data;
+	vars.ubyte_array = (t_gl_ubyte *)c->buffers.a[vars.elem_buffer].data;
 	second_part(c, sett, &vars);
 }

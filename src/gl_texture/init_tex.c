@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 09:38:53 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/10 09:42:40 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/30 10:20:03 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	init_tex(t_gl_texture tex, t_gl_enum target)
 {
+	if (tex.deleted)
+		return ;
 	tex.type = target;
 	tex.mag_filter = GL_LINEAR;
 	tex.min_filter = GL_LINEAR;

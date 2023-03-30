@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:56:06 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/14 17:25:03 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/30 10:26:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	gl_clipcode(t_gl_context *c, t_vec4 pt)
 	return (
 		(((pt.z < -w)
 				| ((pt.z > w) << 1))
-			& (!c->depth_clamp
+			& ((!c->depth_clamp)
 				| !c->depth_clamp << 1))
 		| ((pt.x < -w) << 2)
 		| ((pt.x > w) << 3)

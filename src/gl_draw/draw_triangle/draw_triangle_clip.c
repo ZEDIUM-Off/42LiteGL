@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:11:13 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/14 12:12:13 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/30 10:17:19 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,14 @@ void	draw_tri_clip_two_pts_out(
 void	draw_triangle_clip(
 	t_gl_context *c, t_gl_vertex **v, unsigned int provoke, int clip_bit)
 {
-	if (v[0]->clip_code | v[1]->clip_code | v[2]->clip_code == 0)
+	if (v[0]->clip_code | v[1]->clip_code | (v[2]->clip_code == 0))
 		draw_triangle_final(c, v, provoke);
 	else
 	{
-		if (v[0]->clip_code & v[1]->clip_code & v[2]->clip_code != 0)
+		if (v[0]->clip_code & v[1]->clip_code & (v[2]->clip_code != 0))
 			return ;
 		while (clip_bit < 6
-			&& ((v[0]->clip_code | v[1]->clip_code | v[2]->clip_code == 0)
+			&& ((v[0]->clip_code | v[1]->clip_code | (v[2]->clip_code == 0))
 				& (1 << clip_bit)) == 0)
 			++clip_bit;
 		if (clip_bit == 6)

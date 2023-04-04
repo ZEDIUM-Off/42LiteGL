@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:24:58 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/30 13:05:51 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/30 17:32:18 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int main(int argc, char** argv)
 	gl_use_program(&gl_context, myshader);
 	lgl_set_uniform(&gl_context, &the_uniforms);
 	the_uniforms.v_color = Red;
-	gl_polygon_mode(&gl_context, GL_BACK, GL_POINT);
+	gl_polygon_mode(&gl_context, GL_BACK, GL_LINE);
 	gl_clear_color(&gl_context, new_float4(0, 0, 0, 1));
 	printf("starting main loop ...");
 	SDL_Event e;

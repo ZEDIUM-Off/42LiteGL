@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 10:45:30 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/30 11:20:55 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/30 17:38:51 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include <lite_gl.h>
 # include <stdio.h>
 # include <string.h>
-# include <MLX42.h>
+# include <mlx.h>
+# include <mlx_int.h>
 # include <unistd.h>
 
 # define WIDTH 640
@@ -33,8 +34,13 @@ typedef struct litegl_test
 
 typedef struct s_mlx_env
 {
-	mlx_t		*mlx;
-	mlx_image_t	*img;
+	t_xvar		*mlx;
+	t_win_list	*win;
+	t_img		*img;
+	/*char		*img_addr;
+	int			bpp;
+	int			line_len;
+	int			endian;*/
 }	t_mlx_env;
 
 t_mlx_env		g_mlx_env;
@@ -64,7 +70,10 @@ int	find_test(char *name)
 
 void	init_mlx(void)
 {
-	g_mlx_env.mlx = mlx_init(WIDTH, HEIGHT, "tests", true);
+	g_mlx_env.mlx = mlx_init();
+	g_mlx_env.mlx->use_xshm = 1;
+	g_mlx_env.win = mlx_new_window(g_mlx_env.mlx,
+			WIDTH, HEIGHT, "42LiteGL - tests");
 	if (!g_mlx_env.mlx)
 	{
 		puts("Failed to initialize mlx");
@@ -75,20 +84,31 @@ void	init_mlx(void)
 
 void	free_mlx(void)
 {
-	mlx_terminate(g_mlx_env.mlx);
+	mlx_destroy_window(g_mlx_env.mlx, g_mlx_env.win);
+	mlx_destroy_display(g_mlx_env.mlx);
+	free(g_mlx_env.mlx);
 }
+
+// t_u32	*img_buffer;
+
+// void	my_mlx_put_image_to_window(t_mlx_env *mlx_env, t_u32 *img, int x, int y)
+// {
+
+// 	mlx_put_image_to_window(mlx_env->mlx, mlx_env->win, mlx_env->img, x, y);
+// }
 
 void	setup_context(t_gl_context *c)
 {
 	g_mlx_env.img = mlx_new_image(g_mlx_env.mlx, WIDTH, HEIGHT);
+	g_mlx_env.img->type = MLX_TYPE_XIMAGE;
 	if (!init_gl_context(c, (t_context_settings){
-			(t_u32 **)&g_mlx_env.img->pixels, WIDTH, HEIGHT, 32,
+			(t_u32 **)&g_mlx_env.img->data, WIDTH, HEIGHT, 32,
 			0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000}))
 	{
 		puts("Failed to initialize glContext");
 		exit(0);
 	}
-	mlx_image_to_window(g_mlx_env.mlx, g_mlx_env.img, 0, 0);
+	mlx_put_image_to_window(g_mlx_env.mlx, g_mlx_env.win, g_mlx_env.img, 0, 0);
 	printf("Context initialized\n");
 }
 

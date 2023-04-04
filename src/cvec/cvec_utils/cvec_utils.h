@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:50:46 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 14:57:00 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/03 12:55:28 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,29 @@ void				cvec_erase_gl_vertex(
 int					cvec_reserve_gl_vertex(
 						t_cvector_gl_vertex *vec, size_t size);
 t_gl_vertex			*cvec_back_gl_vertex(t_cvector_gl_vertex *vec);
+
+t_vec3				cvec_replace_vec3(
+						t_cvector_vec3 *vec, size_t i, t_vec3 a);
+void				cvec_erase_vec3(
+						t_cvector_vec3 *vec, size_t start, size_t end);
+int					cvec_reserve_vec3(
+						t_cvector_vec3 *vec, size_t size);
+t_vec3				*cvec_back_vec3(t_cvector_vec3 *vec);
+
+t_ivec3				cvec_replace_ivec3(
+						t_cvector_ivec3 *vec, size_t i, t_ivec3 a);
+void				cvec_erase_ivec3(
+						t_cvector_ivec3 *vec, size_t start, size_t end);
+int					cvec_reserve_ivec3(
+						t_cvector_ivec3 *vec, size_t size);
+t_ivec3				*cvec_back_ivec3(t_cvector_ivec3 *vec);
+
+t_vec2				cvec_replace_vec2(
+						t_cvector_vec2 *vec, size_t i, t_vec2 a);
+void				cvec_erase_vec2(
+						t_cvector_vec2 *vec, size_t start, size_t end);
+int					cvec_reserve_vec2(
+						t_cvector_vec2 *vec, size_t size);
+t_vec2				*cvec_back_vec2(t_cvector_vec2 *vec);
 
 #endif

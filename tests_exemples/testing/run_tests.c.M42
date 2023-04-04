@@ -6,12 +6,12 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 10:40:29 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/30 10:49:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/03/30 11:21:32 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
-// #include <MLX42.h>
+#include <MLX42.h>
 #include "tests.h"
 
 int	run_test(t_gl_context *c, int test_num)
@@ -37,7 +37,7 @@ int	run_tests(t_gl_context *c, int argc, char **argv)
 			have_failure |= run_test(c, i);
 			printf("===== [%s] waiting 30 seconds =====\n",  g_tests[i].name);
 			sleep(30);
-			mlx_destroy_image(g_mlx_env.mlx, g_mlx_env.img);
+			mlx_delete_image(g_mlx_env.mlx, g_mlx_env.img);
 			i++;
 		}
 	}

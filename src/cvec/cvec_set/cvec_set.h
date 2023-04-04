@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:48:48 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 14:57:12 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/03 12:54:17 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,17 @@ void	cvec_set_val_cap_gl_vertex_array(
 int		cvec_set_cap_gl_vertex(t_cvector_gl_vertex *vec, size_t size);
 void	cvec_set_val_sz_gl_vertex(t_cvector_gl_vertex *vec, t_gl_vertex val);
 void	cvec_set_val_cap_gl_vertex(t_cvector_gl_vertex *vec, t_gl_vertex val);
+
+int		cvec_set_cap_vec3(t_cvector_vec3 *vec, size_t size);
+void	cvec_set_val_sz_vec3(t_cvector_vec3 *vec, t_vec3 val);
+void	cvec_set_val_cap_vec3(t_cvector_vec3 *vec, t_vec3 val);
+
+int		cvec_set_cap_ivec3(t_cvector_ivec3 *vec, size_t size);
+void	cvec_set_val_sz_ivec3(t_cvector_ivec3 *vec, t_ivec3 val);
+void	cvec_set_val_cap_ivec3(t_cvector_ivec3 *vec, t_ivec3 val);
+
+int		cvec_set_cap_vec2(t_cvector_vec2 *vec, size_t size);
+void	cvec_set_val_sz_vec2(t_cvector_vec2 *vec, t_vec2 val);
+void	cvec_set_val_cap_vec2(t_cvector_vec2 *vec, t_vec2 val);
 
 #endif

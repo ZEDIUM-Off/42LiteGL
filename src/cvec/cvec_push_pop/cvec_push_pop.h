@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:43:58 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 14:55:59 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/03 12:53:37 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,17 @@ t_gl_vertex_array	cvec_pop_gl_vertex_array(t_cvector_gl_vertex_array *vec);
 int					cvec_push_gl_vertex(
 						t_cvector_gl_vertex *vec, t_gl_vertex a);
 t_gl_vertex			cvec_pop_gl_vertex(t_cvector_gl_vertex *vec);
+
+int					cvec_push_vec3(
+						t_cvector_vec3 *vec, t_vec3 a);
+t_vec3				cvec_pop_vec3(t_cvector_vec3 *vec);
+
+int					cvec_push_ivec3(
+						t_cvector_ivec3 *vec, t_ivec3 a);
+t_ivec3				cvec_pop_ivec3(t_cvector_ivec3 *vec);
+
+int					cvec_push_vec2(
+						t_cvector_vec2 *vec, t_vec2 a);
+t_vec2				cvec_pop_vec2(t_cvector_vec2 *vec);
 
 #endif

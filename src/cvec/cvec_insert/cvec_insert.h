@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:42:12 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 14:55:22 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/03 12:51:08 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,17 @@ int	cvec_insert_array_gl_vertex_array(
 int	cvec_insert_gl_vertex(t_cvector_gl_vertex *vec, size_t i, t_gl_vertex a);
 int	cvec_insert_array_gl_vertex(
 		t_cvector_gl_vertex *vec, size_t i, t_gl_vertex *a, size_t n);
+
+int	cvec_insert_vec3(t_cvector_vec3 *vec, size_t i, t_vec3 a);
+int	cvec_insert_array_vec3(
+		t_cvector_vec3 *vec, size_t i, t_vec3 *a, size_t n);
+
+int	cvec_insert_ivec3(t_cvector_ivec3 *vec, size_t i, t_ivec3 a);
+int	cvec_insert_array_ivec3(
+		t_cvector_ivec3 *vec, size_t i, t_ivec3 *a, size_t n);
+
+int	cvec_insert_vec2(t_cvector_vec2 *vec, size_t i, t_vec2 a);
+int	cvec_insert_array_vec2(
+		t_cvector_vec2 *vec, size_t i, t_vec2 *a, size_t n);
 
 #endif

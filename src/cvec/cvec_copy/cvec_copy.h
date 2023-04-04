@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:40:05 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/07 09:41:44 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/03 12:48:49 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,14 @@ int	cvec_copyc_gl_vertex_array(void *dest, void *src);
 
 int	cvec_copy_gl_vertex(t_cvector_gl_vertex *dest, t_cvector_gl_vertex *src);
 int	cvec_copyc_gl_vertex(void *dest, void *src);
+
+int	cvec_copy_vec2(t_cvector_vec2 *dest, t_cvector_vec2 *src);
+int	cvec_copyc_vec2(void *dest, void *src);
+
+int	cvec_copy_vec3(t_cvector_vec3 *dest, t_cvector_vec3 *src);
+int	cvec_copyc_vec3(void *dest, void *src);
+
+int	cvec_copy_ivec3(t_cvector_ivec3 *dest, t_cvector_ivec3 *src);
+int	cvec_copyc_ivec3(void *dest, void *src);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 10:45:30 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/30 17:38:51 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/04 10:40:45 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,6 @@ typedef struct s_mlx_env
 	t_xvar		*mlx;
 	t_win_list	*win;
 	t_img		*img;
-	/*char		*img_addr;
-	int			bpp;
-	int			line_len;
-	int			endian;*/
 }	t_mlx_env;
 
 t_mlx_env		g_mlx_env;
@@ -71,7 +67,6 @@ int	find_test(char *name)
 void	init_mlx(void)
 {
 	g_mlx_env.mlx = mlx_init();
-	g_mlx_env.mlx->use_xshm = 1;
 	g_mlx_env.win = mlx_new_window(g_mlx_env.mlx,
 			WIDTH, HEIGHT, "42LiteGL - tests");
 	if (!g_mlx_env.mlx)
@@ -108,7 +103,6 @@ void	setup_context(t_gl_context *c)
 		puts("Failed to initialize glContext");
 		exit(0);
 	}
-	mlx_put_image_to_window(g_mlx_env.mlx, g_mlx_env.win, g_mlx_env.img, 0, 0);
 	printf("Context initialized\n");
 }
 

@@ -6,12 +6,11 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 10:40:29 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/30 10:49:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/04 10:41:52 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
-// #include <MLX42.h>
 #include "tests.h"
 
 int	run_test(t_gl_context *c, int test_num)
@@ -19,6 +18,7 @@ int	run_test(t_gl_context *c, int test_num)
 	printf("Testing %s...\n", g_tests[test_num].name);
 	setup_context(c);
 	g_tests[test_num].test_func(c, g_tests[test_num].num, NULL, NULL);
+	mlx_put_image_to_window(g_mlx_env.mlx, g_mlx_env.win, g_mlx_env.img, 0, 0);
 	mlx_loop(g_mlx_env.mlx);
 }
 

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:11:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/30 15:58:22 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/04 10:40:44 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,8 @@ void	do_vertex(
 	unsigned int	j;
 
 	j = 0;
-	printf("vars->num_enabled = %d \n", vars->num_enabled);
 	while (j < vars->num_enabled)
 	{
-		printf("j = %d \n", j);
-		printf("vars->v[vars->enabled[%d]].buf = %p\n", j, &vars->v[vars->enabled[j]].buf);
 		buf_pos = (t_u8 *)c->buffers.a[vars->v[vars->enabled[j]].buf].data
 			+ vars->v[vars->enabled[j]].offset
 			+ vars->v[vars->enabled[j]].stride * i;

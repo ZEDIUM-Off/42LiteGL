@@ -10,9 +10,9 @@ MLX = $(MLX_DIR)libmlx.a
 all: $(NAME)
 
 $(NAME): $(OBJS) tests.h
-	$(CC) $(CFLAGS) $(OBJS) $(LITE_GL) $(MLX) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LITE_GL) $(MLX) -o $(NAME) # */usr/X11/lib/libX11.dylib /usr/local/Cellar/libxext/1.3.5/lib/libXext.dylib *#
 
-%.o: %.c $(MLX)
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

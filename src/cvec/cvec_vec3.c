@@ -6,44 +6,11 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:30:21 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/28 11:35:39 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/03 12:37:48 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
-
-int	cvec_vec3(t_cvector_vec3 *vec, size_t size, size_t capacity)
-{
-	vec->size = size;
-	vec->capacity = vec->size + CVEC_SIZE;
-	if (capacity > vec->size || (vec->size && capacity == vec->size))
-		vec->capacity = capacity;
-	vec->a = (t_vec3 *)malloc(sizeof(t_vec3) * vec->capacity);
-	if (!vec->a)
-	{
-		ft_assert(vec->a != NULL);
-		vec->size = 0;
-		vec->capacity = 0;
-		return (0);
-	}
-	return (1);
-}
-
-int	cvec_init_vec3(t_cvector_vec3 *vec, t_vec3 *vals, size_t num)
-{
-	vec->size = num;
-	vec->capacity = vec->size + CVEC_SIZE;
-	vec->a = (t_vec3 *)malloc(sizeof(t_vec3) * vec->capacity);
-	if (!vec->a)
-	{
-		ft_assert(vec->a != NULL);
-		vec->size = 0;
-		vec->capacity = 0;
-		return (0);
-	}
-	ft_memmove(vec->a, vals, sizeof(t_vec3) * num);
-	return (1);
-}
 
 t_cvector_vec3	*cvec_vec3_heap(size_t size, size_t capacity)
 {
@@ -59,7 +26,7 @@ t_cvector_vec3	*cvec_vec3_heap(size_t size, size_t capacity)
 	vec->capacity = vec->size + CVEC_SIZE;
 	if (capacity > vec->size || (vec->size && capacity == vec->size))
 		vec->capacity = capacity;
-	vec->a = (t_vec3 *)malloc(sizeof(t_vec3) * vec->capacity);
+	vec->a = (t_vec3 *)malloc(vec->capacity * sizeof(t_vec3));
 	if (!vec->a)
 	{
 		ft_assert(vec->a != NULL);
@@ -79,9 +46,9 @@ t_cvector_vec3	*cvec_init_vec3_heap(t_vec3 *vals, size_t num)
 		ft_assert(vec != NULL);
 		return (NULL);
 	}
+	vec->capacity = num + CVEC_SIZE;
 	vec->size = num;
-	vec->capacity = vec->size + CVEC_SIZE;
-	vec->a = (t_vec3 *)malloc(sizeof(t_vec3) * vec->capacity);
+	vec->a = (t_vec3 *)malloc(vec->capacity * sizeof(t_vec3));
 	if (!vec->a)
 	{
 		ft_assert(vec->a != NULL);
@@ -90,6 +57,40 @@ t_cvector_vec3	*cvec_init_vec3_heap(t_vec3 *vals, size_t num)
 	}
 	ft_memmove(vec->a, vals, sizeof(t_vec3) * num);
 	return (vec);
+}
+
+int	cvec_vec3(t_cvector_vec3 *vec, size_t size, size_t capacity)
+{
+	vec->size = size;
+	vec->capacity = vec->size + CVEC_SIZE;
+	if (capacity > vec->size || (vec->size && capacity == vec->size))
+		vec->capacity = capacity;
+	vec->a = (t_vec3 *)malloc(vec->capacity * sizeof(t_vec3));
+	if (!vec->a)
+	{
+		ft_assert(vec->a != NULL);
+		vec->size = 0;
+		vec->capacity = 0;
+		return (0);
+	}
+	return (1);
+}
+
+int	cvec_init_vec3(
+	t_cvector_vec3 *vec, t_vec3 *vals, size_t num)
+{
+	vec->capacity = num + CVEC_SIZE;
+	vec->size = num;
+	vec->a = (t_vec3 *)malloc(vec->capacity * sizeof(t_vec3));
+	if (!vec->a)
+	{
+		ft_assert(vec->a != NULL);
+		vec->size = 0;
+		vec->capacity = 0;
+		return (0);
+	}
+	ft_memmove(vec->a, vals, sizeof(t_vec3) * num);
+	return (1);
 }
 
 int	cvec_extend_vec3(t_cvector_vec3 *vec, size_t num)

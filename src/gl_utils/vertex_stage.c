@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:40:08 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/30 16:14:03 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/04 11:26:06 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	vertex_stage(t_gl_context *c, t_pipeline_settings *sett)
 	static t_vertex_stage_vars	vars;
 
 	vars.vec4_init = new_float4(0, 0, 0, 1);
-	printf ("vertex_stage - c->cur_vertex_array: %d \n", c->cur_vertex_array);
 	vars.v = c->vertex_arrays.a[c->cur_vertex_array].vertex_attribs;
 	vars.elem_buffer = c->vertex_arrays.a[c->cur_vertex_array].element_buffer;
 	vars.i = 0;

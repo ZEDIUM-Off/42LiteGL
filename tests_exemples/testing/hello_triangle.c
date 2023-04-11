@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 10:14:00 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/31 11:22:43 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/04 13:41:28 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	set_shader_and_uniform(t_gl_context	*c)
 	myshader = lgl_create_program(c, prog_attr, NULL);
 	gl_use_program(c, myshader);
 	lgl_set_uniform(c, &uniforms);
-	uniforms.v_color = (t_vec4){1.0, 1.0, 0.0, 0.0};
+	uniforms.v_color = (t_vec4){0.0, 0.0, 1.0, 0.0};
 	uniforms.mvp_mat = identity_mat4();
 }
 
@@ -73,7 +73,7 @@ void	hello_triangle(t_gl_context *c, int argc, char **argv, void *data)
 	set_triangle(c);
 	set_shader_and_uniform(c);
 	// gl_polygon_mode(c, GL_FRONT_AND_BACK, GL_LINE);
-	gl_clear_color(c, new_float4(1.0f, 1.0f, 0.0f, 1.0f));
+	gl_clear_color(c, new_float4(0.0f, 1.0f, 0.0f, 1.0f));
 	gl_clear(c, GL_COLOR_BUFFER_BIT);
 	gl_draw_arrays(c, GL_TRIANGLES, 0, 3);
 }

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 10:45:30 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/31 11:28:47 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/04 10:40:45 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,18 @@ void	free_mlx(void)
 	free(g_mlx_env.mlx);
 }
 
+// t_u32	*img_buffer;
+
+// void	my_mlx_put_image_to_window(t_mlx_env *mlx_env, t_u32 *img, int x, int y)
+// {
+
+// 	mlx_put_image_to_window(mlx_env->mlx, mlx_env->win, mlx_env->img, x, y);
+// }
+
 void	setup_context(t_gl_context *c)
 {
 	g_mlx_env.img = mlx_new_image(g_mlx_env.mlx, WIDTH, HEIGHT);
+	g_mlx_env.img->type = MLX_TYPE_XIMAGE;
 	if (!init_gl_context(c, (t_context_settings){
 			(t_u32 **)&g_mlx_env.img->data, WIDTH, HEIGHT, 32,
 			0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000}))

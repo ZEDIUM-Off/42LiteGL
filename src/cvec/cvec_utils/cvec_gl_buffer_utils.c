@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:49:03 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/21 16:09:20 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 13:09:05 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int	cvec_reserve_gl_buffer(t_cvector_gl_buffer *vec, size_t size)
 	if (vec->capacity < size)
 	{
 		tmp = (t_gl_buffer *)ft_realloc(
-				vec->a, sizeof(t_gl_buffer) * (size + CVEC_SIZE));
+				vec->a, sizeof(t_gl_buffer) * (size + CVEC_SIZE),
+				vec->capacity * sizeof(t_gl_buffer));
 		if (!tmp)
 		{
 			ft_assert(tmp != NULL);

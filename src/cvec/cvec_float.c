@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:25:43 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 10:36:50 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 11:42:05 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ int	cvec_extend_float(t_cvector_float *vec, size_t num)
 	if (vec->capacity < vec->size + num)
 	{
 		tmp_sz = vec->capacity + num + CVEC_SIZE;
-		tmp = (float *)realloc(vec->a, sizeof(float) * tmp_sz);
+		tmp = (float *)ft_realloc(vec->a, sizeof(float) * tmp_sz,
+				sizeof(float) * vec->capacity);
 		if (!tmp)
 		{
 			ft_assert(tmp != NULL);

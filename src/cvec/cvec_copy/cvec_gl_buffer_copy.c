@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:45:44 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/21 16:09:20 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 12:41:16 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	cvec_copy_gl_buffer(t_cvector_gl_buffer	*dest, t_cvector_gl_buffer *src)
 	t_gl_buffer	*tmp;
 
 	tmp = (t_gl_buffer *)ft_realloc(
-			dest->a, src->capacity * sizeof(t_gl_buffer));
+			dest->a, src->capacity * sizeof(t_gl_buffer),
+			dest->capacity * sizeof(t_gl_buffer));
 	if (!tmp)
 	{
 		ft_assert(tmp != NULL);

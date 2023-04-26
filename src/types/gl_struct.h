@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:13:25 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/21 15:41:32 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/26 10:52:08 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ struct s_glVertex
 	float		*vs_out;
 };
 
-struct s_glFramebuffer // surement remplacer par qq chose lie a la mlx
+struct s_glFramebuffer
 {
 	t_u8		*buf;
 	t_u8		*lastrow;

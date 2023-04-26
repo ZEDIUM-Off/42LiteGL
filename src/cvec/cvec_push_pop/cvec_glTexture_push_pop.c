@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:23:12 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/21 16:09:20 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 12:47:57 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	cvec_push_gl_texture(t_cvector_gl_texture *vec, t_gl_texture a)
 	else
 	{
 		tmp_sz = ((vec->capacity + 1) * 2);
-		tmp = (t_gl_texture *)ft_realloc(vec->a, sizeof(t_gl_texture) * tmp_sz);
+		tmp = (t_gl_texture *)ft_realloc(vec->a, sizeof(t_gl_texture) * tmp_sz,
+				vec->capacity * sizeof(t_gl_texture));
 		if (!tmp)
 		{
 			ft_assert(tmp != NULL);

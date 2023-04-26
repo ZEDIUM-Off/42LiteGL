@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:30:21 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/21 16:09:20 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 12:42:06 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	cvec_copy_gl_program(
 	t_gl_program	*tmp;
 
 	tmp = (t_gl_program *)ft_realloc(
-			dest->a, src->capacity * sizeof(t_gl_program));
+			dest->a, src->capacity * sizeof(t_gl_program),
+			dest->capacity * sizeof(t_gl_program));
 	if (!tmp)
 	{
 		ft_assert(tmp != NULL);

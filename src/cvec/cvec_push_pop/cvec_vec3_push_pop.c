@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:33:04 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/03 12:33:33 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 12:48:47 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	cvec_push_vec3(t_cvector_vec3 *vec, t_vec3 a)
 	else
 	{
 		tmp_sz = ((vec->capacity + 1) * 2);
-		tmp = (t_vec3 *)ft_realloc(vec->a, sizeof(t_vec3) * tmp_sz);
+		tmp = (t_vec3 *)ft_realloc(vec->a, sizeof(t_vec3) * tmp_sz,
+				vec->capacity * sizeof(t_vec3));
 		if (!tmp)
 		{
 			ft_assert(tmp != NULL);

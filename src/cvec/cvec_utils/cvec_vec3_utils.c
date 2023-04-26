@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:18:28 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/03 12:31:25 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 13:10:29 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	cvec_reserve_vec3(t_cvector_vec3 *vec, size_t size)
 
 	if (vec->capacity < size)
 	{
-		new = (t_vec3 *)ft_realloc(vec->a, sizeof(t_vec3) * (size + CVEC_SIZE));
+		new = (t_vec3 *)ft_realloc(vec->a, sizeof(t_vec3) * (size + CVEC_SIZE),
+				vec->capacity * sizeof(t_vec3));
 		if (!new)
 		{
 			ft_assert(new != NULL);

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:30:21 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/03 12:37:48 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 13:12:23 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,8 @@ int	cvec_extend_vec3(t_cvector_vec3 *vec, size_t num)
 	if (vec->capacity < vec->size + num)
 	{
 		tmp_sz = vec->capacity + num + CVEC_SIZE;
-		tmp = (t_vec3 *)ft_realloc(vec->a, sizeof(t_vec3) * tmp_sz);
+		tmp = (t_vec3 *)ft_realloc(vec->a, sizeof(t_vec3) * tmp_sz,
+				sizeof(t_vec3) * vec->capacity);
 		if (!tmp)
 		{
 			ft_assert(tmp != NULL);

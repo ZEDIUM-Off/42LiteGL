@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:00:22 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/03 13:00:42 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 12:46:58 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	cvec_insert_vec2(t_cvector_vec2 *vec, size_t i, t_vec2 a)
 	else
 	{
 		tmp_sz = (vec->capacity + 1) * 2;
-		tmp = (t_vec2 *)ft_realloc(vec->a, sizeof(t_vec2) * tmp_sz);
+		tmp = (t_vec2 *)ft_realloc(vec->a, sizeof(t_vec2) * tmp_sz,
+				vec->capacity * sizeof(t_vec2));
 		if (!tmp)
 			return (ft_assert(tmp != NULL), 0);
 		vec->a = tmp;
@@ -48,7 +49,8 @@ int	cvec_insert_array_vec2(
 	if (vec->capacity < vec->size + num)
 	{
 		tmp_sz = vec->capacity + num + CVEC_SIZE;
-		tmp = (t_vec2 *)ft_realloc(vec->a, sizeof(t_vec2) * tmp_sz);
+		tmp = (t_vec2 *)ft_realloc(vec->a, sizeof(t_vec2) * tmp_sz,
+				vec->capacity * sizeof(t_vec2));
 		if (!tmp)
 		{
 			ft_assert(tmp != NULL);

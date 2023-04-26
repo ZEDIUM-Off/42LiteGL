@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:40:32 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/21 16:09:20 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 12:42:27 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	cvec_copy_float(t_cvector_float *dest, t_cvector_float *src)
 {
 	float	*tmp;
 
-	tmp = (float *)ft_realloc(dest->a, src->capacity * sizeof(float));
+	tmp = (float *)ft_realloc(dest->a, src->capacity * sizeof(float),
+			dest->capacity * sizeof(float));
 	if (!tmp)
 	{
 		ft_assert(tmp != NULL);

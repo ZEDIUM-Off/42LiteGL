@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:56:18 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/23 12:22:08 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/26 10:54:15 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ void	set_bufs(t_gl_context *c, t_context_settings *s)
 	get_shift(s->g_mask, &c->g_shift);
 	get_shift(s->b_mask, &c->b_shift);
 	get_shift(s->a_mask, &c->a_shift);
+	// printf("c->zbuf.lastrow = %p \n", c->zbuf.lastrow);
+	// for (int i = 0; c->zbuf.lastrow[i]; i++)
+	// 	printf("c->zbuf.lastrow[i] = %d \n", c->zbuf.lastrow[i]);
 }
 
 void	set_text(t_gl_context *c)
@@ -97,7 +100,7 @@ void	set_context_vars(t_gl_context *c, t_context_settings *s)
 	c->point_size = 1.0f;
 	c->line_width = 1.0f;
 	c->clear_depth = 1.0f;
-	c->depth_range_near = 0.0f;
+	c->depth_range_near = 0.2f;
 	c->depth_range_far = 1.0f;
 	c->vp_mat = identity_mat4();
 	make_viewport_matrix(c->vp_mat,

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 20:43:26 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/14 12:46:39 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 15:43:03 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	in_loop(t_gl_context *c, t_gl_vertex *vert, unsigned int provoke,
 	while (j++ < c->vs_output.size)
 	{
 		if (c->vs_output.interpolation[j] != FLAT)
-			*fs_input[j] = vert->vs_out[j];
+			(*fs_input)[j] = vert->vs_out[j];
 		else
-			*fs_input[j] = c->vs_output.output_buf.a[
+			(*fs_input)[j] = c->vs_output.output_buf.a[
 				provoke * c->vs_output.size + j];
 	}
 }
@@ -37,7 +37,7 @@ void	draw_triangle_point(
 
 	i = 0;
 	fs_input = (float *)malloc(sizeof(float) * GL_MAX_VERTEX_OUTPUT_COMPONENTS);
-	while (i++ < 3)
+	while (i < 3)
 	{
 		if (!vert[i]->edge_flag)
 			continue ;
@@ -53,5 +53,7 @@ void	draw_triangle_point(
 		if (!c->builtins.discard)
 			draw_pixel(c, c->builtins.gl_frag_color, (t_vec2){point.x, point.y},
 				c->builtins.gl_frag_depth);
+		i++;
 	}
+	printf("drawing point triangle end \n");
 }

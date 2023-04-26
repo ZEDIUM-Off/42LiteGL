@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:36:51 by mchenava          #+#    #+#             */
-/*   Updated: 2023/03/17 10:59:00 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 11:38:41 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
-void	*ft_realloc(void *ptr, size_t newsize);
+void	*ft_realloc(void *ptr, size_t newsize, size_t cursize);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_free_tab(void *tab, int len);
 

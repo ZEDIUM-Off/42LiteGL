@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:27:36 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/24 12:05:44 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/26 11:10:57 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 int	do_depth_test(t_gl_context *c, t_vec2 pos, float z, t_u8 *stencil_dest)
 {
 	float	dest_depth;
-	float	src_depth;
 	int		depth_result;
 
 	dest_depth = ((float *)c->zbuf.lastrow)[(int)(-pos.y * c->zbuf.w + pos.x)];
-	src_depth = z;
-	depth_result = depthtest(c, src_depth, dest_depth);
+	printf ("dest_depth: %f , z: %f \n", dest_depth, z);
+	depth_result = depthtest(c, z, dest_depth);
+	// printf ("depth_result: %d\n", depth_result);
 	if (c->stencil_test)
 		stencil_op(c, 1, depth_result, stencil_dest);
 	if (!depth_result)
 		return (0);
 	((float *)c->zbuf.lastrow)[(-(int)pos.y)
-		* c->zbuf.w + (int)pos.x] = src_depth;
+		* c->zbuf.w + (int)pos.x] = z;
 	return (1);
 }
 
@@ -50,8 +50,10 @@ int	do_test(t_gl_context *c, t_vec2 pos, float z)
 	}
 	if (c->depth_test)
 	{
+		// printf ("Depth test\n");
 		if (!do_depth_test(c, pos, z, stencil_dest))
 			return (0);
+		printf("Depth test passed\n");
 	}
 	else if (c->stencil_test)
 		stencil_op(c, 1, 1, stencil_dest);

@@ -29,7 +29,8 @@ MAT_SRC +=	matrix/make_persp_mat.c \
 						matrix/translation_mat.c \
 						matrix/make_viewport_mat.c \
 						matrix/id_mat.c \
-						matrix/mat_set_id.c
+						matrix/mat_set_id.c \
+						matrix/rotate_mat.c \
 
 VEC_SRC =	vectors/vec_mult.c \
 					vectors/vec_add.c \

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:01:00 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/21 16:09:20 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 13:07:35 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	cvec_set_cap_gl_vertex(t_cvector_gl_vertex *vec, size_t size)
 
 	if (size < vec->size)
 		vec->size = size;
-	tmp = (t_gl_vertex *)ft_realloc(vec->a, sizeof(t_gl_vertex) * size);
+	tmp = (t_gl_vertex *)ft_realloc(vec->a, sizeof(t_gl_vertex) * size,
+			vec->capacity * sizeof(t_gl_vertex));
 	if (!tmp)
 	{
 		ft_assert(tmp != NULL);

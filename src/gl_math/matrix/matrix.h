@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 15:16:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 17:58:23 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/18 10:53:35 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,6 @@ void	make_viewport_matrix(
 			t_mat4 mat, float	*xy, unsigned int *wh, int opengl);
 void	look_at(t_mat4 mat, t_vec3 eye, t_vec3 center, t_vec3 up);
 void	translation_mat4(t_mat4 m, float x, float y, float z);
+void	rotate_mat4(t_mat4 m, t_gl_float angle, t_vec3 axis);
 
 #endif

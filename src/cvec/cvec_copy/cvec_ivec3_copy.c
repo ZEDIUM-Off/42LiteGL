@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:40 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/03 12:44:04 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 12:42:53 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	cvec_copy_ivec3(t_cvector_ivec3	*dest, t_cvector_ivec3 *src)
 	t_ivec3	*tmp;
 
 	tmp = (t_ivec3 *)ft_realloc(
-			dest->a, src->capacity * sizeof(t_ivec3));
+			dest->a, src->capacity * sizeof(t_ivec3),
+			dest->capacity * sizeof(t_ivec3));
 	if (!tmp)
 	{
 		ft_assert(tmp != NULL);

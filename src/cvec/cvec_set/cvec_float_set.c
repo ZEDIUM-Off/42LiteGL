@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:20:04 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/21 16:09:20 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 13:08:09 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	cvec_set_cap_float(t_cvector_float *vec, size_t size)
 
 	if (size < vec->size)
 		vec->size = size;
-	tmp = (float *)ft_realloc(vec->a, sizeof(float) * size);
+	tmp = (float *)ft_realloc(vec->a, sizeof(float) * size,
+			vec->capacity * sizeof(float));
 	if (!tmp)
 	{
 		ft_assert(tmp != NULL);

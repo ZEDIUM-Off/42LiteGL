@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:24:58 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/04 13:39:24 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/24 13:22:38 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int main(int argc, char** argv)
 	gl_use_program(&gl_context, myshader);
 	lgl_set_uniform(&gl_context, &the_uniforms);
 	the_uniforms.v_color = Red;
-	gl_polygon_mode(&gl_context, GL_FRONT_AND_BACK, GL_POINT);
+	gl_polygon_mode(&gl_context, GL_FRONT, GL_LINE);
 	gl_clear_color(&gl_context, new_float4(0, 0, 0, 1));
 	printf("starting main loop ...");
 	SDL_Event e;
@@ -153,6 +153,7 @@ void	smooth_vs(float *vs_output, void *vertex_attribs, t_shader_builtins *builti
 
 void	smooth_fs(float *fs_input, t_shader_builtins *builtins, void *uniforms)
 {
+	// printf("fs input: %f %f %f %f \n", ((t_vec4 *)fs_input)[0].x, ((t_vec4 *)fs_input)[0].y, ((t_vec4 *)fs_input)[0].z, ((t_vec4 *)fs_input)[0].w);
 	builtins->gl_frag_color = ((t_vec4 *)fs_input)[0];
 }
 

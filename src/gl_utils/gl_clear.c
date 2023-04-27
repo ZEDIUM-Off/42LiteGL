@@ -6,13 +6,13 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:31:03 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 15:44:07 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/26 15:16:51 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	clear_loop(t_gl_context *c, t_color col)
+void	clear_color(t_gl_context *c, t_color col)
 {
 	size_t	i;
 	int		x;
@@ -41,6 +41,31 @@ void	clear_loop(t_gl_context *c, t_color col)
 	}
 }
 
+void	clear_depth(t_gl_context *c, t_gl_float depth)
+{
+	size_t	i;
+	int		x;
+	int		y;
+
+	if (!c->scissor_test)
+	{
+		i = 0;
+		while (i < c->zbuf.w * c->zbuf.h)
+			((float *)c->zbuf.buf)[i++] = depth;
+	}
+	else
+	{
+		y = c->scissor_ly;
+		while (y < c->scissor_uy)
+		{
+			x = c->scissor_lx;
+			while (x < c->scissor_ux)
+				((float *)c->zbuf.lastrow)[-y * c->zbuf.w + x++] = depth;
+			y++;
+		}
+	}
+}
+
 void	gl_clear(t_gl_context *c, t_gl_bitfield mask)
 {
 	if (!(mask & (GL_COLOR_BUFFER_BIT
@@ -51,5 +76,7 @@ void	gl_clear(t_gl_context *c, t_gl_bitfield mask)
 		return ;
 	}
 	if (mask & GL_COLOR_BUFFER_BIT)
-		clear_loop(c, c->clear_color);
+		clear_color(c, c->clear_color);
+	if (mask & GL_DEPTH_BUFFER_BIT)
+		clear_depth(c, c->clear_depth);
 }

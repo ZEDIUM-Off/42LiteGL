@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:31:11 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/22 10:47:45 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/04/26 16:17:05 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define GL_FALSE 0
 # define GL_TRUE 1
 
-# define MAX_VERTICES 500000
+# define MAX_VERTICES 2500000
 # define GL_MAX_VERTEX_ATTRIBS 16
 # define GL_MAX_VERTEX_OUTPUT_COMPONENTS 64
 # define GL_MAX_DRAW_BUFFERS 8

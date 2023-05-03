@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:56:18 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/26 10:54:15 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/03 16:29:44 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	set_context_vars(t_gl_context *c, t_context_settings *s)
 	set_cvec(c);
 	c->clear_stencil = 0;
 	c->clear_color = make_color(0, 0, 0, 0);
-	set_vec4(&c->blend_color, new_float4(0, 0, 0, 0));
+	set_vec4(&c->blend_color, (float [4]){0, 0, 0, 0});
 	c->point_size = 1.0f;
 	c->line_width = 1.0f;
 	c->clear_depth = 1.0f;
@@ -104,7 +104,7 @@ void	set_context_vars(t_gl_context *c, t_context_settings *s)
 	c->depth_range_far = 1.0f;
 	c->vp_mat = identity_mat4();
 	make_viewport_matrix(c->vp_mat,
-		new_float2(0, 0), new_uint2(s->w, s->h), 1);
+		(float [2]){0, 0}, (t_u32 [2]){s->w, s->h}, 1);
 	c->provoking_vert = GL_LAST_VERTEX_CONVENTION;
 	c->cull_mode = GL_BACK;
 	c->cull_face = GL_FALSE;

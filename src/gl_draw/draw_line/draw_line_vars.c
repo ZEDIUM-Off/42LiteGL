@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:16:10 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/28 10:55:26 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/03 17:40:55 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	left_right(t_draw_line_shader_vars *vars, float **v_out)
 		tmp = vars->w[0];
 		vars->w[0] = vars->w[1];
 		vars->w[1] = tmp;
-		tmp_ptr = v_out[0];
-		v_out[0] = v_out[1];
-		v_out[1] = tmp_ptr;
+		tmp_ptr = (float [2]){v_out[0][0], v_out[0][1]};
+		v_out[0] = (float [2]){v_out[1][0], v_out[1][1]};
+		v_out[1] = (float [2]){tmp_ptr[0], tmp_ptr[1]};
 	}
 }
 
@@ -62,7 +62,7 @@ t_vec2	set_ab(t_gl_context *c, t_draw_line_shader_vars *vars)
 }
 
 void	set_line_shader_vars(t_gl_context *c, t_draw_line_shader_vars *vars,
-	t_vec4 *vertexes, float **v_out)
+	t_vec4 *vertexes, float v_out[2][2])
 {
 	t_vec3	*hp;
 
@@ -71,7 +71,7 @@ void	set_line_shader_vars(t_gl_context *c, t_draw_line_shader_vars *vars,
 	vars->y = new_float2(hp[0].y, hp[1].y);
 	vars->z = new_float2(hp[0].z, hp[1].z);
 	vars->w = new_float2(vertexes[0].w, vertexes[1].w);
-	left_right(vars, v_out);
+	left_right(vars, (float **)v_out);
 	vars->slope = (vars->y[1] - vars->y[0]) / (vars->x[1] - vars->x[0]);
 	vars->line = make_line(vars->x[0], vars->y[0], vars->x[1], vars->y[1]);
 	vars->ab = set_ab(c, vars);
@@ -92,7 +92,7 @@ void	set_line_shader_vars(t_gl_context *c, t_draw_line_shader_vars *vars,
 }
 
 void	set_perp_line_vars(
-	t_gl_context *c, t_draw_line_shader_vars *vars, float *vx, float *vy)
+	t_gl_context *c, t_draw_line_shader_vars *vars, float vx[2], float vy[2])
 {
 	vars->line = make_line(vx[0], vy[0], vx[1], vy[1]);
 	vars->i_x[0] = floor(vx[0]) + 0.5;

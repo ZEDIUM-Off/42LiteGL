@@ -6,14 +6,14 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 22:17:27 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/24 10:51:13 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/03 16:36:24 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	setup_fs_input(
-	t_gl_context *c, float **vs_out,
+	t_gl_context *c, float vs_out[2][2],
 	t_draw_line_shader_vars *v, unsigned int provoke)
 {
 	float	*vs_output;

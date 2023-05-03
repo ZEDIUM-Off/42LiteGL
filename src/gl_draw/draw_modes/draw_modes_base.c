@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:44:11 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/24 16:18:06 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/02 17:04:54 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,5 @@ void	triangle_mode(t_gl_context *c, t_gl_int first, t_gl_sizei count)
 				&c->glverts.a[vert + 2]), vert + provoke);
 		i += 3;
 		vert += 3;
-		printf ("triangle number %d\n", i / 3);
 	}
 }

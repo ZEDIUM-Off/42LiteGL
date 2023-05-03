@@ -6,14 +6,14 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 11:41:13 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 14:52:45 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/03 16:30:19 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	make_viewport_matrix(
-	t_mat4 mat, float	*xy, unsigned int *wh, int opengl)
+	t_mat4 mat, float xy[2], unsigned int wh[2], int opengl)
 {
 	float	lr[2];
 	float	bt[2];

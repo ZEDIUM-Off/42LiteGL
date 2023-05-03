@@ -52,7 +52,8 @@ VEC_SRC =	vectors/vec_mult.c \
 					vectors/vec_equal.c \
 					vectors/vec_cross.c \
 					vectors/init_vec.c \
-					vectors/make_ivec.c
+					vectors/make_ivec.c \
+					vectors/vec_rotate.c \
 
 GL_MATH_SRC = $(VEC_SRC) $(MAT_SRC)
 GL_MATH_SRC +=	op.c \

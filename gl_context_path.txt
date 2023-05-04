@@ -1,0 +1,8 @@
+./src/gl_context
+./src/gl_context/free_context.c
+./src/gl_context/gl_context.mk
+./src/gl_context/set_context_vars2.c
+./src/gl_context/set_context_vars.c
+./src/gl_context/init_img_context.c
+./src/gl_context/init_context.c
+./src/gl_context/gl_context.h

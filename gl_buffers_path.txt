@@ -1,0 +1,12 @@
+./src/gl_buffers
+./src/gl_buffers/gl_gen_buffers.c
+./src/gl_buffers/gl_delete_buffers.c
+./src/gl_buffers/gl_bind_buffer.c
+./src/gl_buffers/gl_map_buffer.c
+./src/gl_buffers/gl_named_buffer_sub_data.c
+./src/gl_buffers/gl_buffer_sub_data.c
+./src/gl_buffers/gl_buffer_data.c
+./src/gl_buffers/gl_map_named_buffer.c
+./src/gl_buffers/gl_buffer.mk
+./src/gl_buffers/gl_buffer.h
+./src/gl_buffers/gl_named_buffer_data.c

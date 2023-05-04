@@ -1,0 +1,5 @@
+./src/gl_color
+./src/gl_color/color.h
+./src/gl_color/gl_clear_color.c
+./src/gl_color/gl_color.mk
+./src/gl_color/color.c

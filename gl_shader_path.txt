@@ -1,0 +1,11 @@
+./src/gl_shader
+./src/gl_shader/gl_shader.mk
+./src/gl_shader/gl_shader.h
+./src/gl_shader/gl_shader.c
+./src/gl_shader/shader_texture
+./src/gl_shader/shader_texture/texture2DArray.c
+./src/gl_shader/shader_texture/texture_rect.c
+./src/gl_shader/shader_texture/texture_cubemap.c
+./src/gl_shader/shader_texture/texture1D.c
+./src/gl_shader/shader_texture/texture2D.c
+./src/gl_shader/shader_texture/texture3D.c

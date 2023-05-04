@@ -1,0 +1,4 @@
+./src/types
+./src/types/gl_struct.h
+./src/types/types.h
+./src/types/gl_enum.h

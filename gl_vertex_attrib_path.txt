@@ -1,0 +1,6 @@
+./src/gl_vertex_attrib
+./src/gl_vertex_attrib/gl_vertex_attrib_pointer.c
+./src/gl_vertex_attrib/gl_vertex_attrib_on_off.c
+./src/gl_vertex_attrib/init_gl_vertex_attrib.c
+./src/gl_vertex_attrib/gl_vertex_attrib.mk
+./src/gl_vertex_attrib/gl_vertex_attrib.h

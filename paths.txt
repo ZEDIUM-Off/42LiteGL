@@ -1,0 +1,17 @@
+/Users/matisse/Documents/42LiteGL/cvec_path.txt
+/Users/matisse/Documents/42LiteGL/gl_buffers_path.txt
+/Users/matisse/Documents/42LiteGL/gl_color_path.txt
+/Users/matisse/Documents/42LiteGL/gl_context_path.txt
+/Users/matisse/Documents/42LiteGL/gl_draw_path.txt
+/Users/matisse/Documents/42LiteGL/gl_getters_path.txt
+/Users/matisse/Documents/42LiteGL/gl_line_path.txt
+/Users/matisse/Documents/42LiteGL/gl_math_path.txt
+/Users/matisse/Documents/42LiteGL/gl_shader_path.txt
+/Users/matisse/Documents/42LiteGL/gl_texture_path.txt
+/Users/matisse/Documents/42LiteGL/gl_utils_path.txt
+/Users/matisse/Documents/42LiteGL/gl_vertex_arrays_path.txt
+/Users/matisse/Documents/42LiteGL/gl_vertex_attrib_path.txt
+/Users/matisse/Documents/42LiteGL/types_path.txt
+/Users/matisse/Documents/42LiteGL/libft_path.txt
+/Users/matisse/Documents/42LiteGL/lite_gl.h
+/Users/matisse/Documents/42LiteGL/Makefile

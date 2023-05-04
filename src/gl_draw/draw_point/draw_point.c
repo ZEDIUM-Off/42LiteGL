@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:11:41 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/11 14:25:05 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:50:24 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	draw_point_part(t_gl_context *c, int *ij, t_vec4 point, float *fs_input)
 	c->builtins.gl_point_coord.y = 0.5f + origin * ((int)ij[0] + 0.5f - point.y)
 		/ c->point_size;
 	set_vec4(&c->builtins.gl_frag_coord,
-		new_float4(ij[1], ij[0], point.z, 1 / point.w));
+		(float [4]){ij[1], ij[0], point.z, 1 / point.w});
 	c->builtins.discard = GL_FALSE;
 	c->builtins.gl_frag_depth = point.z;
 	c->programs.a[c->cur_program].fragment_shader(fs_input, &c->builtins,
@@ -54,7 +54,7 @@ void	point_draw_loop(t_gl_context *c, float *xy,
 		{
 			if (j < 0 || j >= c->back_buffer.w)
 				continue ;
-			draw_point_part(c, new_int2(i, j), point, fs_input);
+			draw_point_part(c, (int [2]){i, j}, point, fs_input);
 			j++;
 		}
 		i++;
@@ -78,5 +78,5 @@ void	draw_point(t_gl_context *c, t_gl_vertex *vert)
 	if (c->point_size <= 1)
 		if (x < 0 || y < 0 || x >= c->back_buffer.w || y >= c->back_buffer.h)
 			return ;
-	point_draw_loop(c, new_float2(x, y), point, fs_input);
+	point_draw_loop(c, (float [2]){x, y}, point, fs_input);
 }

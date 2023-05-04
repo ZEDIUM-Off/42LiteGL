@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:28:07 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 19:32:03 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:54:38 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ void	gl_create_textures(
 		i++;
 	}
 	if (j != n)
-		second_loop(c, target, new_sizei2(n, j), textures);
+		second_loop(c, target, (t_gl_sizei [2]){n, j}, textures);
 }

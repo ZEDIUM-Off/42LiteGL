@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 11:50:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 12:21:45 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:35:08 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	look_at(t_mat4 mat, t_vec3 eye, t_vec3 center, t_vec3 up)
 	t_vec3	s;
 	t_vec3	u;
 
-	set_identity_mat4(mat);
+	identity_mat4(mat);
 	f = norm_vec3(sub_vec3s(center, eye));
 	s = norm_vec3(cross_product(f, up));
 	u = cross_product(s, f);

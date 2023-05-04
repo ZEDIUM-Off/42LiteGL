@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:24:58 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/24 13:22:38 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:22:38 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int main(int argc, char** argv)
 	My_Uniforms the_uniforms;
 
 	proj_mat = identity_mat4();
-	make_perspective_matrix(proj_mat, radians(45), WIDTH/HEIGHT, new_float2(1, 20));
+	make_perspective_matrix(proj_mat, radians(45), WIDTH/HEIGHT, (float [2]){1, 20});
 	trans_mat = identity_mat4();
 	translation_mat4(trans_mat, 0, 0, -5);
 	vp_mat = identity_mat4();

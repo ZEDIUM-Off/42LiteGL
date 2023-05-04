@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:11:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/12 13:51:13 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:21:28 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	do_vertex(
 		buf_pos = (t_u8 *)c->buffers.a[vars->v[vars->enabled[j]].buf].data
 			+ vars->v[vars->enabled[j]].offset
 			+ vars->v[vars->enabled[j]].stride * i;
-		set_vec4(&tmpvec4, new_float4(0.0f, 0.0f, 0.0f, 1.0f));
+		set_vec4(&tmpvec4, (float [4]){0.0f, 0.0f, 0.0f, 1.0f});
 		ft_memcpy(&tmpvec4, buf_pos, sizeof(float)
 			* vars->v[vars->enabled[j]].size);
 		c->vertex_attribs_vs[vars->enabled[j]] = tmpvec4;

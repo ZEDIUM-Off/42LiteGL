@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 11:26:21 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/03 16:36:56 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:55:42 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,31 +61,6 @@ void			lgl_set_uniform(t_gl_context *c, void *uniform);
 void			*gl_resize_frame_buffer(t_gl_context *c, size_t w, size_t h);
 void			gl_viewport(t_gl_context *c, int *xy, t_gl_sizei *wh);
 void			get_shift(t_u32 mask, int *shift);
-float			*new_float4(float x, float y, float z, float w);
-float			*new_float3(float x, float y, float z);
-float			*new_float2(float x, float y);
-float			**new_float22(float *x, float *y);
-int				*new_int2(int x, int y);
-int				*new_int3(int x, int y, int z);
-int				*new_int4(int x, int y, int z, int w);
-unsigned int	*new_uint2(int x, int y);
-unsigned int	*new_uint3(int x, int y, int z);
-unsigned int	*new_uint4(int x, int y, int z, int w);
-t_gl_sizei		*new_sizei2(int x, int y);
-t_gl_sizei		*new_sizei3(int x, int y, int z);
-t_gl_sizei		*new_sizei4(int x, int y, int z, int w);
-t_vec4			*new_vec42(t_vec4 v1, t_vec4 v2);
-t_vec4			*new_vec43(t_vec4 v1, t_vec4 v2, t_vec4 v3);
-t_vec4			*new_vec44(t_vec4 v1, t_vec4 v2, t_vec4 v3, t_vec4 v4);
-t_vec3			*new_vec32(t_vec3 v1, t_vec3 v2);
-t_vec3			*new_vec33(t_vec3 v1, t_vec3 v2, t_vec3 v3);
-t_vec3			*new_vec34(t_vec3 v1, t_vec3 v2, t_vec3 v3, t_vec3 v4);
-t_gl_vertex		**new_vertex2(t_gl_vertex *v1, t_gl_vertex *v2);
-t_gl_vertex		**new_vertex3(t_gl_vertex *v1, t_gl_vertex *v2,
-					t_gl_vertex *v3);
-t_gl_vertex		**new_vertex4(t_gl_vertex *v1, t_gl_vertex *v2, t_gl_vertex *v3,
-					t_gl_vertex *v4);
-char			*new_str(char *str);
 int				wrap(int i, int size, t_gl_enum mode);
 float			map(float value, float new_min, float new_max);
 void			setup_fs_input(
@@ -106,5 +81,5 @@ void			vertex_stage(t_gl_context *c, t_pipeline_settings *sett);
 void			do_vertex(
 					t_gl_context *c, t_vertex_stage_vars *vars,
 					unsigned int i, unsigned int vert);
-
+					
 #endif

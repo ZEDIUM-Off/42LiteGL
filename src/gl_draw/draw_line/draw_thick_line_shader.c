@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:04:31 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/03 17:41:48 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:16:20 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ void	draw_thick_line_shader_slope_less_minus_one(
 		c->builtins.gl_frag_coord = (t_vec4){.z = vars->lz, .w = 1 / vars->lw};
 		setup_fs_input(c, v_out, vars, provoke);
 		vars->diag = draw_perp_line(c, -1 / vars->slope,
-				new_float2(vars->lx - vars->ab.x, vars->lx + vars->ab.x),
-				new_float2(vars->ly - vars->ab.y, vars->ly + vars->ab.y));
+				(float [2]){vars->lx - vars->ab.x, vars->lx + vars->ab.x},
+				(float [2]){vars->ly - vars->ab.y, vars->ly + vars->ab.y});
 		if (line_func(&vars->line, vars->lx + 0.5f, vars->ly + 0.5f) < 0)
 		{
 			if (vars->diag)
 				draw_perp_line(c, -1 / vars->slope,
-					new_float2(vars->lx - vars->ab.x, vars->lx + vars->ab.x),
-					new_float2(vars->ly - 1 - vars->ab.y,
-						vars->ly - 1 + vars->ab.y));
+					(float [2]){vars->lx - vars->ab.x, vars->lx + vars->ab.x},
+					(float [2]){vars->ly - 1 - vars->ab.y,
+						vars->ly - 1 + vars->ab.y});
 			vars->lx++;
 		}
 		vars->ly--;
@@ -59,15 +59,15 @@ void	draw_thick_line_shader_slope_less_zero(
 		c->builtins.gl_frag_coord = (t_vec4){.z = vars->lz, .w = 1 / vars->lw};
 		setup_fs_input(c, v_out, vars, provoke);
 		vars->diag = draw_perp_line(c, -1 / vars->slope,
-				new_float2(vars->lx - vars->ab.x, vars->lx + vars->ab.x),
-				new_float2(vars->ly - vars->ab.y, vars->ly + vars->ab.y));
+				(float [2]){vars->lx - vars->ab.x, vars->lx + vars->ab.x},
+				(float [2]){vars->ly - vars->ab.y, vars->ly + vars->ab.y});
 		if (line_func(&vars->line, vars->lx + 1, vars->ly - 0.5f) > 0)
 		{
 			if (vars->diag)
 				draw_perp_line(c, -1 / vars->slope,
-					new_float2(vars->lx + 1 - vars->ab.x,
-						vars->lx + 1 + vars->ab.x),
-					new_float2(vars->ly - vars->ab.y, vars->ly + vars->ab.y));
+					(float [2]){vars->lx + 1 - vars->ab.x,
+						vars->lx + 1 + vars->ab.x},
+					(float [2]){vars->ly - vars->ab.y, vars->ly + vars->ab.y});
 			vars->ly--;
 		}
 		vars->lx++;
@@ -90,15 +90,15 @@ void	draw_thick_line_shader_slope_less_one(
 		c->builtins.gl_frag_coord = (t_vec4){.z = vars->lz, .w = 1 / vars->lw};
 		setup_fs_input(c, v_out, vars, provoke);
 		vars->diag = draw_perp_line(c, -1 / vars->slope,
-				new_float2(vars->lx + vars->ab.x, vars->lx - vars->ab.x),
-				new_float2(vars->ly + vars->ab.y, vars->ly - vars->ab.y));
+				(float [2]){vars->lx + vars->ab.x, vars->lx - vars->ab.x},
+				(float [2]){vars->ly + vars->ab.y, vars->ly - vars->ab.y});
 		if (line_func(&vars->line, vars->lx + 1, vars->ly + 0.5f) < 0)
 		{
 			if (vars->diag)
 				draw_perp_line(c, -1 / vars->slope,
-					new_float2(vars->lx + 1 + vars->ab.x,
-						vars->lx + 1 - vars->ab.x),
-					new_float2(vars->ly + vars->ab.y, vars->ly - vars->ab.y));
+					(float [2]){vars->lx + 1 + vars->ab.x,
+						vars->lx + 1 - vars->ab.x},
+					(float [2]){vars->ly + vars->ab.y, vars->ly - vars->ab.y});
 			vars->ly++;
 		}
 		vars->lx++;
@@ -121,15 +121,15 @@ void	draw_thick_line_shader_slope_more_one(
 		c->builtins.gl_frag_coord = (t_vec4){.z = vars->lz, .w = 1 / vars->lw};
 		setup_fs_input(c, v_out, vars, provoke);
 		vars->diag = draw_perp_line(c, -1 / vars->slope,
-				new_float2(vars->lx + vars->ab.x, vars->lx - vars->ab.x),
-				new_float2(vars->ly + vars->ab.y, vars->ly - vars->ab.y));
+				(float [2]){vars->lx + vars->ab.x, vars->lx - vars->ab.x},
+				(float [2]){vars->ly + vars->ab.y, vars->ly - vars->ab.y});
 		if (line_func(&vars->line, vars->lx + 0.5f, vars->ly + 1) > 0)
 		{
 			if (vars->diag)
 				draw_perp_line(c, -1 / vars->slope,
-					new_float2(vars->lx + vars->ab.x, vars->lx - vars->ab.x),
-					new_float2(vars->ly + 1 + vars->ab.y,
-						vars->ly + 1 - vars->ab.y));
+					(float [2]){vars->lx + vars->ab.x, vars->lx - vars->ab.x},
+					(float [2]){vars->ly + 1 + vars->ab.y,
+						vars->ly + 1 - vars->ab.y});
 			vars->lx++;
 		}
 		vars->ly++;

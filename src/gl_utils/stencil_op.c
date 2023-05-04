@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:02:55 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/14 17:51:59 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:50:24 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	*def_op(t_gl_context *c, int stencil, int depth)
 		if (!depth)
 			op = ops[1];
 	}
-	return (new_int3(op, ref, mask));
+	return ((int [3]){op, ref, mask});
 }
 
 void	set_vars(t_gl_context *c, int *ref, int *mask, int *func)

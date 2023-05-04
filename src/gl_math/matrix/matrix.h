@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 15:16:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/18 10:53:35 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:38:14 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # include <lite_gl.h>
 
 // mat 2
-t_mat2	identity_mat2(void);
-t_mat2	set_identity_mat2(t_mat2 mat);
+void	identity_mat2(t_mat2 mat);
 t_vec2	x_mat2(t_mat2 m);
 t_vec2	y_mat2(t_mat2 m);
 t_vec2	c1_mat2(t_mat2 m);
@@ -32,8 +31,7 @@ void	sety_mat2(t_mat2 m, t_vec2 v);
 t_vec2	mult_mat2_vec2(t_mat2 m, t_vec2 v);
 
 // mat 3
-t_mat3	identity_mat3(void);
-t_mat3	set_identity_mat3(t_mat3 mat);
+void	identity_mat3(t_mat3 mat);
 t_vec3	x_mat3(t_mat3 m);
 t_vec3	y_mat3(t_mat3 m);
 t_vec3	z_mat3(t_mat3 m);
@@ -52,8 +50,7 @@ void	setz_mat3(t_mat3 m, t_vec3 v);
 t_vec3	mult_mat3_vec3(t_mat3 m, t_vec3 v);
 
 // mat 4
-t_mat4	identity_mat4(void);
-t_mat4	set_identity_mat4(t_mat4 mat);
+void	identity_mat4(t_mat4 mat);
 t_vec4	c1_mat4(t_mat4 m);
 t_vec4	c2_mat4(t_mat4 m);
 t_vec4	c3_mat4(t_mat4 m);

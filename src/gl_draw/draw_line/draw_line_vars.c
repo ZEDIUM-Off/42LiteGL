@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:16:10 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/03 17:40:55 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:28:35 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	left_right(t_draw_line_shader_vars *vars, float **v_out)
 		tmp = vars->w[0];
 		vars->w[0] = vars->w[1];
 		vars->w[1] = tmp;
-		tmp_ptr = (float [2]){v_out[0][0], v_out[0][1]};
-		v_out[0] = (float [2]){v_out[1][0], v_out[1][1]};
-		v_out[1] = (float [2]){tmp_ptr[0], tmp_ptr[1]};
+		tmp_ptr = v_out[0];
+		v_out[0] = v_out[1];
+		v_out[1] = tmp_ptr;
 	}
 }
 
@@ -66,11 +66,11 @@ void	set_line_shader_vars(t_gl_context *c, t_draw_line_shader_vars *vars,
 {
 	t_vec3	*hp;
 
-	hp = new_vec32(vec4_to_vec3h(vertexes[0]), vec4_to_vec3h(vertexes[1]));
-	vars->x = new_float2(hp[0].x, hp[1].x);
-	vars->y = new_float2(hp[0].y, hp[1].y);
-	vars->z = new_float2(hp[0].z, hp[1].z);
-	vars->w = new_float2(vertexes[0].w, vertexes[1].w);
+	hp = (t_vec3 [2]){vec4_to_vec3h(vertexes[0]), vec4_to_vec3h(vertexes[1])};
+	vars->x = (float [2]){hp[0].x, hp[1].x};
+	vars->y = (float [2]){hp[0].y, hp[1].y};
+	vars->z = (float [2]){hp[0].z, hp[1].z};
+	vars->w = (float [2]){vertexes[0].w, vertexes[1].w};
 	left_right(vars, (float **)v_out);
 	vars->slope = (vars->y[1] - vars->y[0]) / (vars->x[1] - vars->x[0]);
 	vars->line = make_line(vars->x[0], vars->y[0], vars->x[1], vars->y[1]);

@@ -6,14 +6,14 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 11:26:45 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 13:23:17 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:18:01 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	make_perspective_matrix(
-	t_mat4 mat, float fov, float aspect, float *near_far)
+	t_mat4 mat, float fov, float aspect, float near_far[2])
 {
 	float	t;
 	float	b;
@@ -24,12 +24,12 @@ void	make_perspective_matrix(
 	b = -t;
 	l = b * aspect;
 	r = -l;
-	make_perspective_proj_matrix(mat, new_float2(l, r),
-		new_float2(b, t), near_far);
+	make_perspective_proj_matrix(mat, (float [2]){l, r},
+		(float [2]){b, t}, near_far);
 }
 
 void	make_perspective_proj_matrix(
-	t_mat4 mat, float *lr, float *bt, float *near_far)
+	t_mat4 mat, float lr[2], float bt[2], float near_far[2])
 {
 	mat[0][0] = 2.0f * near_far[0] / (lr[1] - lr[0]);
 	mat[0][2] = (lr[1] + lr[0]) / (lr[1] - lr[0]);

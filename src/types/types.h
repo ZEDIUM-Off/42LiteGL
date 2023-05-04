@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:46:16 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/28 11:28:38 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:37:58 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ typedef struct s_cvector_vec3				t_cvector_vec3;
 typedef struct s_cvector_ivec3				t_cvector_ivec3;
 typedef struct s_cvector_vec2				t_cvector_vec2;
 
-typedef float								**t_mat2;
-typedef float								**t_mat3;
-typedef float								**t_mat4;
+typedef float								t_mat2[2][2];
+typedef float								t_mat3[3][3];
+typedef float								t_mat4[4][4];
 typedef struct s_vec2						t_vec2;
 typedef struct s_vec3						t_vec3;
 typedef struct s_vec4						t_vec4;

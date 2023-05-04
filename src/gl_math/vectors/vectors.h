@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:50:17 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/03 11:27:11 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:11:27 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ t_vec4	scale_vec4s(t_vec4 v, float s);
 
 void	set_vec2(t_vec2 *v, float x, float y);
 void	set_vec3(t_vec3 *v, float x, float y, float z);
-void	set_vec4(t_vec4 *v, float *coords);
+void	set_vec4(t_vec4 *v, float coords[4]);
 
 t_vec2	sub_vec2s(t_vec2 v1, t_vec2 v2);
 t_vec3	sub_vec3s(t_vec3 v1, t_vec3 v2);

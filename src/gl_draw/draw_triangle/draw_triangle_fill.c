@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:45:25 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/15 15:09:13 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:17:10 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	draw_tri_action_finish(
 	t_gl_context *c, t_draw_tri_vars *vars)
 {
 	set_vec4(&vars->builtins.gl_frag_coord,
-		new_float4(vars->x, vars->y, vars->z, vars->tmp2));
+		(float [4]){vars->x, vars->y, vars->z, vars->tmp2});
 	vars->builtins.discard = GL_FALSE;
 	vars->builtins.gl_frag_depth = vars->z;
 	vars->builtins.gl_instance_id = c->builtins.gl_instance_id;

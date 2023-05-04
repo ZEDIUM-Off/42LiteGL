@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:11:13 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/30 10:17:19 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:28:21 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	up_clip(t_gl_context *c, t_draw_tri_clip_vars	*vars, int clip_bit)
 			&vars->tmp1.clip_space, &vars->new_v[0]->clip_space,
 			&vars->new_v[1]->clip_space);
 	update_clip_pt(c, &vars->tmp1,
-		new_vertex2(vars->new_v[0], vars->new_v[1]), vars->tt);
+		(t_gl_vertex *[2]){vars->new_v[0], vars->new_v[1]}, vars->tt);
 	vars->tt = c->clip_proc[clip_bit](
 			&vars->tmp2.clip_space, &vars->new_v[0]->clip_space,
 			&vars->new_v[2]->clip_space);
 	update_clip_pt(c, &vars->tmp2,
-		new_vertex2(vars->new_v[0], vars->new_v[2]), vars->tt);
+		(t_gl_vertex *[2]){vars->new_v[0], vars->new_v[2]}, vars->tt);
 }
 
 void	draw_tri_clip_one_pt_out(
@@ -33,21 +33,21 @@ void	draw_tri_clip_one_pt_out(
 
 	set_draw_tri_clip_vars(&vars);
 	if (v[0]->clip_code & (1 << clip_bit))
-		vars.new_v = new_vertex3(v[0], v[1], v[2]);
+		vars.new_v = (t_gl_vertex *[3]){v[0], v[1], v[2]};
 	else if (v[1]->clip_code & (1 << clip_bit))
-		vars.new_v = new_vertex3(v[1], v[2], v[0]);
+		vars.new_v = (t_gl_vertex *[3]){v[1], v[2], v[0]};
 	else
-		vars.new_v = new_vertex3(v[2], v[0], v[1]);
+		vars.new_v = (t_gl_vertex *[3]){v[2], v[0], v[1]};
 	up_clip(c, &vars, clip_bit);
 	vars.tmp1.edge_flag = vars.new_v[0]->edge_flag;
 	vars.edge_flag_tmp = vars.new_v[2]->edge_flag;
 	vars.new_v[2]->edge_flag = 0;
-	draw_triangle_clip(c, new_vertex3(&vars.tmp1, vars.new_v[1], vars.new_v[2]),
+	draw_triangle_clip(c, (t_gl_vertex *[3]){&vars.tmp1, vars.new_v[1], vars.new_v[2]},
 		provoke, clip_bit + 1);
 	vars.tmp2.edge_flag = 1;
 	vars.tmp1.edge_flag = 0;
 	vars.new_v[2]->edge_flag = vars.edge_flag_tmp;
-	draw_triangle_clip(c, new_vertex3(&vars.tmp2, &vars.tmp1, vars.new_v[2]),
+	draw_triangle_clip(c, (t_gl_vertex *[3]){&vars.tmp2, &vars.tmp1, vars.new_v[2]},
 		provoke, clip_bit + 1);
 }
 
@@ -58,15 +58,15 @@ void	draw_tri_clip_two_pts_out(
 
 	set_draw_tri_clip_vars(&vars);
 	if ((v[0]->clip_code & (1 << clip_bit)) == 0)
-		vars.new_v = new_vertex3(v[0], v[1], v[2]);
+		vars.new_v = (t_gl_vertex *[3]){v[0], v[1], v[2]};
 	else if ((v[1]->clip_code & (1 << clip_bit)) == 0)
-		vars.new_v = new_vertex3(v[1], v[2], v[0]);
+		vars.new_v = (t_gl_vertex *[3]){v[1], v[2], v[0]};
 	else
-		vars.new_v = new_vertex3(v[2], v[0], v[1]);
+		vars.new_v = (t_gl_vertex *[3]){v[2], v[0], v[1]};
 	up_clip(c, &vars, clip_bit);
 	vars.tmp1.edge_flag = 1;
 	vars.tmp2.edge_flag = vars.new_v[2]->edge_flag;
-	draw_triangle_clip(c, new_vertex3(vars.new_v[0], &vars.tmp1, &vars.tmp2),
+	draw_triangle_clip(c, (t_gl_vertex *[3]){vars.new_v[0], &vars.tmp1, &vars.tmp2},
 		provoke, clip_bit + 1);
 }
 

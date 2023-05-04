@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:49:57 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/03 16:37:37 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:12:39 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	draw_line_shader_slope_less_minus_one(
 		vars->lz = (1 - vars->t) * vars->z[0] + vars->t * vars->z[1];
 		vars->lw = (1 - vars->t) * vars->w[0] + vars->t * vars->w[1];
 		set_vec4(&c->builtins.gl_frag_coord,
-			new_float4(vars->lx, vars->ly, vars->lz, 1 / vars->lw));
+			(float [4]){vars->lx, vars->ly, vars->lz, 1 / vars->lw});
 		c->builtins.discard = GL_FALSE;
 		c->builtins.gl_frag_depth = vars->lz;
 		setup_fs_input(c, v_out, vars, provoke);
@@ -55,7 +55,7 @@ void	draw_line_shader_slope_less_zero(
 		vars->lz = (1 - vars->t) * vars->z[0] + vars->t * vars->z[1];
 		vars->lw = (1 - vars->t) * vars->w[0] + vars->t * vars->w[1];
 		set_vec4(&c->builtins.gl_frag_coord,
-			new_float4(vars->lx, vars->ly, vars->lz, 1 / vars->lw));
+			(float [4]){vars->lx, vars->ly, vars->lz, 1 / vars->lw});
 		c->builtins.discard = GL_FALSE;
 		c->builtins.gl_frag_depth = vars->lz;
 		setup_fs_input(c, v_out, vars, provoke);
@@ -84,7 +84,7 @@ void	draw_line_shader_slope_less_one(
 		vars->lz = (1 - vars->t) * vars->z[0] + vars->t * vars->z[1];
 		vars->lw = (1 - vars->t) * vars->w[0] + vars->t * vars->w[1];
 		set_vec4(&c->builtins.gl_frag_coord,
-			new_float4(vars->lx, vars->ly, vars->lz, 1 / vars->lw));
+			(float [4]){vars->lx, vars->ly, vars->lz, 1 / vars->lw});
 		c->builtins.discard = GL_FALSE;
 		c->builtins.gl_frag_depth = vars->lz;
 		setup_fs_input(c, v_out, vars, provoke);
@@ -113,7 +113,7 @@ void	draw_line_shader_slope_more_one(
 		vars->lz = (1 - vars->t) * vars->z[0] + vars->t * vars->z[1];
 		vars->lw = (1 - vars->t) * vars->w[0] + vars->t * vars->w[1];
 		set_vec4(&c->builtins.gl_frag_coord,
-			new_float4(vars->lx, vars->ly, vars->lz, 1 / vars->lw));
+			(float [4]){vars->lx, vars->ly, vars->lz, 1 / vars->lw});
 		c->builtins.discard = GL_FALSE;
 		c->builtins.gl_frag_depth = vars->lz;
 		setup_fs_input(c, v_out, vars, provoke);

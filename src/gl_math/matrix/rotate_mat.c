@@ -6,13 +6,11 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 10:48:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/18 11:01:58 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:43:23 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
-
-//mat4 -> float[4][4]
 
 void	rotate_mat4(t_mat4 m, t_gl_float angle, t_vec3 axis)
 {
@@ -24,7 +22,7 @@ void	rotate_mat4(t_mat4 m, t_gl_float angle, t_vec3 axis)
 	rad = radians(angle);
 	c = cos(rad);
 	s = sin(rad);
-	rot = identity_mat4();
+	identity_mat4(rot);
 	rot[0][0] = c + axis.x * axis.x * (1 - c);
 	rot[0][1] = axis.x * axis.y * (1 - c) - axis.z * s;
 	rot[0][2] = axis.x * axis.z * (1 - c) + axis.y * s;

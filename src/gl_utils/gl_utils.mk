@@ -19,16 +19,9 @@ GL_UTILS_SRC =	gl_line_width.c \
 								gl_resize_frame_buffer.c \
 								gl_viewport.c \
 								get_shift.c \
-								new_float.c \
-								new_int.c \
-								new_uint.c \
-								new_gl_sizei.c \
-								new_str.c \
 								wrap.c \
-								new_vec4.c \
 								map.c \
 								setup_fs_input.c \
-								new_vertex.c \
 								clip_proc.c \
 								update_clip_pt.c \
 								is_front_facing.c \
@@ -38,6 +31,5 @@ GL_UTILS_SRC =	gl_line_width.c \
 								logic_ops_pixel.c \
 								vertex_stage.c \
 								do_vertex.c \
-								new_vec3.c \
 
 GL_UTILS_PATH = src/gl_utils/

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:56:18 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/04 11:42:18 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 12:33:50 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	set_context_vars(t_gl_context *c, t_context_settings *s)
 	c->clear_depth = 1.0f;
 	c->depth_range_near = 0.2f;
 	c->depth_range_far = 1.0f;
-	c->vp_mat = identity_mat4();
+	identity_mat4(c->vp_mat);
 	make_viewport_matrix(c->vp_mat,
 		(float [2]){0, 0}, (t_u32 [2]){s->w, s->h}, 1);
 	c->provoking_vert = GL_LAST_VERTEX_CONVENTION;

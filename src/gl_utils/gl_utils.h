@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 11:26:21 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/24 12:04:27 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/03 16:36:56 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char			*new_str(char *str);
 int				wrap(int i, int size, t_gl_enum mode);
 float			map(float value, float new_min, float new_max);
 void			setup_fs_input(
-					t_gl_context *c, float **vs_out,
+					t_gl_context *c, float vs_out[2][2],
 					t_draw_line_shader_vars *v, unsigned int provoke);
 void			init_clip_proc(t_gl_context *c);
 int				gl_clipcode(t_gl_context *c, t_vec4 pt);

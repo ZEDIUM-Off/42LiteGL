@@ -6,14 +6,14 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:49:57 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/24 12:05:04 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/03 16:37:37 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	draw_line_shader_slope_less_minus_one(
-	t_gl_context *c, t_draw_line_shader_vars *vars, float **v_out,
+	t_gl_context *c, t_draw_line_shader_vars *vars, float v_out[2][2],
 	unsigned int provoke)
 {
 	vars->lx = vars->x_mima[0];
@@ -42,7 +42,7 @@ void	draw_line_shader_slope_less_minus_one(
 }
 
 void	draw_line_shader_slope_less_zero(
-	t_gl_context *c, t_draw_line_shader_vars *vars, float **v_out,
+	t_gl_context *c, t_draw_line_shader_vars *vars, float v_out[2][2],
 	unsigned int provoke)
 {
 	vars->lx = vars->x_mima[0];
@@ -71,7 +71,7 @@ void	draw_line_shader_slope_less_zero(
 }
 
 void	draw_line_shader_slope_less_one(
-	t_gl_context *c, t_draw_line_shader_vars *vars, float **v_out,
+	t_gl_context *c, t_draw_line_shader_vars *vars, float v_out[2][2],
 	unsigned int provoke)
 {
 	vars->lx = vars->x_mima[0];
@@ -100,7 +100,7 @@ void	draw_line_shader_slope_less_one(
 }
 
 void	draw_line_shader_slope_more_one(
-	t_gl_context *c, t_draw_line_shader_vars *vars, float **v_out,
+	t_gl_context *c, t_draw_line_shader_vars *vars, float v_out[2][2],
 	unsigned int provoke)
 {
 	vars->lx = vars->x_mima[0];
@@ -128,7 +128,7 @@ void	draw_line_shader_slope_more_one(
 	}
 }
 
-void	draw_line_shader(t_gl_context *c, t_vec4 *vertexes, float **v_out,
+void	draw_line_shader(t_gl_context *c, t_vec4 *vertexes, float v_out[2][2],
 	unsigned int provoke)
 {
 	t_draw_line_shader_vars	vars;

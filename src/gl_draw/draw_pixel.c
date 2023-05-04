@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:27:36 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/27 11:36:35 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 11:42:59 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,10 @@ void	blending(t_gl_context *c, t_vec4 cf, t_vec2 pos)
 
 void	draw_pixel(t_gl_context *c, t_vec4 cf, t_vec2 pos, float z)
 {
-	if (!do_test(c, pos, z))
-		return ;
-	blending(c, cf, pos);
+	if (pos.x < c->x_max && pos.y < c->y_max && pos.x >= 0 && pos.y >= 0)
+	{
+		if (!do_test(c, pos, z))
+			return ;
+		blending(c, cf, pos);
+	}
 }

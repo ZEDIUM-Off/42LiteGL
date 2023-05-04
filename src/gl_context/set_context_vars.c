@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:56:18 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/27 11:35:30 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/04 11:42:18 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ void	set_bufs(t_gl_context *c, t_context_settings *s)
 	get_shift(s->g_mask, &c->g_shift);
 	get_shift(s->b_mask, &c->b_shift);
 	get_shift(s->a_mask, &c->a_shift);
-	// printf("c->zbuf.lastrow = %p \n", c->zbuf.lastrow);
-	// for (int i = 0; c->zbuf.lastrow[i]; i++)
-	// 	printf("c->zbuf.lastrow[i] = %d \n", c->zbuf.lastrow[i]);
 }
 
 void	set_text(t_gl_context *c)
@@ -96,7 +93,7 @@ void	set_context_vars(t_gl_context *c, t_context_settings *s)
 	set_cvec(c);
 	c->clear_stencil = 0;
 	c->clear_color = make_color(0, 0, 0, 0);
-	set_vec4(&c->blend_color, new_float4(0, 0, 0, 0));
+	set_vec4(&c->blend_color, (float [4]){0, 0, 0, 0});
 	c->point_size = 1.0f;
 	c->line_width = 1.0f;
 	c->clear_depth = 1.0f;
@@ -104,7 +101,7 @@ void	set_context_vars(t_gl_context *c, t_context_settings *s)
 	c->depth_range_far = 1.0f;
 	c->vp_mat = identity_mat4();
 	make_viewport_matrix(c->vp_mat,
-		new_float2(0, 0), new_uint2(s->w, s->h), 1);
+		(float [2]){0, 0}, (t_u32 [2]){s->w, s->h}, 1);
 	c->provoking_vert = GL_LAST_VERTEX_CONVENTION;
 	c->cull_mode = GL_BACK;
 	c->cull_face = GL_FALSE;

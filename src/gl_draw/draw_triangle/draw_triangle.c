@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 11:01:34 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/24 16:13:43 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/02 17:04:54 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,4 @@ void	draw_triangle(t_gl_context *c, t_gl_vertex **v, unsigned int provoke)
 		draw_triangle_final(c, v, provoke);
 	else
 		draw_triangle_clip(c, v, provoke, 0);
-	printf("a triangle has been drawn\n");
 }

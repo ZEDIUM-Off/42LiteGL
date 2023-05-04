@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:50:17 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/28 10:55:54 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/03 11:27:11 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,6 @@ t_vec4	sub_vec4s(t_vec4 v1, t_vec4 v2);
 t_vec2	init_vec2(float x, float y);
 
 t_ivec3	make_ivec3(int x, int y, int z);
+t_vec3	vec3_rotate(t_vec3 base_vec, float angle, t_vec3 rot_arround);
 
 #endif

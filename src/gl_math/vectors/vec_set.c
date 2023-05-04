@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:53:38 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/03 10:55:22 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/03 16:26:23 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	set_vec3(t_vec3 *v, float x, float y, float z)
 	v->z = z;
 }
 
-void	set_vec4(t_vec4 *v, float *coords)
+void	set_vec4(t_vec4 *v, float coords[4])
 {
 	v->x = coords[0];
 	v->y = coords[1];

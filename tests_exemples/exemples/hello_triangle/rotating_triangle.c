@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:24:58 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/04 12:22:38 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/05 15:21:48 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,18 @@ int main(int argc, char** argv)
 	                        0.0, 0.0, 1.0, 1.0 };
 
 	t_mat4 proj_mat, trans_mat, rot_mat, vp_mat;
-	t_mat4 save_rot = identity_mat4();
-	t_mat4 tmp_mat = identity_mat4();
+	t_mat4 save_rot;
+	t_mat4 tmp_mat;
 
+	identity_mat4(save_rot);
+	identity_mat4(tmp_mat);
 	My_Uniforms the_uniforms;
 
-	proj_mat = identity_mat4();
+identity_mat4(proj_mat);
 	make_perspective_matrix(proj_mat, radians(45), WIDTH/HEIGHT, (float [2]){1, 20});
-	trans_mat = identity_mat4();
+	identity_mat4(trans_mat);
 	translation_mat4(trans_mat, 0, 0, -5);
-	vp_mat = identity_mat4();
+	identity_mat4(vp_mat);
 	mult_mat4_mat4(vp_mat, proj_mat, trans_mat);
 	// printf("vp_mat:\n");
 	// for (int i = 0; i < 4; i++)
@@ -96,7 +98,7 @@ int main(int argc, char** argv)
 	lgl_set_uniform(&gl_context, &the_uniforms);
 	the_uniforms.v_color = Red;
 	gl_polygon_mode(&gl_context, GL_FRONT, GL_LINE);
-	gl_clear_color(&gl_context, new_float4(0, 0, 0, 1));
+	gl_clear_color(&gl_context, (float [4]){0, 0, 0, 1});
 	printf("starting main loop ...");
 	SDL_Event e;
 	int quit = 0;
@@ -105,8 +107,8 @@ int main(int argc, char** argv)
 	unsigned int last_frame = 0;
 	float frame_time = 0;
 
-	rot_mat = identity_mat4();
-	the_uniforms.mvp_mat = identity_mat4();
+	identity_mat4(rot_mat);
+	identity_mat4(the_uniforms.mvp_mat);
 	while (!quit) {
 		while (SDL_PollEvent(&e)) {
 			if (e.type == SDL_QUIT)

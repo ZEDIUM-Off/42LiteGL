@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:46:27 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/03 16:38:31 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/05 15:43:47 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ void	set_draw_tri_clip_vars(t_draw_tri_clip_vars *vars);
 void	draw_point(t_gl_context *c, t_gl_vertex *vert);
 void	draw_line_clip(t_gl_context *c, t_gl_vertex *v1, t_gl_vertex *v2);
 void	draw_line_shader(t_gl_context *c,
-			t_vec4 *vertexes, float v_out[2][2], unsigned int provoke);
+			t_vec4 *vertexes, float **v_out, unsigned int provoke);
 void	draw_thick_line_shader(t_gl_context *c,
-			t_vec4 *vertexes, float v_out[2][2], unsigned int provoke);
-int		draw_perp_line(t_gl_context *c, float slope, float *vx, float *vy);
+			t_vec4 *vertexes, float **v_out, unsigned int provoke);
+int		draw_perp_line(t_gl_context *c, float slope, float vx[2], float vy[2]);
 void	set_perp_line_vars(t_gl_context *c,
-			t_draw_line_shader_vars *vars, float *vx, float *vy);
+			t_draw_line_shader_vars *vars, float vx[2], float vy[2]);
 void	set_line_shader_vars(t_gl_context *c, t_draw_line_shader_vars *vars,
-			t_vec4 *vertexes, float v_out[2][2]);
+			t_vec4 *vertexes, float **v_out);
 
 #endif

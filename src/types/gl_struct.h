@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:13:25 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/26 10:52:08 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/05 15:29:23 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,10 +235,10 @@ struct s_context_settings
 
 struct s_draw_line_shader_vars
 {
-	float	*x;
-	float	*y;
-	float	*z;
-	float	*w;
+	float	x[2];
+	float	y[2];
+	float	z[2];
+	float	w[2];
 	float	slope;
 	t_line	line;
 	float	t;

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:16:10 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/04 12:28:35 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/05 15:44:00 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,20 @@ t_vec2	set_ab(t_gl_context *c, t_draw_line_shader_vars *vars)
 }
 
 void	set_line_shader_vars(t_gl_context *c, t_draw_line_shader_vars *vars,
-	t_vec4 *vertexes, float v_out[2][2])
+	t_vec4 *vertexes, float **v_out)
 {
-	t_vec3	*hp;
+	t_vec3	hp[2];
 
-	hp = (t_vec3 [2]){vec4_to_vec3h(vertexes[0]), vec4_to_vec3h(vertexes[1])};
-	vars->x = (float [2]){hp[0].x, hp[1].x};
-	vars->y = (float [2]){hp[0].y, hp[1].y};
-	vars->z = (float [2]){hp[0].z, hp[1].z};
-	vars->w = (float [2]){vertexes[0].w, vertexes[1].w};
+	hp[0] = vec4_to_vec3h(vertexes[0]);
+	hp[1] = vec4_to_vec3h(vertexes[1]);
+	vars->x[0] = hp[0].x;
+	vars->x[1] = hp[1].x;
+	vars->y[0] = hp[0].y;
+	vars->y[1] = hp[1].y;
+	vars->z[0] = hp[0].z;
+	vars->z[1] = hp[1].z;
+	vars->w[0] = vertexes[0].w;
+	vars->w[1] = vertexes[1].w;
 	left_right(vars, (float **)v_out);
 	vars->slope = (vars->y[1] - vars->y[0]) / (vars->x[1] - vars->x[0]);
 	vars->line = make_line(vars->x[0], vars->y[0], vars->x[1], vars->y[1]);
@@ -78,8 +83,7 @@ void	set_line_shader_vars(t_gl_context *c, t_draw_line_shader_vars *vars,
 	vars->p[0] = (t_vec2){vars->x[0], vars->y[0]};
 	vars->p[1] = (t_vec2){vars->x[1], vars->y[1]};
 	vars->sub_p = sub_vec2s(vars->p[1], vars->p[0]);
-	vars->line_len_sq = vec2_lenght(vars->sub_p);
-	vars->line_len_sq *= vars->line_len_sq;
+	vars->line_len_sq = vec2_lenght(vars->sub_p) * vec2_lenght(vars->sub_p);
 	vars->i_x[0] = floor(vars->p[0].x) + 0.5;
 	vars->i_x[1] = floor(vars->p[1].x) + 0.5;
 	vars->i_y[0] = floor(vars->p[0].y) + 0.5;

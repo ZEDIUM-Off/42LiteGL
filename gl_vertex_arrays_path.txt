@@ -1,7 +1,0 @@
-./src/gl_vertex_arrays
-./src/gl_vertex_arrays/gl_gen_vertex_arrays.c
-./src/gl_vertex_arrays/gl_vertex_arrays.h
-./src/gl_vertex_arrays/gl_bind_vertex_array.c
-./src/gl_vertex_arrays/gl_delete_vertex_arrays.c
-./src/gl_vertex_arrays/gl_vertex_arrays.mk
-./src/gl_vertex_arrays/init_gl_vertex_array.c

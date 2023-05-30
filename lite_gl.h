@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:31:11 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/04 11:42:18 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/24 11:55:04 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 
 # include "src/types/types.h"
 # include "src/types/gl_struct.h"
-// # include "src/types/gl_enum.h"
 # include "libft/libft.h"
 
 # include "src/cvec/cvec.h"

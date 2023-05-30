@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:20:47 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/11 14:25:05 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/25 14:26:57 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	gl_named_buffer_sub_data(
 {
 	if (buffer == 0 || buffer >= c->buffers.size
 		|| c->buffers.a[buffer].deleted)
-		return (({if (!c->error) c->error = GL_INVALID_OPERATION;}));
+		return ((set_err(c, GL_INVALID_OPERATION)));
 	if (offset_size[0] + offset_size[1] > c->buffers.a[buffer].size)
-		return ({if (!c->error) c->error = GL_INVALID_VALUE;});
+		return (set_err(c, GL_INVALID_ENUM));
 	ft_memcpy(&c->buffers.a[buffer].data[offset_size[0]], data, offset_size[1]);
 }

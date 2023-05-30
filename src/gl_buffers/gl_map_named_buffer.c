@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:25:03 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 14:33:54 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/25 14:21:50 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*gl_map_named_buffer(
 
 	if (access != GL_READ_ONLY && access != GL_WRITE_ONLY
 		&& access != GL_READ_WRITE)
-		return (({if (!c->error) c->error = GL_INVALID_ENUM;}), NULL);
+		return ((set_err(c, GL_INVALID_ENUM)), NULL);
 	data = NULL;
 	lgl_get_buffer_data(c, buffer, &data);
 	return (data);

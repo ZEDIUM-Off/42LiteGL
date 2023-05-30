@@ -31,5 +31,9 @@ GL_UTILS_SRC =	gl_line_width.c \
 								logic_ops_pixel.c \
 								vertex_stage.c \
 								do_vertex.c \
+								set_err.c \
+								clip_x.c \
+								clip_y.c \
+								clip_z.c \
 
 GL_UTILS_PATH = src/gl_utils/

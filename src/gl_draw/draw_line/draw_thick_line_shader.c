@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:04:31 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/05 15:43:22 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/25 14:03:39 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	draw_thick_line_shader_slope_less_minus_one(
 				draw_perp_line(c, -1 / vars->slope,
 					(float [2]){vars->lx - vars->ab.x, vars->lx + vars->ab.x},
 					(float [2]){vars->ly - 1 - vars->ab.y,
-						vars->ly - 1 + vars->ab.y});
+					vars->ly - 1 + vars->ab.y});
 			vars->lx++;
 		}
 		vars->ly--;
@@ -66,7 +66,7 @@ void	draw_thick_line_shader_slope_less_zero(
 			if (vars->diag)
 				draw_perp_line(c, -1 / vars->slope,
 					(float [2]){vars->lx + 1 - vars->ab.x,
-						vars->lx + 1 + vars->ab.x},
+					vars->lx + 1 + vars->ab.x},
 					(float [2]){vars->ly - vars->ab.y, vars->ly + vars->ab.y});
 			vars->ly--;
 		}
@@ -97,7 +97,7 @@ void	draw_thick_line_shader_slope_less_one(
 			if (vars->diag)
 				draw_perp_line(c, -1 / vars->slope,
 					(float [2]){vars->lx + 1 + vars->ab.x,
-						vars->lx + 1 - vars->ab.x},
+					vars->lx + 1 - vars->ab.x},
 					(float [2]){vars->ly + vars->ab.y, vars->ly - vars->ab.y});
 			vars->ly++;
 		}
@@ -129,7 +129,7 @@ void	draw_thick_line_shader_slope_more_one(
 				draw_perp_line(c, -1 / vars->slope,
 					(float [2]){vars->lx + vars->ab.x, vars->lx - vars->ab.x},
 					(float [2]){vars->ly + 1 + vars->ab.y,
-						vars->ly + 1 - vars->ab.y});
+					vars->ly + 1 - vars->ab.y});
 			vars->lx++;
 		}
 		vars->ly++;

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:28:07 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/04 12:54:38 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/25 14:22:06 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	gl_create_textures(
 	t_gl_context *c, t_gl_enum target, t_gl_sizei n, t_gl_uint *textures)
 {
 	t_gl_sizei	j;
-	size_t			i;
+	size_t		i;
 
 	if (target < GL_TEXTURE_1D || target >= GL_NUM_TEXTURE_TYPES)
-		return ({if (!c->error) c->error = GL_INVALID_ENUM;});
+		return (set_err(c, GL_INVALID_ENUM));
 	target -= GL_TEXTURE_UNBOUND + 1;
 	j = 0;
 	i = 0;

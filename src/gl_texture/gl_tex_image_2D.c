@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:40:33 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/11 14:25:05 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/25 14:21:02 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	copy_img_data_rec(
 	c->textures.a[vars->cur_tex].data = (t_u8 *)malloc(
 			params->height * vars->byte_width);
 	if (!c->textures.a[vars->cur_tex].data)
-		return ({if (!c->error) c->error = GL_OUT_OF_MEMORY;});
+		return (set_err(c, GL_OUT_OF_MEMORY));
 	i = 0;
 	if (data)
 	{
@@ -107,7 +107,7 @@ void	copy_img_data_cube(
 	if (!c->textures.a[vars->cur_tex].w)
 		free(c->textures.a[vars->cur_tex].data);
 	if (params->width != params->height)
-		return ({if (!c->error) c->error = GL_INVALID_VALUE;});
+		return (set_err(c, GL_INVALID_ENUM));
 	vars->mem_size = params->width * params->height * 6 * vars->components;
 	if (c->textures.a[vars->cur_tex].w == 0)
 	{
@@ -115,10 +115,10 @@ void	copy_img_data_cube(
 		c->textures.a[vars->cur_tex].h = params->width;
 		c->textures.a[vars->cur_tex].data = (t_u8 *)malloc(vars->mem_size);
 		if (!c->textures.a[vars->cur_tex].data)
-			return ({if (!c->error) c->error = GL_OUT_OF_MEMORY;});
+			return (set_err(c, GL_OUT_OF_MEMORY));
 	}
 	else if ((t_gl_sizei)c->textures.a[vars->cur_tex].w != params->width)
-		return ({if (!c->error) c->error = GL_INVALID_VALUE;});
+		return (set_err(c, GL_INVALID_ENUM));
 	if (data)
 	{
 		if (!vars->padding_needed)

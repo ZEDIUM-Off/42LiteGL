@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:11:13 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/04 12:28:21 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/25 14:04:12 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,14 @@ void	draw_tri_clip_one_pt_out(
 	vars.tmp1.edge_flag = vars.new_v[0]->edge_flag;
 	vars.edge_flag_tmp = vars.new_v[2]->edge_flag;
 	vars.new_v[2]->edge_flag = 0;
-	draw_triangle_clip(c, (t_gl_vertex *[3]){&vars.tmp1, vars.new_v[1], vars.new_v[2]},
+	draw_triangle_clip(c, (t_gl_vertex *[3])
+	{&vars.tmp1, vars.new_v[1], vars.new_v[2]},
 		provoke, clip_bit + 1);
 	vars.tmp2.edge_flag = 1;
 	vars.tmp1.edge_flag = 0;
 	vars.new_v[2]->edge_flag = vars.edge_flag_tmp;
-	draw_triangle_clip(c, (t_gl_vertex *[3]){&vars.tmp2, &vars.tmp1, vars.new_v[2]},
+	draw_triangle_clip(c, (t_gl_vertex *[3])
+	{&vars.tmp2, &vars.tmp1, vars.new_v[2]},
 		provoke, clip_bit + 1);
 }
 
@@ -66,7 +68,8 @@ void	draw_tri_clip_two_pts_out(
 	up_clip(c, &vars, clip_bit);
 	vars.tmp1.edge_flag = 1;
 	vars.tmp2.edge_flag = vars.new_v[2]->edge_flag;
-	draw_triangle_clip(c, (t_gl_vertex *[3]){vars.new_v[0], &vars.tmp1, &vars.tmp2},
+	draw_triangle_clip(c, (t_gl_vertex *[3])
+	{vars.new_v[0], &vars.tmp1, &vars.tmp2},
 		provoke, clip_bit + 1);
 }
 

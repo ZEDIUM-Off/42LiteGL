@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 11:26:21 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/05 15:42:38 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/30 11:18:25 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,12 @@ void			vertex_stage(t_gl_context *c, t_pipeline_settings *sett);
 void			do_vertex(
 					t_gl_context *c, t_vertex_stage_vars *vars,
 					unsigned int i, unsigned int vert);
+void			set_err(t_gl_context *c, t_gl_enum err);
 
+float			clip_xmin(t_vec4 *c, t_vec4 *a, t_vec4 *b);
+float			clip_xmax(t_vec4 *c, t_vec4 *a, t_vec4 *b);
+float			clip_ymin(t_vec4 *c, t_vec4 *a, t_vec4 *b);
+float			clip_ymax(t_vec4 *c, t_vec4 *a, t_vec4 *b);
+float			clip_zmin(t_vec4 *c, t_vec4 *a, t_vec4 *b);
+float			clip_zmax(t_vec4 *c, t_vec4 *a, t_vec4 *b);
 #endif

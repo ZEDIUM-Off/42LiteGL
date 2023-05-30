@@ -2,7 +2,8 @@ DRAW_LINE_SRC =	draw_line/draw_line_vars.c \
 								draw_line/draw_thick_line_shader.c \
 								draw_line/draw_line_shader.c \
 								draw_line/draw_line_clip.c \
-								draw_line/draw_perp_line.c
+								draw_line/draw_perp_line.c \
+								draw_line/set_vars_coords.c \
 
 DRAW_MODES_SRC =	draw_modes/draw_modes_base.c \
 									draw_modes/draw_modes_strip.c

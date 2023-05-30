@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:51:14 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/24 12:43:48 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/25 14:06:13 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	cvec_insert_gl_buffer(t_cvector_gl_buffer *vec, size_t i, t_gl_buffer a)
 	else
 	{
 		tmp_sz = (vec->capacity + 1) * 2;
-		tmp = (t_gl_buffer *)ft_realloc(vec->a, sizeof(t_gl_buffer) * tmp_sz, vec->capacity * sizeof(t_gl_buffer));
+		tmp = (t_gl_buffer *)ft_realloc(vec->a, sizeof(t_gl_buffer) * tmp_sz,
+				vec->capacity * sizeof(t_gl_buffer));
 		if (!tmp)
 			return (ft_assert(tmp != NULL), 0);
 		vec->a = tmp;

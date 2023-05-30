@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:16:10 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/05 15:44:00 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/30 12:47:54 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,7 @@ void	set_line_shader_vars(t_gl_context *c, t_draw_line_shader_vars *vars,
 
 	hp[0] = vec4_to_vec3h(vertexes[0]);
 	hp[1] = vec4_to_vec3h(vertexes[1]);
-	vars->x[0] = hp[0].x;
-	vars->x[1] = hp[1].x;
-	vars->y[0] = hp[0].y;
-	vars->y[1] = hp[1].y;
-	vars->z[0] = hp[0].z;
-	vars->z[1] = hp[1].z;
-	vars->w[0] = vertexes[0].w;
-	vars->w[1] = vertexes[1].w;
+	set_vars_coords(vars, hp, vertexes);
 	left_right(vars, (float **)v_out);
 	vars->slope = (vars->y[1] - vars->y[0]) / (vars->x[1] - vars->x[0]);
 	vars->line = make_line(vars->x[0], vars->y[0], vars->x[1], vars->y[1]);

@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:35:37 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/18 11:27:30 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/25 14:23:00 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	lgl_set_uniform(t_gl_context *c, void *uniform)
 	c->programs.a[c->cur_program].uniform = uniform;
 }
 
-t_gl_uint	lgl_create_program(t_gl_context *c, t_gl_program prog_attr, t_gl_enum *tmp_interpolation)
+t_gl_uint	lgl_create_program(
+	t_gl_context *c, t_gl_program prog_attr, t_gl_enum *tmp_interpolation)
 {
 	t_gl_program	tmp;
 	size_t			i;
@@ -38,7 +39,7 @@ t_gl_uint	lgl_create_program(t_gl_context *c, t_gl_program prog_attr, t_gl_enum 
 	if (!prog_attr.vertex_shader || !prog_attr.fragment_shader)
 		return (0);
 	if (prog_attr.vs_output_size > GL_MAX_VERTEX_OUTPUT_COMPONENTS)
-		return (({if (!c->error) c->error = GL_INVALID_VALUE;}), 0);
+		return ((set_err(c, GL_INVALID_ENUM)), 0);
 	tmp = (t_gl_program) \
 	{prog_attr.vertex_shader, prog_attr.fragment_shader, NULL, \
 	prog_attr.vs_output_size, {0}, prog_attr.fragdepth_or_discard, GL_FALSE};

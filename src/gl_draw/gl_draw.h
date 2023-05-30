@@ -6,7 +6,7 @@
 /*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:46:27 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/05 15:43:47 by  mchenava        ###   ########.fr       */
+/*   Updated: 2023/05/30 12:47:15 by  mchenava        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,7 @@ void	set_perp_line_vars(t_gl_context *c,
 			t_draw_line_shader_vars *vars, float vx[2], float vy[2]);
 void	set_line_shader_vars(t_gl_context *c, t_draw_line_shader_vars *vars,
 			t_vec4 *vertexes, float **v_out);
+void	set_vars_coords(
+			t_draw_line_shader_vars *vars, t_vec3 hp[2], t_vec4 *vertexes);
 
 #endif

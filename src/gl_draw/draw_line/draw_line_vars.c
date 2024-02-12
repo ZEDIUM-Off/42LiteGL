@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line_vars.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
+/*   By: mchenava <mchenava@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:16:10 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/30 12:47:54 by  mchenava        ###   ########.fr       */
+/*   Updated: 2024/02/12 15:56:46 by mchenava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	set_line_shader_vars(t_gl_context *c, t_draw_line_shader_vars *vars,
 }
 
 void	set_perp_line_vars(
-	t_gl_context *c, t_draw_line_shader_vars *vars, float vx[2], float vy[2])
+	t_gl_context *c, t_draw_line_shader_vars *vars, float *vx, float *vy)
 {
 	vars->line = make_line(vx[0], vy[0], vx[1], vy[1]);
 	vars->i_x[0] = floor(vx[0]) + 0.5;

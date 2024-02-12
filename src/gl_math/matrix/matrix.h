@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
+/*   By: mchenava <mchenava@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 15:16:19 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/04 12:38:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2024/02/12 15:38:01 by mchenava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	sety_mat3(t_mat3 m, t_vec3 v);
 void	setz_mat3(t_mat3 m, t_vec3 v);
 
 t_vec3	mult_mat3_vec3(t_mat3 m, t_vec3 v);
+float	mat3_determinant(t_mat3 mat);
 
 // mat 4
 void	identity_mat4(t_mat4 mat);
@@ -98,6 +99,11 @@ void	load_rotation_mat4(t_mat4 mat, t_vec3 v, float angle);
 void	mat4_cpy(t_mat4 dst, t_mat4 src);
 void	mat3_cpy(t_mat3 dst, t_mat3 src);
 void	mat2_cpy(t_mat2 dst, t_mat2 src);
+
+void	mat4_inverse(t_mat4	res, t_mat4 mat);
+void	mat4_transpose(t_mat4 res, t_mat4 mat);
+float	mat4_determinant(t_mat4 mat);
+void	mat4_cofactor(t_mat4 res, t_mat4 mat);
 
 void	make_orthographic_matrix(
 			t_mat4 mat, float	*lr, float *bt, float *near_far);

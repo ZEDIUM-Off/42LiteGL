@@ -36,7 +36,7 @@ SRC	=	$(GL_BUFFER_SRC:%.c=$(GL_BUFFER_PATH)%.c) \
 SRC += $(LIBFT_DIR)/ft_realloc.c $(LIBFT_DIR)/ft_assert.c $(LIBFT_DIR)/ft_memcpy.c $(LIBFT_DIR)/ft_memmove.c
 
 OBJ = $(SRC:.c=.o)
-CFLAGS = -Wall -Wextra -Werror -lm -I. -I$(LIBFT_DIR) #-fsanitize=address -g3 
+CFLAGS = -Wall -Wextra -Werror -I. -I$(LIBFT_DIR) -fsanitize=address -g3 #-lm
 NAME = lite_gl.a
 
 all: $(NAME)

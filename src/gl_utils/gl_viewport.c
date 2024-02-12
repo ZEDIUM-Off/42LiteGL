@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   gl_viewport.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
+/*   By: mchenava <mchenava@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:09:05 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/03 16:33:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2024/02/12 15:48:06 by mchenava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
-void	gl_viewport(t_gl_context *c, int xy[2], t_gl_sizei wh[2])
+void	gl_viewport(t_gl_context *c, int *xy, t_gl_sizei *wh)
 {
 	if (wh[0] < 0 || wh[1] < 0)
 	{

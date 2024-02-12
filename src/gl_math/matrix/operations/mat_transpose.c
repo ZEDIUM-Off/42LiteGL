@@ -6,9 +6,11 @@
 /*   By: mchenava <mchenava@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:35:03 by mchenava          #+#    #+#             */
-/*   Updated: 2024/02/12 15:35:12 by mchenava         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:46:37 by mchenava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <lite_gl.h>
 
 void	mat4_transpose(t_mat4 res, t_mat4 mat)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gl_draw.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
+/*   By: mchenava <mchenava@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:46:27 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/30 12:47:15 by  mchenava        ###   ########.fr       */
+/*   Updated: 2024/02/12 15:46:23 by mchenava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ void	draw_line_shader(t_gl_context *c,
 			t_vec4 *vertexes, float **v_out, unsigned int provoke);
 void	draw_thick_line_shader(t_gl_context *c,
 			t_vec4 *vertexes, float **v_out, unsigned int provoke);
-int		draw_perp_line(t_gl_context *c, float slope, float vx[2], float vy[2]);
+int		draw_perp_line(t_gl_context *c, float slope, float *vx, float *vy);
 void	set_perp_line_vars(t_gl_context *c,
-			t_draw_line_shader_vars *vars, float vx[2], float vy[2]);
+			t_draw_line_shader_vars *vars, float *vx, float *vy);
 void	set_line_shader_vars(t_gl_context *c, t_draw_line_shader_vars *vars,
 			t_vec4 *vertexes, float **v_out);
 void	set_vars_coords(

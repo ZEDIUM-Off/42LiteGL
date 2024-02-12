@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   make_persp_mat.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
+/*   By: mchenava <mchenava@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 11:26:45 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/05/04 12:18:01 by  mchenava        ###   ########.fr       */
+/*   Updated: 2024/02/12 15:47:21 by mchenava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
 
 void	make_perspective_matrix(
-	t_mat4 mat, float fov, float aspect, float near_far[2])
+	t_mat4 mat, float fov, float aspect, float *near_far)
 {
 	float	t;
 	float	b;
@@ -29,7 +29,7 @@ void	make_perspective_matrix(
 }
 
 void	make_perspective_proj_matrix(
-	t_mat4 mat, float lr[2], float bt[2], float near_far[2])
+	t_mat4 mat, float *lr, float *bt, float *near_far)
 {
 	mat[0][0] = 2.0f * near_far[0] / (lr[1] - lr[0]);
 	mat[0][2] = (lr[1] + lr[0]) / (lr[1] - lr[0]);

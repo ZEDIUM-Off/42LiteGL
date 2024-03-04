@@ -6,7 +6,7 @@
 /*   By: mchenava <mchenava@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:46:27 by  mchenava         #+#    #+#             */
-/*   Updated: 2024/02/12 15:46:23 by mchenava         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:20:42 by mchenava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,22 @@
 void	draw_pixel(t_gl_context *c, t_vec4 cf, t_vec2 pos, float z);
 
 void	run_pipeline(t_gl_context *c, t_pipeline_settings *settings);
-void	gl_draw_arrays(t_gl_context *c,
-			t_gl_enum mode, t_gl_int first, t_gl_sizei count);
-void	gl_multi_draw_arrays(
-			t_gl_context *c, t_gl_enum mode,
+void	gl_draw_arrays(t_gl_context *c, t_gl_enum mode, t_gl_int first,
+			t_gl_sizei count);
+void	gl_multi_draw_arrays(t_gl_context *c, t_gl_enum mode,
 			t_multi_draw_arrays_settings *sett);
-void	gl_draw_arrays_instanced(
-			t_gl_context *c, t_gl_enum mode,
+void	gl_draw_arrays_instanced(t_gl_context *c, t_gl_enum mode,
 			t_draw_arrays_instanced_settings *sett);
-void	gl_draw_arrays_instanced_base_instance(
-			t_gl_context *c, t_gl_enum mode,
-			t_draw_arrays_instanced_settings*sett);
-void	gl_draw_elements(
-			t_gl_context *c, t_gl_enum mode, t_draw_elements_settings *sett);
-void	gl_multi_draw_elements(
-			t_gl_context *c, t_gl_enum mode,
+void	gl_draw_arrays_instanced_base_instance(t_gl_context *c, t_gl_enum mode,
+			t_draw_arrays_instanced_settings *sett);
+void	gl_draw_elements(t_gl_context *c, t_gl_enum mode,
+			t_draw_elements_settings *sett);
+void	gl_multi_draw_elements(t_gl_context *c, t_gl_enum mode,
 			t_multi_draw_elements_settings *sett);
-void	gl_draw_elements_instanced(
-			t_gl_context *c, t_gl_enum mode,
+void	gl_draw_elements_instanced(t_gl_context *c, t_gl_enum mode,
 			t_draw_elements_instanced_settings *sett);
-void	gl_draw_elements_instanced_base_instance(
-			t_gl_context *c, t_gl_enum mode,
-			t_draw_elements_instanced_settings *sett);
+void	gl_draw_elements_instanced_base_instance(t_gl_context *c,
+			t_gl_enum mode, t_draw_elements_instanced_settings *sett);
 
 void	point_mode(t_gl_context *c, t_gl_uint first, t_gl_sizei count);
 void	line_mode(t_gl_context *c, t_gl_int first, t_gl_sizei count);
@@ -50,34 +44,34 @@ void	triangle_strip_mode(t_gl_context *c, t_gl_sizei count);
 void	triangle_fan_mode(t_gl_context *c, t_gl_sizei count);
 
 void	draw_triangle(t_gl_context *c, t_gl_vertex **v, unsigned int provoke);
-void	draw_triangle_final(t_gl_context *c,
-			t_gl_vertex **v, unsigned int provoke);
-void	draw_triangle_fill(t_gl_context *c,
-			t_gl_vertex **v, unsigned int provoke);
-void	draw_triangle_clip(
-			t_gl_context *c, t_gl_vertex **v,
+void	draw_triangle_final(t_gl_context *c, t_gl_vertex **v,
+			unsigned int provoke);
+void	draw_triangle_fill(t_gl_context *c, t_gl_vertex **v,
+			unsigned int provoke);
+void	draw_triangle_clip(t_gl_context *c, t_gl_vertex **v,
 			unsigned int provoke, int clip_bit);
-void	draw_triangle_point(
-			t_gl_context *c, t_gl_vertex **vert, unsigned int provoke);
-void	draw_triangle_line(
-			t_gl_context *c, t_gl_vertex **v, unsigned int provoke);
+void	draw_triangle_point(t_gl_context *c, t_gl_vertex **vert,
+			unsigned int provoke);
+void	draw_triangle_line(t_gl_context *c, t_gl_vertex **v,
+			unsigned int provoke);
 
-void	set_draw_tri_vars(t_gl_context *c,
-			t_draw_tri_vars *vars, t_gl_vertex **v);
+void	set_draw_tri_vars(t_gl_context *c, t_draw_tri_vars *vars,
+			t_gl_vertex **v);
 void	set_draw_tri_clip_vars(t_draw_tri_clip_vars *vars);
 
 void	draw_point(t_gl_context *c, t_gl_vertex *vert);
 void	draw_line_clip(t_gl_context *c, t_gl_vertex *v1, t_gl_vertex *v2);
-void	draw_line_shader(t_gl_context *c,
-			t_vec4 *vertexes, float **v_out, unsigned int provoke);
-void	draw_thick_line_shader(t_gl_context *c,
-			t_vec4 *vertexes, float **v_out, unsigned int provoke);
+void	draw_line_shader(t_gl_context *c, t_vec4 *vertexes, float **v_out,
+			unsigned int provoke);
+void	draw_thick_line_shader(t_gl_context *c, t_vec4 *vertexes, float **v_out,
+			unsigned int provoke);
 int		draw_perp_line(t_gl_context *c, float slope, float *vx, float *vy);
-void	set_perp_line_vars(t_gl_context *c,
-			t_draw_line_shader_vars *vars, float *vx, float *vy);
+void	set_perp_line_vars(t_gl_context *c, t_draw_line_shader_vars *vars,
+			float *vx, float *vy);
 void	set_line_shader_vars(t_gl_context *c, t_draw_line_shader_vars *vars,
 			t_vec4 *vertexes, float **v_out);
-void	set_vars_coords(
-			t_draw_line_shader_vars *vars, t_vec3 hp[2], t_vec4 *vertexes);
+void	set_vars_coords(t_draw_line_shader_vars *vars, t_vec3 hp[2],
+			t_vec4 *vertexes);
+void	lgl_draw_frame(t_gl_context *c);
 
 #endif

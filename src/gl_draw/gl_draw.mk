@@ -27,7 +27,8 @@ GL_DRAW_SRC += draw_pixel.c \
 						gl_multi_draw_elements.c \
 						gl_draw_elements_instanced.c \
 						gl_draw_elements_instanced_base_instance.c \
-						run_pipeline.c
+						run_pipeline.c \
+						lgl_draw_frame.c
 
 GL_DRAW_PATH = src/gl_draw/
 DRAW_INCLUDE = -Igl_draw.h

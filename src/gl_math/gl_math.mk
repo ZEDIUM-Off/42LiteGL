@@ -16,11 +16,7 @@ MAT4_SRC =	matrix/mat4/mat4_get_xyzw.c \
 MAT_OP_SRC =	matrix/operations/mult_mat_mat.c \
 							matrix/operations/mult_mat_vec.c \
 							matrix/operations/scale_mat.c \
-							matrix/operations/mat_cpy.c \
-							matrix/operations/mat_cofactor.c \
-							matrix/operations/mat_det.c \
-							matrix/operations/mat_inverse.c \
-							matrix/operations/mat_transpose.c
+							matrix/operations/mat_cpy.c
 
 MAT_SRC = $(MAT2_SRC) $(MAT3_SRC) $(MAT4_SRC) $(MAT_OP_SRC)
 MAT_SRC +=	matrix/make_persp_mat.c \

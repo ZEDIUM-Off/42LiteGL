@@ -12,15 +12,6 @@
 
 #include <lite_gl.h>
 
-typedef struct texture1d_vars
-{
-	int				i[2];
-	t_gl_texture	*t;
-	t_color			*color;
-	double			alpha;
-	double			tmp;
-}	t_texture1d_vars;
-
 t_vec4	texture1d(t_gl_context *c, t_gl_uint tex, float x)
 {
 	t_texture1d_vars	v;

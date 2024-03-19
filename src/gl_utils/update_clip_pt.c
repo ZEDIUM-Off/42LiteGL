@@ -12,7 +12,7 @@
 
 #include <lite_gl.h>
 
-#define CLIP_EPSILON (1E-5)
+#define CLIP_EPSILON (1.0E-5)
 
 int	gl_clipcode(t_gl_context *c, t_vec4 pt)
 {

@@ -12,19 +12,6 @@
 
 #include <lite_gl.h>
 
-typedef struct tex_im_3d_vars
-{
-	int			cur_tex;
-	int			byte_width;
-	int			padding_needed;
-	int			padded_row_len;
-	int			mem_size;
-	int			components;
-	int			p;
-	t_gl_enum	target;
-	t_u8		*texdata;
-}	t_tex_im_3d_vars;
-
 void	copy_img_data_3d(
 	t_gl_context *c, t_tex_image_params *params,
 	t_tex_im_3d_vars *vars, t_gl_void *data)

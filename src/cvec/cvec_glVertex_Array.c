@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cvec_glVertex_Array.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
+/*   By: mchenava <mchenava@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:25:43 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/04/24 13:11:51 by  mchenava        ###   ########.fr       */
+/*   Updated: 2024/03/19 17:18:34 by mchenava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int	cvec_extend_gl_vertex_array(t_cvector_gl_vertex_array *vec, size_t num)
 		}
 		vec->a = tmp;
 		vec->capacity = tmp_sz;
-	}	
+	}
 	vec->size += num;
 	return (1);
 }

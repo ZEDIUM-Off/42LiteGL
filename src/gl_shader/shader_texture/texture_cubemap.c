@@ -12,25 +12,6 @@
 
 #include <lite_gl.h>
 
-typedef struct texture2d_vars
-{
-	int				i[2];
-	int				j[2];
-	t_gl_texture	*t;
-	t_color			*color;
-	double			alpha;
-	double			beta;
-	double			tmp;
-	double			xw;
-	double			yh;
-	int				plane;
-	int				p;
-	float			mag[3];
-	float			s;
-	float			t1;
-	float			max;
-}	t_texture2d_vars;
-
 void	x_mag_larger_y(t_texture2d_vars *v, t_vec3 *xyz)
 {
 	if (v->mag[0] > v->mag[2])

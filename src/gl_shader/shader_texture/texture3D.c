@@ -12,23 +12,6 @@
 
 #include <lite_gl.h>
 
-typedef struct texture3d_vars
-{
-	int				i[2];
-	int				j[2];
-	int				k[2];
-	t_gl_texture	*t;
-	t_color			*color;
-	double			alpha;
-	double			beta;
-	double			gamma;
-	double			tmp;
-	double			xw;
-	double			yh;
-	double			zd;
-	int				plane;
-}	t_texture3d_vars;
-
 void	set_vars_mag_not_nearest(t_texture3d_vars *v)
 {
 	v->i[0] = wrap(floor(v->xw - 0.5), v->t->w, v->t->wrap_s);

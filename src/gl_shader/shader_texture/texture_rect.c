@@ -12,19 +12,6 @@
 
 #include <lite_gl.h>
 
-typedef struct texture_rect_vars
-{
-	int				i[2];
-	int				j[2];
-	t_gl_texture	*t;
-	t_color			*color;
-	double			alpha;
-	double			beta;
-	double			tmp;
-	double			xw;
-	double			yh;
-}	t_texture_rect_vars;
-
 void	set_vars(
 	t_texture_rect_vars *v, t_gl_context *c, t_gl_uint tex, t_vec2 xy)
 {

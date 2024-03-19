@@ -12,19 +12,6 @@
 
 #include <lite_gl.h>
 
-typedef struct tex_im_2d_vars
-{
-	int			cur_tex;
-	int			byte_width;
-	int			padding_needed;
-	int			padded_row_len;
-	int			mem_size;
-	int			components;
-	int			p;
-	t_gl_enum	target;
-	t_u8		*texdata;
-}	t_tex_im_2d_vars;
-
 int	test_target_border_type(
 	t_gl_context *c, t_gl_enum target, t_gl_enum border, t_gl_enum type)
 {

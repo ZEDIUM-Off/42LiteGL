@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   texture2D.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
+/*   By: mchenava <mchenava@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:47:13 by  mchenava         #+#    #+#             */
-/*   Updated: 2023/03/13 16:32:31 by  mchenava        ###   ########.fr       */
+/*   Updated: 2024/03/19 17:22:07 by mchenava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lite_gl.h>
-
-typedef struct texture2d_vars
-{
-	int				i[2];
-	int				j[2];
-	t_gl_texture	*t;
-	t_color			*color;
-	double			alpha;
-	double			beta;
-	double			tmp;
-	double			xw;
-	double			yh;
-}	t_texture2d_vars;
 
 void	set_vars(t_texture2d_vars *v, t_gl_context *c, t_gl_uint tex, t_vec2 xy)
 {

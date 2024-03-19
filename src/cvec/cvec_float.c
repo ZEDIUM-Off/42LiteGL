@@ -109,7 +109,7 @@ int	cvec_extend_float(t_cvector_float *vec, size_t num)
 		}
 		vec->a = tmp;
 		vec->capacity = tmp_sz;
-	}	
+	}
 	vec->size += num;
 	return (1);
 }

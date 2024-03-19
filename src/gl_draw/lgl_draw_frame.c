@@ -6,7 +6,7 @@
 /*   By: mchenava <mchenava@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 15:21:06 by mchenava          #+#    #+#             */
-/*   Updated: 2024/03/04 15:25:30 by mchenava         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:15:49 by mchenava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	lgl_draw_frame(t_gl_context *c)
 {
 	t_frag_func			frag_shader;
 	t_shader_builtins	builtins;
-	int					x;
-	int					y;
+	size_t				x;
+	size_t				y;
 
 	frag_shader = c->programs.a[c->cur_program].fragment_shader;
 	y = 0;
